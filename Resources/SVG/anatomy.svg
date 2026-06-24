@@ -1,0 +1,113 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+  width="600" height="800" viewBox="0 0 600 800">
+  
+  <!-- Background -->
+  <rect width="600" height="800" fill="#ffffff"/>
+  
+  <!-- Body Parts Group -->
+  <g id="human-anatomy" fill="#e8e8e8" stroke="#333333" stroke-width="2">
+    
+    <!-- Head -->
+    <ellipse id="head" cx="300" cy="80" rx="50" ry="60" 
+             fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Neck -->
+    <rect id="neck" x="280" y="140" width="40" height="30" rx="5" 
+          fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Torso -->
+    <path id="torso" d="M220 170 Q200 180 200 250 L200 400 Q200 420 220 420 L380 420 Q400 420 400 400 L400 250 Q400 180 380 170 Z" 
+          fill="#87CEEB" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Chest -->
+    <path id="chest" d="M220 170 Q200 180 200 250 L200 300 Q200 320 220 320 L380 320 Q400 320 400 300 L400 250 Q400 180 380 170 Z" 
+          fill="#add8e6" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Abdomen -->
+    <path id="abdomen" d="M200 320 Q200 340 220 340 L380 340 Q400 340 400 320 L400 400 Q400 420 380 420 L220 420 Q200 420 200 400 Z" 
+          fill="#87CEEB" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Left Upper Arm -->
+    <path id="left-upper-arm" d="M200 200 Q150 220 130 280 L150 320 Q180 300 200 280 Z" 
+          fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Left Lower Arm -->
+    <path id="left-lower-arm" d="M130 280 L120 380 Q130 390 150 385 L165 375 Q155 340 165 320 Z" 
+          fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Left Hand -->
+    <ellipse id="left-hand" cx="140" cy="400" rx="25" ry="35" 
+             fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Right Upper Arm -->
+    <path id="right-upper-arm" d="M400 200 Q450 220 470 280 L450 320 Q420 300 400 280 Z" 
+          fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Right Lower Arm -->
+    <path id="right-lower-arm" d="M470 280 L480 380 Q470 390 450 385 L435 375 Q445 340 435 320 Z" 
+          fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Right Hand -->
+    <ellipse id="right-hand" cx="460" cy="400" rx="25" ry="35" 
+             fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Left Upper Leg -->
+    <path id="left-upper-leg" d="M240 420 L230 550 Q240 560 270 560 L300 560 Q320 560 320 550 L310 420 Z" 
+          fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Left Lower Leg -->
+    <path id="left-lower-leg" d="M230 550 L220 700 Q240 720 270 720 L300 720 Q320 700 310 550 Z" 
+          fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Left Foot -->
+    <ellipse id="left-foot" cx="265" cy="740" rx="40" ry="25" 
+             fill="#333333" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Right Upper Leg -->
+    <path id="right-upper-leg" d="M360 420 L370 550 Q360 560 330 560 L300 560 Q280 560 280 550 L290 420 Z" 
+          fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Right Lower Leg -->
+    <path id="right-lower-leg" d="M370 550 L380 700 Q360 720 330 720 L300 720 Q280 700 280 550 Z" 
+          fill="#ffe4c4" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Right Foot -->
+    <ellipse id="right-foot" cx="335" cy="740" rx="40" ry="25" 
+             fill="#333333" stroke="#333333" stroke-width="2"/>
+  </g>
+  
+  <!-- Labels (hidden by default, can be shown via CSS or JS) -->
+  <g id="labels" font-family="Arial" font-size="12" fill="#000000" style="display: none;">
+    <text id="label-head" x="300" y="80" text-anchor="middle">Head</text>
+    <text id="label-neck" x="300" y="155" text-anchor="middle">Neck</text>
+    <text id="label-chest" x="300" y="250" text-anchor="middle">Chest</text>
+    <text id="label-abdomen" x="300" y="380" text-anchor="middle">Abdomen</text>
+    <text id="label-left-upper-arm" x="160" y="240" text-anchor="middle">Left Upper Arm</text>
+    <text id="label-left-lower-arm" x="140" y="340" text-anchor="middle">Left Lower Arm</text>
+    <text id="label-left-hand" x="140" y="400" text-anchor="middle">Left Hand</text>
+    <text id="label-right-upper-arm" x="440" y="240" text-anchor="middle">Right Upper Arm</text>
+    <text id="label-right-lower-arm" x="460" y="340" text-anchor="middle">Right Lower Arm</text>
+    <text id="label-right-hand" x="460" y="400" text-anchor="middle">Right Hand</text>
+    <text id="label-left-upper-leg" x="275" y="490" text-anchor="middle">Left Upper Leg</text>
+    <text id="label-left-lower-leg" x="270" y="640" text-anchor="middle">Left Lower Leg</text>
+    <text id="label-left-foot" x="265" y="740" text-anchor="middle">Left Foot</text>
+    <text id="label-right-upper-leg" x="325" y="490" text-anchor="middle">Right Upper Leg</text>
+    <text id="label-right-lower-leg" x="330" y="640" text-anchor="middle">Right Lower Leg</text>
+    <text id="label-right-foot" x="335" y="740" text-anchor="middle">Right Foot</text>
+  </g>
+  
+  <!-- Detailed Face Features -->
+  <g id="face-features" fill="#333333" stroke="none">
+    <!-- Eyes -->
+    <ellipse id="left-eye" cx="280" cy="75" rx="5" ry="3"/>
+    <ellipse id="right-eye" cx="320" cy="75" rx="5" ry="3"/>
+    <!-- Nose -->
+    <path id="nose" d="M300 80 L295 90 L305 90 Z"/>
+    <!-- Mouth -->
+    <path id="mouth" d="M290 100 Q300 105 310 100" stroke="#333333" stroke-width="2" fill="none"/>
+  </g>
+  
+</svg>

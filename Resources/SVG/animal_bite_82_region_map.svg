@@ -1,0 +1,1014 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" width="1800" height="1100">
+  <defs>
+    <style>
+      .title { font: 700 34px "Segoe UI", Arial, sans-serif; fill: #153b71; }
+      .subtitle { font: 400 15px "Segoe UI", Arial, sans-serif; fill: #6b7280; }
+      .viewLabel { font: 700 22px "Segoe UI", Arial, sans-serif; fill: #153b71; }
+      .legendText { font: 600 12px "Segoe UI", Arial, sans-serif; fill: #334155; }
+      .skin { fill: url(#skinGrad); stroke: #b98d67; stroke-width: 1.6; }
+      .skinOutline { fill: none; stroke: #a77d5b; stroke-width: 2; }
+      .skinline { fill: none; stroke: rgba(134, 94, 60, 0.22); stroke-width: 1.1; }
+      .hotspot-hit { fill: rgba(255,255,255,0.01); stroke: transparent; }
+      .hotspot-number-bg { fill: #fff; stroke: #153b71; stroke-width: 1.4; }
+      .hotspot-number { font: 700 10px "Segoe UI", Arial, sans-serif; fill: #153b71; pointer-events: none; }
+      .panel { fill: #fafafa; stroke: #e5e7eb; }
+      .panelTitle { font: 700 14px "Segoe UI", Arial, sans-serif; fill: #153b71; }
+    </style>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbe1cf"/>
+      <stop offset="40%" stop-color="#f4cda9"/>
+      <stop offset="100%" stop-color="#e5b485"/>
+    </linearGradient>
+    <linearGradient id="highlightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff0e6"/>
+      <stop offset="100%" stop-color="#ffe0cc"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff"/>
+  <text x="900" y="40" text-anchor="middle" class="title">ANATOMICAL LOCATION MAP - 82 REGIONS</text>
+  <text x="900" y="66" text-anchor="middle" class="subtitle">Click a numbered region to record the body part ID and display name</text>
+
+  <text x="520" y="104" text-anchor="middle" class="viewLabel">FRONT VIEW</text>
+  <text x="1080" y="104" text-anchor="middle" class="viewLabel">BACK VIEW</text>
+
+  <!-- Left legend panel -->
+  <g transform="translate(20,92)">
+    <rect class="panel" x="0" y="0" width="430" height="970" rx="14"/>
+    <text x="18" y="30" class="panelTitle">REGION LIST</text>
+    
+        <g id="legend_01">
+          <line x1="18" y1="54" x2="50" y2="54" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="60" class="legendText">1. Scalp</text>
+        </g>
+
+        <g id="legend_02">
+          <line x1="18" y1="76" x2="50" y2="76" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="82" class="legendText">2. Forehead</text>
+        </g>
+
+        <g id="legend_03">
+          <line x1="18" y1="98" x2="50" y2="98" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="104" class="legendText">3. Right Temple</text>
+        </g>
+
+        <g id="legend_04">
+          <line x1="18" y1="120" x2="50" y2="120" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="126" class="legendText">4. Left Temple</text>
+        </g>
+
+        <g id="legend_05">
+          <line x1="18" y1="142" x2="50" y2="142" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="148" class="legendText">5. Right Ear</text>
+        </g>
+
+        <g id="legend_06">
+          <line x1="18" y1="164" x2="50" y2="164" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="170" class="legendText">6. Left Ear</text>
+        </g>
+
+        <g id="legend_07">
+          <line x1="18" y1="186" x2="50" y2="186" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="192" class="legendText">7. Right Cheek</text>
+        </g>
+
+        <g id="legend_08">
+          <line x1="18" y1="208" x2="50" y2="208" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="214" class="legendText">8. Left Cheek</text>
+        </g>
+
+        <g id="legend_09">
+          <line x1="18" y1="230" x2="50" y2="230" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="236" class="legendText">9. Nose</text>
+        </g>
+
+        <g id="legend_10">
+          <line x1="18" y1="252" x2="50" y2="252" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="258" class="legendText">10. Upper Lip</text>
+        </g>
+
+        <g id="legend_11">
+          <line x1="18" y1="274" x2="50" y2="274" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="280" class="legendText">11. Lower Lip</text>
+        </g>
+
+        <g id="legend_12">
+          <line x1="18" y1="296" x2="50" y2="296" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="302" class="legendText">12. Chin</text>
+        </g>
+
+        <g id="legend_13">
+          <line x1="18" y1="318" x2="50" y2="318" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="324" class="legendText">13. Anterior Neck</text>
+        </g>
+
+        <g id="legend_14">
+          <line x1="18" y1="340" x2="50" y2="340" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="346" class="legendText">14. Right Chest</text>
+        </g>
+
+        <g id="legend_15">
+          <line x1="18" y1="362" x2="50" y2="362" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="368" class="legendText">15. Sternum</text>
+        </g>
+
+        <g id="legend_16">
+          <line x1="18" y1="384" x2="50" y2="384" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="390" class="legendText">16. Left Chest</text>
+        </g>
+
+        <g id="legend_17">
+          <line x1="18" y1="406" x2="50" y2="406" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="412" class="legendText">17. Right Upper Abdomen</text>
+        </g>
+
+        <g id="legend_18">
+          <line x1="18" y1="428" x2="50" y2="428" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="434" class="legendText">18. Left Upper Abdomen</text>
+        </g>
+
+        <g id="legend_19">
+          <line x1="18" y1="450" x2="50" y2="450" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="456" class="legendText">19. Right Lower Abdomen</text>
+        </g>
+
+        <g id="legend_20">
+          <line x1="18" y1="472" x2="50" y2="472" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="478" class="legendText">20. Left Lower Abdomen</text>
+        </g>
+
+        <g id="legend_21">
+          <line x1="18" y1="494" x2="50" y2="494" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="500" class="legendText">21. Pelvis</text>
+        </g>
+
+        <g id="legend_22">
+          <line x1="18" y1="516" x2="50" y2="516" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="522" class="legendText">22. Genital Area</text>
+        </g>
+
+        <g id="legend_23">
+          <line x1="18" y1="538" x2="50" y2="538" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="544" class="legendText">23. Right Shoulder</text>
+        </g>
+
+        <g id="legend_24">
+          <line x1="18" y1="560" x2="50" y2="560" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="566" class="legendText">24. Right Upper Arm</text>
+        </g>
+
+        <g id="legend_25">
+          <line x1="18" y1="582" x2="50" y2="582" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="588" class="legendText">25. Right Elbow</text>
+        </g>
+
+        <g id="legend_26">
+          <line x1="18" y1="604" x2="50" y2="604" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="610" class="legendText">26. Right Forearm</text>
+        </g>
+
+        <g id="legend_27">
+          <line x1="18" y1="626" x2="50" y2="626" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="632" class="legendText">27. Right Wrist</text>
+        </g>
+
+        <g id="legend_28">
+          <line x1="18" y1="648" x2="50" y2="648" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="654" class="legendText">28. Right Hand</text>
+        </g>
+
+        <g id="legend_29">
+          <line x1="18" y1="670" x2="50" y2="670" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="676" class="legendText">29. Right Thumb</text>
+        </g>
+
+        <g id="legend_30">
+          <line x1="18" y1="692" x2="50" y2="692" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="698" class="legendText">30. Right Index Finger</text>
+        </g>
+
+        <g id="legend_31">
+          <line x1="18" y1="714" x2="50" y2="714" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="720" class="legendText">31. Right Middle Finger</text>
+        </g>
+
+        <g id="legend_32">
+          <line x1="18" y1="736" x2="50" y2="736" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="742" class="legendText">32. Right Ring Finger</text>
+        </g>
+
+        <g id="legend_33">
+          <line x1="18" y1="758" x2="50" y2="758" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="764" class="legendText">33. Right Little Finger</text>
+        </g>
+
+        <g id="legend_34">
+          <line x1="18" y1="780" x2="50" y2="780" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="786" class="legendText">34. Left Shoulder</text>
+        </g>
+
+        <g id="legend_35">
+          <line x1="18" y1="802" x2="50" y2="802" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="808" class="legendText">35. Left Upper Arm</text>
+        </g>
+
+        <g id="legend_36">
+          <line x1="18" y1="824" x2="50" y2="824" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="830" class="legendText">36. Left Elbow</text>
+        </g>
+
+        <g id="legend_37">
+          <line x1="18" y1="846" x2="50" y2="846" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="852" class="legendText">37. Left Forearm</text>
+        </g>
+
+        <g id="legend_38">
+          <line x1="18" y1="868" x2="50" y2="868" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="874" class="legendText">38. Left Wrist</text>
+        </g>
+
+        <g id="legend_39">
+          <line x1="18" y1="890" x2="50" y2="890" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="896" class="legendText">39. Left Hand</text>
+        </g>
+
+        <g id="legend_40">
+          <line x1="18" y1="912" x2="50" y2="912" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="918" class="legendText">40. Left Thumb</text>
+        </g>
+
+        <g id="legend_41">
+          <line x1="18" y1="934" x2="50" y2="934" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="940" class="legendText">41. Left Index Finger</text>
+        </g>
+  </g>
+
+  <!-- Right legend panel -->
+  <g transform="translate(1350,92)">
+    <rect class="panel" x="0" y="0" width="430" height="970" rx="14"/>
+    <text x="18" y="30" class="panelTitle">REGION LIST</text>
+    
+        <g id="legend_42">
+          <line x1="18" y1="54" x2="50" y2="54" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="60" class="legendText">42. Left Middle Finger</text>
+        </g>
+
+        <g id="legend_43">
+          <line x1="18" y1="76" x2="50" y2="76" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="82" class="legendText">43. Left Ring Finger</text>
+        </g>
+
+        <g id="legend_44">
+          <line x1="18" y1="98" x2="50" y2="98" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="104" class="legendText">44. Left Little Finger</text>
+        </g>
+
+        <g id="legend_45">
+          <line x1="18" y1="120" x2="50" y2="120" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="126" class="legendText">45. Right Hip</text>
+        </g>
+
+        <g id="legend_46">
+          <line x1="18" y1="142" x2="50" y2="142" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="148" class="legendText">46. Right Thigh</text>
+        </g>
+
+        <g id="legend_47">
+          <line x1="18" y1="164" x2="50" y2="164" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="170" class="legendText">47. Right Knee</text>
+        </g>
+
+        <g id="legend_48">
+          <line x1="18" y1="186" x2="50" y2="186" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="192" class="legendText">48. Right Leg</text>
+        </g>
+
+        <g id="legend_49">
+          <line x1="18" y1="208" x2="50" y2="208" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="214" class="legendText">49. Right Ankle</text>
+        </g>
+
+        <g id="legend_50">
+          <line x1="18" y1="230" x2="50" y2="230" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="236" class="legendText">50. Right Foot</text>
+        </g>
+
+        <g id="legend_51">
+          <line x1="18" y1="252" x2="50" y2="252" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="258" class="legendText">51. Right Great Toe</text>
+        </g>
+
+        <g id="legend_52">
+          <line x1="18" y1="274" x2="50" y2="274" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="280" class="legendText">52. Right Toe 2</text>
+        </g>
+
+        <g id="legend_53">
+          <line x1="18" y1="296" x2="50" y2="296" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="302" class="legendText">53. Right Toe 3</text>
+        </g>
+
+        <g id="legend_54">
+          <line x1="18" y1="318" x2="50" y2="318" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="324" class="legendText">54. Right Toe 4</text>
+        </g>
+
+        <g id="legend_55">
+          <line x1="18" y1="340" x2="50" y2="340" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="346" class="legendText">55. Right Toe 5</text>
+        </g>
+
+        <g id="legend_56">
+          <line x1="18" y1="362" x2="50" y2="362" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="368" class="legendText">56. Left Hip</text>
+        </g>
+
+        <g id="legend_57">
+          <line x1="18" y1="384" x2="50" y2="384" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="390" class="legendText">57. Left Thigh</text>
+        </g>
+
+        <g id="legend_58">
+          <line x1="18" y1="406" x2="50" y2="406" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="412" class="legendText">58. Left Knee</text>
+        </g>
+
+        <g id="legend_59">
+          <line x1="18" y1="428" x2="50" y2="428" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="434" class="legendText">59. Left Leg</text>
+        </g>
+
+        <g id="legend_60">
+          <line x1="18" y1="450" x2="50" y2="450" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="456" class="legendText">60. Left Ankle</text>
+        </g>
+
+        <g id="legend_61">
+          <line x1="18" y1="472" x2="50" y2="472" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="478" class="legendText">61. Left Foot</text>
+        </g>
+
+        <g id="legend_62">
+          <line x1="18" y1="494" x2="50" y2="494" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="500" class="legendText">62. Left Great Toe</text>
+        </g>
+
+        <g id="legend_63">
+          <line x1="18" y1="516" x2="50" y2="516" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="522" class="legendText">63. Left Toe 2</text>
+        </g>
+
+        <g id="legend_64">
+          <line x1="18" y1="538" x2="50" y2="538" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="544" class="legendText">64. Left Toe 3</text>
+        </g>
+
+        <g id="legend_65">
+          <line x1="18" y1="560" x2="50" y2="560" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="566" class="legendText">65. Left Toe 4</text>
+        </g>
+
+        <g id="legend_66">
+          <line x1="18" y1="582" x2="50" y2="582" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="588" class="legendText">66. Left Toe 5</text>
+        </g>
+
+        <g id="legend_67">
+          <line x1="18" y1="604" x2="50" y2="604" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="610" class="legendText">67. Back of Head</text>
+        </g>
+
+        <g id="legend_68">
+          <line x1="18" y1="626" x2="50" y2="626" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="632" class="legendText">68. Posterior Neck</text>
+        </g>
+
+        <g id="legend_69">
+          <line x1="18" y1="648" x2="50" y2="648" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="654" class="legendText">69. Right Shoulder (Back)</text>
+        </g>
+
+        <g id="legend_70">
+          <line x1="18" y1="670" x2="50" y2="670" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="676" class="legendText">70. Left Shoulder (Back)</text>
+        </g>
+
+        <g id="legend_71">
+          <line x1="18" y1="692" x2="50" y2="692" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="698" class="legendText">71. Upper Back Right</text>
+        </g>
+
+        <g id="legend_72">
+          <line x1="18" y1="714" x2="50" y2="714" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="720" class="legendText">72. Upper Back Center</text>
+        </g>
+
+        <g id="legend_73">
+          <line x1="18" y1="736" x2="50" y2="736" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="742" class="legendText">73. Upper Back Left</text>
+        </g>
+
+        <g id="legend_74">
+          <line x1="18" y1="758" x2="50" y2="758" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="764" class="legendText">74. Mid Back Right</text>
+        </g>
+
+        <g id="legend_75">
+          <line x1="18" y1="780" x2="50" y2="780" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="786" class="legendText">75. Mid Back Center</text>
+        </g>
+
+        <g id="legend_76">
+          <line x1="18" y1="802" x2="50" y2="802" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="808" class="legendText">76. Mid Back Left</text>
+        </g>
+
+        <g id="legend_77">
+          <line x1="18" y1="824" x2="50" y2="824" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="830" class="legendText">77. Lower Back Right</text>
+        </g>
+
+        <g id="legend_78">
+          <line x1="18" y1="846" x2="50" y2="846" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="852" class="legendText">78. Lower Back Center</text>
+        </g>
+
+        <g id="legend_79">
+          <line x1="18" y1="868" x2="50" y2="868" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="874" class="legendText">79. Lower Back Left</text>
+        </g>
+
+        <g id="legend_80">
+          <line x1="18" y1="890" x2="50" y2="890" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="896" class="legendText">80. Right Buttock</text>
+        </g>
+
+        <g id="legend_81">
+          <line x1="18" y1="912" x2="50" y2="912" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="918" class="legendText">81. Left Buttock</text>
+        </g>
+
+        <g id="legend_82">
+          <line x1="18" y1="934" x2="50" y2="934" stroke="#cbd5e1" stroke-width="1.2"/>
+          <text x="58" y="940" class="legendText">82. Posterior Genital / Perineal Area</text>
+        </g>
+  </g>
+
+  <!-- Center canvas -->
+  <g id="center_canvas" transform="translate(430,120)">
+    <rect x="0" y="0" width="940" height="940" rx="16" fill="#ffffff" stroke="#e5e7eb"/>
+
+    <!-- Front silhouette -->
+    <g id="front_view" transform="translate(120,0)">
+      <ellipse class="skin" cx="250" cy="92" rx="48" ry="58"/>
+      <path class="skin" d="M224 145 Q250 132 276 145 L280 190 Q250 205 220 190 Z"/>
+      <path class="skin" d="M176 182 Q210 155 224 164 L220 286 Q190 296 160 274 Z"/>
+      <path class="skin" d="M276 164 Q290 155 324 182 L330 274 Q300 296 270 286 Z"/>
+      <path class="skin" d="M196 280 Q250 250 304 280 L314 430 Q250 460 186 430 Z"/>
+      <path class="skin" d="M198 430 Q250 408 302 430 L300 512 Q250 530 200 512 Z"/>
+      <path class="skin" d="M208 510 Q250 494 292 510 L292 560 Q250 580 208 560 Z"/>
+      <path class="skin" d="M205 560 Q250 540 295 560 L288 610 Q250 624 212 610 Z"/>
+      <path class="skin" d="M170 184 Q182 176 192 184 L183 322 Q170 340 156 326 Z"/>
+      <path class="skin" d="M312 184 Q324 176 336 184 L344 326 Q330 340 317 322 Z"/>
+      <path class="skin" d="M156 330 Q171 323 182 330 L176 470 Q162 484 148 470 Z"/>
+      <path class="skin" d="M326 330 Q337 323 352 330 L356 470 Q342 484 328 470 Z"/>
+      <path class="skin" d="M144 470 Q160 462 176 470 L186 620 Q168 640 150 620 Z"/>
+      <path class="skin" d="M344 470 Q360 462 376 470 L370 620 Q352 640 334 620 Z"/>
+      <path class="skin" d="M136 618 Q158 606 180 618 L178 760 Q158 772 140 760 Z"/>
+      <path class="skin" d="M360 618 Q382 606 404 618 L402 760 Q382 772 364 760 Z"/>
+      <path class="skin" d="M132 760 Q155 748 178 760 L176 840 Q160 852 140 840 Z"/>
+      <path class="skin" d="M362 760 Q385 748 408 760 L406 840 Q390 852 370 840 Z"/>
+      <path class="skin" d="M120 836 Q160 822 184 836 L196 880 Q160 894 120 880 Z"/>
+      <path class="skin" d="M354 836 Q394 822 418 836 L430 880 Q394 894 354 880 Z"/>
+
+      <!-- subtle skin lines -->
+      <path class="skinline" d="M250 58 Q242 68 240 90"/>
+      <path class="skinline" d="M250 58 Q258 68 260 90"/>
+      <path class="skinline" d="M216 170 Q250 160 284 170"/>
+      <path class="skinline" d="M200 300 Q250 284 300 300"/>
+      <path class="skinline" d="M198 435 Q250 420 302 435"/>
+      <path class="skinline" d="M200 515 Q250 505 300 515"/>
+      <path class="skinline" d="M225 560 Q250 552 275 560"/>
+
+      <!-- back-to-front numbering labels on body -->
+      
+    <g id="1_scalp" data-display-name="Scalp" class="hotspot">
+      <title>Scalp</title>
+      <circle cx="500" cy="70" r="14" class="hotspot-hit"/>
+      <circle cx="500" cy="70" r="12" class="hotspot-number-bg"/>
+      <text x="500" y="74" text-anchor="middle" class="hotspot-number">1</text>
+    </g>
+    <g id="2_forehead" data-display-name="Forehead" class="hotspot">
+      <title>Forehead</title>
+      <circle cx="500" cy="110" r="14" class="hotspot-hit"/>
+      <circle cx="500" cy="110" r="12" class="hotspot-number-bg"/>
+      <text x="500" y="114" text-anchor="middle" class="hotspot-number">2</text>
+    </g>
+    <g id="3_right_temple" data-display-name="Right Temple" class="hotspot">
+      <title>Right Temple</title>
+      <circle cx="540" cy="125" r="14" class="hotspot-hit"/>
+      <circle cx="540" cy="125" r="12" class="hotspot-number-bg"/>
+      <text x="540" y="129" text-anchor="middle" class="hotspot-number">3</text>
+    </g>
+    <g id="4_left_temple" data-display-name="Left Temple" class="hotspot">
+      <title>Left Temple</title>
+      <circle cx="460" cy="125" r="14" class="hotspot-hit"/>
+      <circle cx="460" cy="125" r="12" class="hotspot-number-bg"/>
+      <text x="460" y="129" text-anchor="middle" class="hotspot-number">4</text>
+    </g>
+    <g id="5_right_ear" data-display-name="Right Ear" class="hotspot">
+      <title>Right Ear</title>
+      <circle cx="555" cy="155" r="14" class="hotspot-hit"/>
+      <circle cx="555" cy="155" r="12" class="hotspot-number-bg"/>
+      <text x="555" y="159" text-anchor="middle" class="hotspot-number">5</text>
+    </g>
+    <g id="6_left_ear" data-display-name="Left Ear" class="hotspot">
+      <title>Left Ear</title>
+      <circle cx="445" cy="155" r="14" class="hotspot-hit"/>
+      <circle cx="445" cy="155" r="12" class="hotspot-number-bg"/>
+      <text x="445" y="159" text-anchor="middle" class="hotspot-number">6</text>
+    </g>
+    <g id="7_right_cheek" data-display-name="Right Cheek" class="hotspot">
+      <title>Right Cheek</title>
+      <circle cx="538" cy="178" r="14" class="hotspot-hit"/>
+      <circle cx="538" cy="178" r="12" class="hotspot-number-bg"/>
+      <text x="538" y="182" text-anchor="middle" class="hotspot-number">7</text>
+    </g>
+    <g id="8_left_cheek" data-display-name="Left Cheek" class="hotspot">
+      <title>Left Cheek</title>
+      <circle cx="462" cy="178" r="14" class="hotspot-hit"/>
+      <circle cx="462" cy="178" r="12" class="hotspot-number-bg"/>
+      <text x="462" y="182" text-anchor="middle" class="hotspot-number">8</text>
+    </g>
+    <g id="9_nose" data-display-name="Nose" class="hotspot">
+      <title>Nose</title>
+      <circle cx="500" cy="185" r="14" class="hotspot-hit"/>
+      <circle cx="500" cy="185" r="12" class="hotspot-number-bg"/>
+      <text x="500" y="189" text-anchor="middle" class="hotspot-number">9</text>
+    </g>
+    <g id="10_upper_lip" data-display-name="Upper Lip" class="hotspot">
+      <title>Upper Lip</title>
+      <circle cx="500" cy="205" r="14" class="hotspot-hit"/>
+      <circle cx="500" cy="205" r="12" class="hotspot-number-bg"/>
+      <text x="500" y="209" text-anchor="middle" class="hotspot-number">10</text>
+    </g>
+    <g id="11_lower_lip" data-display-name="Lower Lip" class="hotspot">
+      <title>Lower Lip</title>
+      <circle cx="500" cy="226" r="14" class="hotspot-hit"/>
+      <circle cx="500" cy="226" r="12" class="hotspot-number-bg"/>
+      <text x="500" y="230" text-anchor="middle" class="hotspot-number">11</text>
+    </g>
+    <g id="12_chin" data-display-name="Chin" class="hotspot">
+      <title>Chin</title>
+      <circle cx="500" cy="250" r="14" class="hotspot-hit"/>
+      <circle cx="500" cy="250" r="12" class="hotspot-number-bg"/>
+      <text x="500" y="254" text-anchor="middle" class="hotspot-number">12</text>
+    </g>
+    <g id="13_anterior_neck" data-display-name="Anterior Neck" class="hotspot">
+      <title>Anterior Neck</title>
+      <circle cx="500" cy="290" r="14" class="hotspot-hit"/>
+      <circle cx="500" cy="290" r="12" class="hotspot-number-bg"/>
+      <text x="500" y="294" text-anchor="middle" class="hotspot-number">13</text>
+    </g>
+    <g id="14_right_chest" data-display-name="Right Chest" class="hotspot">
+      <title>Right Chest</title>
+      <circle cx="555" cy="340" r="14" class="hotspot-hit"/>
+      <circle cx="555" cy="340" r="12" class="hotspot-number-bg"/>
+      <text x="555" y="344" text-anchor="middle" class="hotspot-number">14</text>
+    </g>
+    <g id="15_sternum" data-display-name="Sternum" class="hotspot">
+      <title>Sternum</title>
+      <circle cx="500" cy="340" r="14" class="hotspot-hit"/>
+      <circle cx="500" cy="340" r="12" class="hotspot-number-bg"/>
+      <text x="500" y="344" text-anchor="middle" class="hotspot-number">15</text>
+    </g>
+    <g id="16_left_chest" data-display-name="Left Chest" class="hotspot">
+      <title>Left Chest</title>
+      <circle cx="445" cy="340" r="14" class="hotspot-hit"/>
+      <circle cx="445" cy="340" r="12" class="hotspot-number-bg"/>
+      <text x="445" y="344" text-anchor="middle" class="hotspot-number">16</text>
+    </g>
+    <g id="17_right_upper_abdomen" data-display-name="Right Upper Abdomen" class="hotspot">
+      <title>Right Upper Abdomen</title>
+      <circle cx="545" cy="420" r="14" class="hotspot-hit"/>
+      <circle cx="545" cy="420" r="12" class="hotspot-number-bg"/>
+      <text x="545" y="424" text-anchor="middle" class="hotspot-number">17</text>
+    </g>
+    <g id="18_left_upper_abdomen" data-display-name="Left Upper Abdomen" class="hotspot">
+      <title>Left Upper Abdomen</title>
+      <circle cx="455" cy="420" r="14" class="hotspot-hit"/>
+      <circle cx="455" cy="420" r="12" class="hotspot-number-bg"/>
+      <text x="455" y="424" text-anchor="middle" class="hotspot-number">18</text>
+    </g>
+    <g id="19_right_lower_abdomen" data-display-name="Right Lower Abdomen" class="hotspot">
+      <title>Right Lower Abdomen</title>
+      <circle cx="545" cy="475" r="14" class="hotspot-hit"/>
+      <circle cx="545" cy="475" r="12" class="hotspot-number-bg"/>
+      <text x="545" y="479" text-anchor="middle" class="hotspot-number">19</text>
+    </g>
+    <g id="20_left_lower_abdomen" data-display-name="Left Lower Abdomen" class="hotspot">
+      <title>Left Lower Abdomen</title>
+      <circle cx="455" cy="475" r="14" class="hotspot-hit"/>
+      <circle cx="455" cy="475" r="12" class="hotspot-number-bg"/>
+      <text x="455" y="479" text-anchor="middle" class="hotspot-number">20</text>
+    </g>
+    <g id="21_pelvis" data-display-name="Pelvis" class="hotspot">
+      <title>Pelvis</title>
+      <circle cx="500" cy="530" r="14" class="hotspot-hit"/>
+      <circle cx="500" cy="530" r="12" class="hotspot-number-bg"/>
+      <text x="500" y="534" text-anchor="middle" class="hotspot-number">21</text>
+    </g>
+    <g id="22_genital_area" data-display-name="Genital Area" class="hotspot">
+      <title>Genital Area</title>
+      <circle cx="500" cy="570" r="14" class="hotspot-hit"/>
+      <circle cx="500" cy="570" r="12" class="hotspot-number-bg"/>
+      <text x="500" y="574" text-anchor="middle" class="hotspot-number">22</text>
+    </g>
+    <g id="23_right_shoulder" data-display-name="Right Shoulder" class="hotspot">
+      <title>Right Shoulder</title>
+      <circle cx="600" cy="300" r="14" class="hotspot-hit"/>
+      <circle cx="600" cy="300" r="12" class="hotspot-number-bg"/>
+      <text x="600" y="304" text-anchor="middle" class="hotspot-number">23</text>
+    </g>
+    <g id="24_right_upper_arm" data-display-name="Right Upper Arm" class="hotspot">
+      <title>Right Upper Arm</title>
+      <circle cx="640" cy="360" r="14" class="hotspot-hit"/>
+      <circle cx="640" cy="360" r="12" class="hotspot-number-bg"/>
+      <text x="640" y="364" text-anchor="middle" class="hotspot-number">24</text>
+    </g>
+    <g id="25_right_elbow" data-display-name="Right Elbow" class="hotspot">
+      <title>Right Elbow</title>
+      <circle cx="660" cy="440" r="14" class="hotspot-hit"/>
+      <circle cx="660" cy="440" r="12" class="hotspot-number-bg"/>
+      <text x="660" y="444" text-anchor="middle" class="hotspot-number">25</text>
+    </g>
+    <g id="26_right_forearm" data-display-name="Right Forearm" class="hotspot">
+      <title>Right Forearm</title>
+      <circle cx="650" cy="510" r="14" class="hotspot-hit"/>
+      <circle cx="650" cy="510" r="12" class="hotspot-number-bg"/>
+      <text x="650" y="514" text-anchor="middle" class="hotspot-number">26</text>
+    </g>
+    <g id="27_right_wrist" data-display-name="Right Wrist" class="hotspot">
+      <title>Right Wrist</title>
+      <circle cx="635" cy="570" r="14" class="hotspot-hit"/>
+      <circle cx="635" cy="570" r="12" class="hotspot-number-bg"/>
+      <text x="635" y="574" text-anchor="middle" class="hotspot-number">27</text>
+    </g>
+    <g id="28_right_hand" data-display-name="Right Hand" class="hotspot">
+      <title>Right Hand</title>
+      <circle cx="665" cy="625" r="14" class="hotspot-hit"/>
+      <circle cx="665" cy="625" r="12" class="hotspot-number-bg"/>
+      <text x="665" y="629" text-anchor="middle" class="hotspot-number">28</text>
+    </g>
+    <g id="29_right_thumb" data-display-name="Right Thumb" class="hotspot">
+      <title>Right Thumb</title>
+      <circle cx="690" cy="645" r="14" class="hotspot-hit"/>
+      <circle cx="690" cy="645" r="12" class="hotspot-number-bg"/>
+      <text x="690" y="649" text-anchor="middle" class="hotspot-number">29</text>
+    </g>
+    <g id="30_right_index_finger" data-display-name="Right Index Finger" class="hotspot">
+      <title>Right Index Finger</title>
+      <circle cx="678" cy="625" r="14" class="hotspot-hit"/>
+      <circle cx="678" cy="625" r="12" class="hotspot-number-bg"/>
+      <text x="678" y="629" text-anchor="middle" class="hotspot-number">30</text>
+    </g>
+    <g id="31_right_middle_finger" data-display-name="Right Middle Finger" class="hotspot">
+      <title>Right Middle Finger</title>
+      <circle cx="690" cy="615" r="14" class="hotspot-hit"/>
+      <circle cx="690" cy="615" r="12" class="hotspot-number-bg"/>
+      <text x="690" y="619" text-anchor="middle" class="hotspot-number">31</text>
+    </g>
+    <g id="32_right_ring_finger" data-display-name="Right Ring Finger" class="hotspot">
+      <title>Right Ring Finger</title>
+      <circle cx="700" cy="625" r="14" class="hotspot-hit"/>
+      <circle cx="700" cy="625" r="12" class="hotspot-number-bg"/>
+      <text x="700" y="629" text-anchor="middle" class="hotspot-number">32</text>
+    </g>
+    <g id="33_right_little_finger" data-display-name="Right Little Finger" class="hotspot">
+      <title>Right Little Finger</title>
+      <circle cx="710" cy="635" r="14" class="hotspot-hit"/>
+      <circle cx="710" cy="635" r="12" class="hotspot-number-bg"/>
+      <text x="710" y="639" text-anchor="middle" class="hotspot-number">33</text>
+    </g>
+    <g id="34_left_shoulder" data-display-name="Left Shoulder" class="hotspot">
+      <title>Left Shoulder</title>
+      <circle cx="400" cy="300" r="14" class="hotspot-hit"/>
+      <circle cx="400" cy="300" r="12" class="hotspot-number-bg"/>
+      <text x="400" y="304" text-anchor="middle" class="hotspot-number">34</text>
+    </g>
+    <g id="35_left_upper_arm" data-display-name="Left Upper Arm" class="hotspot">
+      <title>Left Upper Arm</title>
+      <circle cx="360" cy="360" r="14" class="hotspot-hit"/>
+      <circle cx="360" cy="360" r="12" class="hotspot-number-bg"/>
+      <text x="360" y="364" text-anchor="middle" class="hotspot-number">35</text>
+    </g>
+    <g id="36_left_elbow" data-display-name="Left Elbow" class="hotspot">
+      <title>Left Elbow</title>
+      <circle cx="340" cy="440" r="14" class="hotspot-hit"/>
+      <circle cx="340" cy="440" r="12" class="hotspot-number-bg"/>
+      <text x="340" y="444" text-anchor="middle" class="hotspot-number">36</text>
+    </g>
+    <g id="37_left_forearm" data-display-name="Left Forearm" class="hotspot">
+      <title>Left Forearm</title>
+      <circle cx="350" cy="510" r="14" class="hotspot-hit"/>
+      <circle cx="350" cy="510" r="12" class="hotspot-number-bg"/>
+      <text x="350" y="514" text-anchor="middle" class="hotspot-number">37</text>
+    </g>
+    <g id="38_left_wrist" data-display-name="Left Wrist" class="hotspot">
+      <title>Left Wrist</title>
+      <circle cx="365" cy="570" r="14" class="hotspot-hit"/>
+      <circle cx="365" cy="570" r="12" class="hotspot-number-bg"/>
+      <text x="365" y="574" text-anchor="middle" class="hotspot-number">38</text>
+    </g>
+    <g id="39_left_hand" data-display-name="Left Hand" class="hotspot">
+      <title>Left Hand</title>
+      <circle cx="335" cy="625" r="14" class="hotspot-hit"/>
+      <circle cx="335" cy="625" r="12" class="hotspot-number-bg"/>
+      <text x="335" y="629" text-anchor="middle" class="hotspot-number">39</text>
+    </g>
+    <g id="40_left_thumb" data-display-name="Left Thumb" class="hotspot">
+      <title>Left Thumb</title>
+      <circle cx="310" cy="645" r="14" class="hotspot-hit"/>
+      <circle cx="310" cy="645" r="12" class="hotspot-number-bg"/>
+      <text x="310" y="649" text-anchor="middle" class="hotspot-number">40</text>
+    </g>
+    <g id="41_left_index_finger" data-display-name="Left Index Finger" class="hotspot">
+      <title>Left Index Finger</title>
+      <circle cx="322" cy="625" r="14" class="hotspot-hit"/>
+      <circle cx="322" cy="625" r="12" class="hotspot-number-bg"/>
+      <text x="322" y="629" text-anchor="middle" class="hotspot-number">41</text>
+    </g>
+    <g id="42_left_middle_finger" data-display-name="Left Middle Finger" class="hotspot">
+      <title>Left Middle Finger</title>
+      <circle cx="310" cy="615" r="14" class="hotspot-hit"/>
+      <circle cx="310" cy="615" r="12" class="hotspot-number-bg"/>
+      <text x="310" y="619" text-anchor="middle" class="hotspot-number">42</text>
+    </g>
+    <g id="43_left_ring_finger" data-display-name="Left Ring Finger" class="hotspot">
+      <title>Left Ring Finger</title>
+      <circle cx="300" cy="625" r="14" class="hotspot-hit"/>
+      <circle cx="300" cy="625" r="12" class="hotspot-number-bg"/>
+      <text x="300" y="629" text-anchor="middle" class="hotspot-number">43</text>
+    </g>
+    <g id="44_left_little_finger" data-display-name="Left Little Finger" class="hotspot">
+      <title>Left Little Finger</title>
+      <circle cx="290" cy="635" r="14" class="hotspot-hit"/>
+      <circle cx="290" cy="635" r="12" class="hotspot-number-bg"/>
+      <text x="290" y="639" text-anchor="middle" class="hotspot-number">44</text>
+    </g>
+    <g id="45_right_hip" data-display-name="Right Hip" class="hotspot">
+      <title>Right Hip</title>
+      <circle cx="575" cy="590" r="14" class="hotspot-hit"/>
+      <circle cx="575" cy="590" r="12" class="hotspot-number-bg"/>
+      <text x="575" y="594" text-anchor="middle" class="hotspot-number">45</text>
+    </g>
+    <g id="46_right_thigh" data-display-name="Right Thigh" class="hotspot">
+      <title>Right Thigh</title>
+      <circle cx="580" cy="705" r="14" class="hotspot-hit"/>
+      <circle cx="580" cy="705" r="12" class="hotspot-number-bg"/>
+      <text x="580" y="709" text-anchor="middle" class="hotspot-number">46</text>
+    </g>
+    <g id="47_right_knee" data-display-name="Right Knee" class="hotspot">
+      <title>Right Knee</title>
+      <circle cx="580" cy="815" r="14" class="hotspot-hit"/>
+      <circle cx="580" cy="815" r="12" class="hotspot-number-bg"/>
+      <text x="580" y="819" text-anchor="middle" class="hotspot-number">47</text>
+    </g>
+    <g id="48_right_leg" data-display-name="Right Leg" class="hotspot">
+      <title>Right Leg</title>
+      <circle cx="580" cy="915" r="14" class="hotspot-hit"/>
+      <circle cx="580" cy="915" r="12" class="hotspot-number-bg"/>
+      <text x="580" y="919" text-anchor="middle" class="hotspot-number">48</text>
+    </g>
+    <g id="49_right_ankle" data-display-name="Right Ankle" class="hotspot">
+      <title>Right Ankle</title>
+      <circle cx="580" cy="985" r="14" class="hotspot-hit"/>
+      <circle cx="580" cy="985" r="12" class="hotspot-number-bg"/>
+      <text x="580" y="989" text-anchor="middle" class="hotspot-number">49</text>
+    </g>
+    <g id="50_right_foot" data-display-name="Right Foot" class="hotspot">
+      <title>Right Foot</title>
+      <circle cx="595" cy="1040" r="14" class="hotspot-hit"/>
+      <circle cx="595" cy="1040" r="12" class="hotspot-number-bg"/>
+      <text x="595" y="1044" text-anchor="middle" class="hotspot-number">50</text>
+    </g>
+    <g id="51_right_great_toe" data-display-name="Right Great Toe" class="hotspot">
+      <title>Right Great Toe</title>
+      <circle cx="620" cy="1055" r="14" class="hotspot-hit"/>
+      <circle cx="620" cy="1055" r="12" class="hotspot-number-bg"/>
+      <text x="620" y="1059" text-anchor="middle" class="hotspot-number">51</text>
+    </g>
+    <g id="52_right_toe_2" data-display-name="Right Toe 2" class="hotspot">
+      <title>Right Toe 2</title>
+      <circle cx="635" cy="1043" r="14" class="hotspot-hit"/>
+      <circle cx="635" cy="1043" r="12" class="hotspot-number-bg"/>
+      <text x="635" y="1047" text-anchor="middle" class="hotspot-number">52</text>
+    </g>
+    <g id="53_right_toe_3" data-display-name="Right Toe 3" class="hotspot">
+      <title>Right Toe 3</title>
+      <circle cx="650" cy="1040" r="14" class="hotspot-hit"/>
+      <circle cx="650" cy="1040" r="12" class="hotspot-number-bg"/>
+      <text x="650" y="1044" text-anchor="middle" class="hotspot-number">53</text>
+    </g>
+    <g id="54_right_toe_4" data-display-name="Right Toe 4" class="hotspot">
+      <title>Right Toe 4</title>
+      <circle cx="665" cy="1045" r="14" class="hotspot-hit"/>
+      <circle cx="665" cy="1045" r="12" class="hotspot-number-bg"/>
+      <text x="665" y="1049" text-anchor="middle" class="hotspot-number">54</text>
+    </g>
+    <g id="55_right_toe_5" data-display-name="Right Toe 5" class="hotspot">
+      <title>Right Toe 5</title>
+      <circle cx="680" cy="1052" r="14" class="hotspot-hit"/>
+      <circle cx="680" cy="1052" r="12" class="hotspot-number-bg"/>
+      <text x="680" y="1056" text-anchor="middle" class="hotspot-number">55</text>
+    </g>
+    <g id="56_left_hip" data-display-name="Left Hip" class="hotspot">
+      <title>Left Hip</title>
+      <circle cx="425" cy="590" r="14" class="hotspot-hit"/>
+      <circle cx="425" cy="590" r="12" class="hotspot-number-bg"/>
+      <text x="425" y="594" text-anchor="middle" class="hotspot-number">56</text>
+    </g>
+    <g id="57_left_thigh" data-display-name="Left Thigh" class="hotspot">
+      <title>Left Thigh</title>
+      <circle cx="420" cy="705" r="14" class="hotspot-hit"/>
+      <circle cx="420" cy="705" r="12" class="hotspot-number-bg"/>
+      <text x="420" y="709" text-anchor="middle" class="hotspot-number">57</text>
+    </g>
+    <g id="58_left_knee" data-display-name="Left Knee" class="hotspot">
+      <title>Left Knee</title>
+      <circle cx="420" cy="815" r="14" class="hotspot-hit"/>
+      <circle cx="420" cy="815" r="12" class="hotspot-number-bg"/>
+      <text x="420" y="819" text-anchor="middle" class="hotspot-number">58</text>
+    </g>
+    <g id="59_left_leg" data-display-name="Left Leg" class="hotspot">
+      <title>Left Leg</title>
+      <circle cx="420" cy="915" r="14" class="hotspot-hit"/>
+      <circle cx="420" cy="915" r="12" class="hotspot-number-bg"/>
+      <text x="420" y="919" text-anchor="middle" class="hotspot-number">59</text>
+    </g>
+    <g id="60_left_ankle" data-display-name="Left Ankle" class="hotspot">
+      <title>Left Ankle</title>
+      <circle cx="420" cy="985" r="14" class="hotspot-hit"/>
+      <circle cx="420" cy="985" r="12" class="hotspot-number-bg"/>
+      <text x="420" y="989" text-anchor="middle" class="hotspot-number">60</text>
+    </g>
+    <g id="61_left_foot" data-display-name="Left Foot" class="hotspot">
+      <title>Left Foot</title>
+      <circle cx="405" cy="1040" r="14" class="hotspot-hit"/>
+      <circle cx="405" cy="1040" r="12" class="hotspot-number-bg"/>
+      <text x="405" y="1044" text-anchor="middle" class="hotspot-number">61</text>
+    </g>
+    <g id="62_left_great_toe" data-display-name="Left Great Toe" class="hotspot">
+      <title>Left Great Toe</title>
+      <circle cx="380" cy="1055" r="14" class="hotspot-hit"/>
+      <circle cx="380" cy="1055" r="12" class="hotspot-number-bg"/>
+      <text x="380" y="1059" text-anchor="middle" class="hotspot-number">62</text>
+    </g>
+    <g id="63_left_toe_2" data-display-name="Left Toe 2" class="hotspot">
+      <title>Left Toe 2</title>
+      <circle cx="365" cy="1043" r="14" class="hotspot-hit"/>
+      <circle cx="365" cy="1043" r="12" class="hotspot-number-bg"/>
+      <text x="365" y="1047" text-anchor="middle" class="hotspot-number">63</text>
+    </g>
+    <g id="64_left_toe_3" data-display-name="Left Toe 3" class="hotspot">
+      <title>Left Toe 3</title>
+      <circle cx="350" cy="1040" r="14" class="hotspot-hit"/>
+      <circle cx="350" cy="1040" r="12" class="hotspot-number-bg"/>
+      <text x="350" y="1044" text-anchor="middle" class="hotspot-number">64</text>
+    </g>
+    <g id="65_left_toe_4" data-display-name="Left Toe 4" class="hotspot">
+      <title>Left Toe 4</title>
+      <circle cx="335" cy="1045" r="14" class="hotspot-hit"/>
+      <circle cx="335" cy="1045" r="12" class="hotspot-number-bg"/>
+      <text x="335" y="1049" text-anchor="middle" class="hotspot-number">65</text>
+    </g>
+    <g id="66_left_toe_5" data-display-name="Left Toe 5" class="hotspot">
+      <title>Left Toe 5</title>
+      <circle cx="320" cy="1052" r="14" class="hotspot-hit"/>
+      <circle cx="320" cy="1052" r="12" class="hotspot-number-bg"/>
+      <text x="320" y="1056" text-anchor="middle" class="hotspot-number">66</text>
+    </g>
+    </g>
+
+    <!-- Back silhouette -->
+    <g id="back_view" transform="translate(510,0)">
+      <ellipse class="skin" cx="250" cy="92" rx="48" ry="58"/>
+      <path class="skin" d="M224 145 Q250 132 276 145 L280 190 Q250 205 220 190 Z"/>
+      <path class="skin" d="M176 182 Q210 155 224 164 L220 286 Q190 296 160 274 Z"/>
+      <path class="skin" d="M276 164 Q290 155 324 182 L330 274 Q300 296 270 286 Z"/>
+      <path class="skin" d="M196 280 Q250 250 304 280 L314 430 Q250 460 186 430 Z"/>
+      <path class="skin" d="M194 430 Q250 410 306 430 L308 520 Q250 538 192 520 Z"/>
+      <path class="skin" d="M168 518 Q250 496 332 518 L326 608 Q250 626 174 608 Z"/>
+      <path class="skin" d="M154 606 Q250 582 346 606 L338 758 Q250 780 162 758 Z"/>
+      <path class="skin" d="M148 758 Q250 744 352 758 L348 836 Q250 852 152 836 Z"/>
+      <path class="skin" d="M142 836 Q250 820 358 836 L372 880 Q250 902 156 880 Z"/>
+      <path class="skin" d="M190 520 Q250 506 310 520 L310 560 Q250 575 190 560 Z"/>
+      <path class="skin" d="M184 560 Q250 544 316 560 L318 604 Q250 620 186 604 Z"/>
+
+      <path class="skinline" d="M250 58 Q242 68 240 90"/>
+      <path class="skinline" d="M250 58 Q258 68 260 90"/>
+      <path class="skinline" d="M202 170 Q250 160 298 170"/>
+      <path class="skinline" d="M198 300 Q250 286 302 300"/>
+      <path class="skinline" d="M194 438 Q250 424 306 438"/>
+      <path class="skinline" d="M184 520 Q250 505 316 520"/>
+
+      
+    <g id="67_back_of_head" data-display-name="Back of Head" class="hotspot">
+      <title>Back of Head</title>
+      <circle cx="1100" cy="70" r="14" class="hotspot-hit"/>
+      <circle cx="1100" cy="70" r="12" class="hotspot-number-bg"/>
+      <text x="1100" y="74" text-anchor="middle" class="hotspot-number">67</text>
+    </g>
+    <g id="68_posterior_neck" data-display-name="Posterior Neck" class="hotspot">
+      <title>Posterior Neck</title>
+      <circle cx="1100" cy="115" r="14" class="hotspot-hit"/>
+      <circle cx="1100" cy="115" r="12" class="hotspot-number-bg"/>
+      <text x="1100" y="119" text-anchor="middle" class="hotspot-number">68</text>
+    </g>
+    <g id="69_right_shoulder_back" data-display-name="Right Shoulder (Back)" class="hotspot">
+      <title>Right Shoulder (Back)</title>
+      <circle cx="1185" cy="300" r="14" class="hotspot-hit"/>
+      <circle cx="1185" cy="300" r="12" class="hotspot-number-bg"/>
+      <text x="1185" y="304" text-anchor="middle" class="hotspot-number">69</text>
+    </g>
+    <g id="70_left_shoulder_back" data-display-name="Left Shoulder (Back)" class="hotspot">
+      <title>Left Shoulder (Back)</title>
+      <circle cx="1015" cy="300" r="14" class="hotspot-hit"/>
+      <circle cx="1015" cy="300" r="12" class="hotspot-number-bg"/>
+      <text x="1015" y="304" text-anchor="middle" class="hotspot-number">70</text>
+    </g>
+    <g id="71_upper_back_right" data-display-name="Upper Back Right" class="hotspot">
+      <title>Upper Back Right</title>
+      <circle cx="1180" cy="360" r="14" class="hotspot-hit"/>
+      <circle cx="1180" cy="360" r="12" class="hotspot-number-bg"/>
+      <text x="1180" y="364" text-anchor="middle" class="hotspot-number">71</text>
+    </g>
+    <g id="72_upper_back_center" data-display-name="Upper Back Center" class="hotspot">
+      <title>Upper Back Center</title>
+      <circle cx="1100" cy="360" r="14" class="hotspot-hit"/>
+      <circle cx="1100" cy="360" r="12" class="hotspot-number-bg"/>
+      <text x="1100" y="364" text-anchor="middle" class="hotspot-number">72</text>
+    </g>
+    <g id="73_upper_back_left" data-display-name="Upper Back Left" class="hotspot">
+      <title>Upper Back Left</title>
+      <circle cx="1020" cy="360" r="14" class="hotspot-hit"/>
+      <circle cx="1020" cy="360" r="12" class="hotspot-number-bg"/>
+      <text x="1020" y="364" text-anchor="middle" class="hotspot-number">73</text>
+    </g>
+    <g id="74_mid_back_right" data-display-name="Mid Back Right" class="hotspot">
+      <title>Mid Back Right</title>
+      <circle cx="1180" cy="440" r="14" class="hotspot-hit"/>
+      <circle cx="1180" cy="440" r="12" class="hotspot-number-bg"/>
+      <text x="1180" y="444" text-anchor="middle" class="hotspot-number">74</text>
+    </g>
+    <g id="75_mid_back_center" data-display-name="Mid Back Center" class="hotspot">
+      <title>Mid Back Center</title>
+      <circle cx="1100" cy="440" r="14" class="hotspot-hit"/>
+      <circle cx="1100" cy="440" r="12" class="hotspot-number-bg"/>
+      <text x="1100" y="444" text-anchor="middle" class="hotspot-number">75</text>
+    </g>
+    <g id="76_mid_back_left" data-display-name="Mid Back Left" class="hotspot">
+      <title>Mid Back Left</title>
+      <circle cx="1020" cy="440" r="14" class="hotspot-hit"/>
+      <circle cx="1020" cy="440" r="12" class="hotspot-number-bg"/>
+      <text x="1020" y="444" text-anchor="middle" class="hotspot-number">76</text>
+    </g>
+    <g id="77_lower_back_right" data-display-name="Lower Back Right" class="hotspot">
+      <title>Lower Back Right</title>
+      <circle cx="1180" cy="520" r="14" class="hotspot-hit"/>
+      <circle cx="1180" cy="520" r="12" class="hotspot-number-bg"/>
+      <text x="1180" y="524" text-anchor="middle" class="hotspot-number">77</text>
+    </g>
+    <g id="78_lower_back_center" data-display-name="Lower Back Center" class="hotspot">
+      <title>Lower Back Center</title>
+      <circle cx="1100" cy="520" r="14" class="hotspot-hit"/>
+      <circle cx="1100" cy="520" r="12" class="hotspot-number-bg"/>
+      <text x="1100" y="524" text-anchor="middle" class="hotspot-number">78</text>
+    </g>
+    <g id="79_lower_back_left" data-display-name="Lower Back Left" class="hotspot">
+      <title>Lower Back Left</title>
+      <circle cx="1020" cy="520" r="14" class="hotspot-hit"/>
+      <circle cx="1020" cy="520" r="12" class="hotspot-number-bg"/>
+      <text x="1020" y="524" text-anchor="middle" class="hotspot-number">79</text>
+    </g>
+    <g id="80_right_buttock" data-display-name="Right Buttock" class="hotspot">
+      <title>Right Buttock</title>
+      <circle cx="1140" cy="600" r="14" class="hotspot-hit"/>
+      <circle cx="1140" cy="600" r="12" class="hotspot-number-bg"/>
+      <text x="1140" y="604" text-anchor="middle" class="hotspot-number">80</text>
+    </g>
+    <g id="81_left_buttock" data-display-name="Left Buttock" class="hotspot">
+      <title>Left Buttock</title>
+      <circle cx="1060" cy="600" r="14" class="hotspot-hit"/>
+      <circle cx="1060" cy="600" r="12" class="hotspot-number-bg"/>
+      <text x="1060" y="604" text-anchor="middle" class="hotspot-number">81</text>
+    </g>
+    <g id="82_posterior_genital_perineal_area" data-display-name="Posterior Genital / Perineal Area" class="hotspot">
+      <title>Posterior Genital / Perineal Area</title>
+      <circle cx="1100" cy="585" r="14" class="hotspot-hit"/>
+      <circle cx="1100" cy="585" r="12" class="hotspot-number-bg"/>
+      <text x="1100" y="589" text-anchor="middle" class="hotspot-number">82</text>
+    </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,3 @@
+{
+  "ConnectionString": "Server=localhost;Database=abc_db;Uid=root;Pwd=password;"
+}

@@ -1,0 +1,1050 @@
+﻿namespace ABMS_2026.UI.UserControls
+{
+    partial class UpsertBiteCaseUserControl
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            tableLayoutPanelRight = new TableLayoutPanel();
+            groupBoxAnatomicalLocation = new GroupBox();
+            panAndZoomPictureBox1 = new ABMS_2026.UI.Shared.Components.PanAndZoomPictureBox();
+            tableLayoutPanelBottomRight = new TableLayoutPanel();
+            panelRemarks = new Panel();
+            richTextBoxRemarks = new RichTextBox();
+            labelRemarks = new Label();
+            saveButton = new Button();
+            panelBiteChart = new Panel();
+            tableLayoutPanelBiteChart = new TableLayoutPanel();
+            labelBiteChart = new Label();
+            panAndZoomPictureBoxBiteChart = new ABMS_2026.UI.Shared.Components.PanAndZoomPictureBox();
+            buttonBrowseBiteChart = new Button();
+            groupBoxExposure = new GroupBox();
+            tableLayoutPanelExposure = new TableLayoutPanel();
+            tableLayoutPanelExposureTop = new TableLayoutPanel();
+            labelExposureDate = new Label();
+            dateTimePickerExposureDate = new DateTimePicker();
+            labelIncidentPlace = new Label();
+            textBoxIncidentPlace = new TextBox();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            comboBoxWoundClasification = new ComboBox();
+            labelWoundClassification = new Label();
+            labelExposureCategory = new Label();
+            labelProphylaxisType = new Label();
+            comboBoxProphylaxisType = new ComboBox();
+            labelAnimalStatus = new Label();
+            comboBoxAnimalStatus = new ComboBox();
+            comboBoxAnimalClassification = new ComboBox();
+            labelAnimalClassification = new Label();
+            comboBoxAnimalType = new ComboBox();
+            labelAnimalType = new Label();
+            comboBoxWoundCount = new ComboBox();
+            labelWoundCount = new Label();
+            labelWoundType = new Label();
+            comboBoxWoundType = new ComboBox();
+            checkBoxWoundWashed = new CheckBox();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            groupBoxCategoryBasis = new GroupBox();
+            tableLayoutPanelCategory = new TableLayoutPanel();
+            panelCategoryI = new Panel();
+            flowLayoutPanelCategoryI = new FlowLayoutPanel();
+            labelCategoryI = new Label();
+            panelCategoryII = new Panel();
+            flowLayoutPanelCategoryII = new FlowLayoutPanel();
+            labelCategoryII = new Label();
+            panelCategoryIII = new Panel();
+            flowLayoutPanelCategoryIII = new FlowLayoutPanel();
+            labelCategoryIII = new Label();
+            panel1 = new Panel();
+            groupBox1 = new GroupBox();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            PEDGV = new DataGridView();
+            peColumn = new DataGridViewTextBoxColumn();
+            chronicDGV = new DataGridView();
+            ChronicIllnessColumn = new DataGridViewTextBoxColumn();
+            groupBox3 = new GroupBox();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            comboBoxBrand = new ComboBox();
+            label1 = new Label();
+            dateTimePickerCompletePEP = new DateTimePicker();
+            label3 = new Label();
+            checkBoxBooster = new CheckBox();
+            label2 = new Label();
+            tableLayoutPanelRight.SuspendLayout();
+            groupBoxAnatomicalLocation.SuspendLayout();
+            tableLayoutPanelBottomRight.SuspendLayout();
+            panelRemarks.SuspendLayout();
+            panelBiteChart.SuspendLayout();
+            tableLayoutPanelBiteChart.SuspendLayout();
+            groupBoxExposure.SuspendLayout();
+            tableLayoutPanelExposure.SuspendLayout();
+            tableLayoutPanelExposureTop.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            groupBoxCategoryBasis.SuspendLayout();
+            tableLayoutPanelCategory.SuspendLayout();
+            panelCategoryI.SuspendLayout();
+            panelCategoryII.SuspendLayout();
+            panelCategoryIII.SuspendLayout();
+            panel1.SuspendLayout();
+            groupBox1.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PEDGV).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chronicDGV).BeginInit();
+            groupBox3.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            SuspendLayout();
+            // 
+            // tableLayoutPanelRight
+            // 
+            tableLayoutPanelRight.ColumnCount = 1;
+            tableLayoutPanelRight.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelRight.Controls.Add(groupBoxAnatomicalLocation, 0, 0);
+            tableLayoutPanelRight.Controls.Add(tableLayoutPanelBottomRight, 0, 1);
+            tableLayoutPanelRight.Dock = DockStyle.Fill;
+            tableLayoutPanelRight.Location = new Point(643, 341);
+            tableLayoutPanelRight.Name = "tableLayoutPanelRight";
+            tableLayoutPanelRight.RowCount = 2;
+            tableLayoutPanelRight.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelRight.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
+            tableLayoutPanelRight.Size = new Size(634, 476);
+            tableLayoutPanelRight.TabIndex = 3;
+            // 
+            // groupBoxAnatomicalLocation
+            // 
+            groupBoxAnatomicalLocation.Controls.Add(panAndZoomPictureBox1);
+            groupBoxAnatomicalLocation.Dock = DockStyle.Fill;
+            groupBoxAnatomicalLocation.Location = new Point(3, 3);
+            groupBoxAnatomicalLocation.Name = "groupBoxAnatomicalLocation";
+            groupBoxAnatomicalLocation.Size = new Size(628, 320);
+            groupBoxAnatomicalLocation.TabIndex = 7;
+            groupBoxAnatomicalLocation.TabStop = false;
+            groupBoxAnatomicalLocation.Text = "ANATOMICAL LOCATION";
+            // 
+            // panAndZoomPictureBox1
+            // 
+            panAndZoomPictureBox1.BackColor = Color.White;
+            panAndZoomPictureBox1.Dock = DockStyle.Fill;
+            panAndZoomPictureBox1.Location = new Point(3, 19);
+            panAndZoomPictureBox1.Margin = new Padding(4, 3, 4, 3);
+            panAndZoomPictureBox1.Name = "panAndZoomPictureBox1";
+            panAndZoomPictureBox1.Size = new Size(622, 298);
+            panAndZoomPictureBox1.TabIndex = 4;
+            // 
+            // tableLayoutPanelBottomRight
+            // 
+            tableLayoutPanelBottomRight.ColumnCount = 2;
+            tableLayoutPanelBottomRight.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelBottomRight.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
+            tableLayoutPanelBottomRight.Controls.Add(panelRemarks, 0, 0);
+            tableLayoutPanelBottomRight.Controls.Add(saveButton, 1, 0);
+            tableLayoutPanelBottomRight.Controls.Add(panelBiteChart, 0, 1);
+            tableLayoutPanelBottomRight.Dock = DockStyle.Fill;
+            tableLayoutPanelBottomRight.Location = new Point(3, 329);
+            tableLayoutPanelBottomRight.Name = "tableLayoutPanelBottomRight";
+            tableLayoutPanelBottomRight.RowCount = 2;
+            tableLayoutPanelBottomRight.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanelBottomRight.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelBottomRight.Size = new Size(628, 144);
+            tableLayoutPanelBottomRight.TabIndex = 1;
+            // 
+            // panelRemarks
+            // 
+            panelRemarks.Controls.Add(richTextBoxRemarks);
+            panelRemarks.Controls.Add(labelRemarks);
+            panelRemarks.Dock = DockStyle.Bottom;
+            panelRemarks.Location = new Point(3, 3);
+            panelRemarks.Name = "panelRemarks";
+            panelRemarks.Size = new Size(502, 34);
+            panelRemarks.TabIndex = 4;
+            // 
+            // richTextBoxRemarks
+            // 
+            richTextBoxRemarks.Dock = DockStyle.Fill;
+            richTextBoxRemarks.Location = new Point(0, 15);
+            richTextBoxRemarks.Name = "richTextBoxRemarks";
+            richTextBoxRemarks.Size = new Size(502, 19);
+            richTextBoxRemarks.TabIndex = 1;
+            richTextBoxRemarks.Text = "";
+            // 
+            // labelRemarks
+            // 
+            labelRemarks.AutoSize = true;
+            labelRemarks.Dock = DockStyle.Top;
+            labelRemarks.Location = new Point(0, 0);
+            labelRemarks.Name = "labelRemarks";
+            labelRemarks.Size = new Size(101, 15);
+            labelRemarks.TabIndex = 0;
+            labelRemarks.Text = "Remarks / Others:";
+            // 
+            // saveButton
+            // 
+            saveButton.Dock = DockStyle.Bottom;
+            saveButton.Location = new Point(511, 3);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(114, 34);
+            saveButton.TabIndex = 0;
+            saveButton.Text = "Save";
+            saveButton.UseVisualStyleBackColor = true;
+            // 
+            // panelBiteChart
+            // 
+            panelBiteChart.Controls.Add(tableLayoutPanelBiteChart);
+            panelBiteChart.Dock = DockStyle.Fill;
+            panelBiteChart.Location = new Point(3, 43);
+            panelBiteChart.Name = "panelBiteChart";
+            panelBiteChart.Size = new Size(502, 98);
+            panelBiteChart.TabIndex = 5;
+            // 
+            // tableLayoutPanelBiteChart
+            // 
+            tableLayoutPanelBiteChart.ColumnCount = 2;
+            tableLayoutPanelBiteChart.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
+            tableLayoutPanelBiteChart.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelBiteChart.Controls.Add(labelBiteChart, 0, 0);
+            tableLayoutPanelBiteChart.Controls.Add(panAndZoomPictureBoxBiteChart, 1, 0);
+            tableLayoutPanelBiteChart.Controls.Add(buttonBrowseBiteChart, 1, 1);
+            tableLayoutPanelBiteChart.Dock = DockStyle.Fill;
+            tableLayoutPanelBiteChart.Location = new Point(0, 0);
+            tableLayoutPanelBiteChart.Name = "tableLayoutPanelBiteChart";
+            tableLayoutPanelBiteChart.RowCount = 2;
+            tableLayoutPanelBiteChart.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
+            tableLayoutPanelBiteChart.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelBiteChart.Size = new Size(502, 98);
+            tableLayoutPanelBiteChart.TabIndex = 0;
+            // 
+            // labelBiteChart
+            // 
+            labelBiteChart.AutoSize = true;
+            labelBiteChart.Dock = DockStyle.Fill;
+            labelBiteChart.Location = new Point(3, 0);
+            labelBiteChart.Name = "labelBiteChart";
+            labelBiteChart.Size = new Size(94, 25);
+            labelBiteChart.TabIndex = 0;
+            labelBiteChart.Text = "Bite Chart:";
+            labelBiteChart.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // panAndZoomPictureBoxBiteChart
+            // 
+            panAndZoomPictureBoxBiteChart.BackColor = Color.White;
+            panAndZoomPictureBoxBiteChart.Dock = DockStyle.Fill;
+            panAndZoomPictureBoxBiteChart.Location = new Point(104, 3);
+            panAndZoomPictureBoxBiteChart.Margin = new Padding(4, 3, 4, 3);
+            panAndZoomPictureBoxBiteChart.Name = "panAndZoomPictureBoxBiteChart";
+            panAndZoomPictureBoxBiteChart.Size = new Size(394, 19);
+            panAndZoomPictureBoxBiteChart.TabIndex = 1;
+            // 
+            // buttonBrowseBiteChart
+            // 
+            buttonBrowseBiteChart.Dock = DockStyle.Fill;
+            buttonBrowseBiteChart.Location = new Point(103, 28);
+            buttonBrowseBiteChart.Name = "buttonBrowseBiteChart";
+            buttonBrowseBiteChart.Size = new Size(396, 67);
+            buttonBrowseBiteChart.TabIndex = 2;
+            buttonBrowseBiteChart.Text = "Browse...";
+            buttonBrowseBiteChart.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxExposure
+            // 
+            groupBoxExposure.Controls.Add(tableLayoutPanelExposure);
+            groupBoxExposure.Dock = DockStyle.Fill;
+            groupBoxExposure.Location = new Point(3, 3);
+            groupBoxExposure.Name = "groupBoxExposure";
+            groupBoxExposure.Size = new Size(634, 332);
+            groupBoxExposure.TabIndex = 0;
+            groupBoxExposure.TabStop = false;
+            groupBoxExposure.Text = "EXPOSURE INFORMATION";
+            // 
+            // tableLayoutPanelExposure
+            // 
+            tableLayoutPanelExposure.ColumnCount = 1;
+            tableLayoutPanelExposure.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanelExposure.Controls.Add(tableLayoutPanelExposureTop, 0, 0);
+            tableLayoutPanelExposure.Controls.Add(tableLayoutPanel2, 0, 1);
+            tableLayoutPanelExposure.Dock = DockStyle.Fill;
+            tableLayoutPanelExposure.Location = new Point(3, 19);
+            tableLayoutPanelExposure.Name = "tableLayoutPanelExposure";
+            tableLayoutPanelExposure.RowCount = 3;
+            tableLayoutPanelExposure.RowStyles.Add(new RowStyle(SizeType.Absolute, 88F));
+            tableLayoutPanelExposure.RowStyles.Add(new RowStyle(SizeType.Absolute, 213F));
+            tableLayoutPanelExposure.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
+            tableLayoutPanelExposure.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanelExposure.Size = new Size(628, 310);
+            tableLayoutPanelExposure.TabIndex = 0;
+            // 
+            // tableLayoutPanelExposureTop
+            // 
+            tableLayoutPanelExposureTop.ColumnCount = 4;
+            tableLayoutPanelExposureTop.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 92F));
+            tableLayoutPanelExposureTop.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanelExposureTop.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 58F));
+            tableLayoutPanelExposureTop.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanelExposureTop.Controls.Add(labelExposureDate, 0, 0);
+            tableLayoutPanelExposureTop.Controls.Add(dateTimePickerExposureDate, 1, 0);
+            tableLayoutPanelExposureTop.Controls.Add(labelIncidentPlace, 0, 1);
+            tableLayoutPanelExposureTop.Controls.Add(textBoxIncidentPlace, 1, 1);
+            tableLayoutPanelExposureTop.Dock = DockStyle.Fill;
+            tableLayoutPanelExposureTop.Location = new Point(3, 3);
+            tableLayoutPanelExposureTop.Name = "tableLayoutPanelExposureTop";
+            tableLayoutPanelExposureTop.RowCount = 2;
+            tableLayoutPanelExposureTop.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            tableLayoutPanelExposureTop.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            tableLayoutPanelExposureTop.Size = new Size(622, 82);
+            tableLayoutPanelExposureTop.TabIndex = 0;
+            // 
+            // labelExposureDate
+            // 
+            labelExposureDate.AutoSize = true;
+            labelExposureDate.Dock = DockStyle.Fill;
+            labelExposureDate.Location = new Point(3, 0);
+            labelExposureDate.Name = "labelExposureDate";
+            labelExposureDate.Size = new Size(86, 36);
+            labelExposureDate.TabIndex = 0;
+            labelExposureDate.Text = "Exposure Date:";
+            labelExposureDate.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // dateTimePickerExposureDate
+            // 
+            dateTimePickerExposureDate.Dock = DockStyle.Fill;
+            dateTimePickerExposureDate.Format = DateTimePickerFormat.Short;
+            dateTimePickerExposureDate.Location = new Point(95, 6);
+            dateTimePickerExposureDate.Margin = new Padding(3, 6, 3, 6);
+            dateTimePickerExposureDate.Name = "dateTimePickerExposureDate";
+            dateTimePickerExposureDate.Size = new Size(230, 23);
+            dateTimePickerExposureDate.TabIndex = 1;
+            // 
+            // labelIncidentPlace
+            // 
+            labelIncidentPlace.AutoSize = true;
+            labelIncidentPlace.Dock = DockStyle.Fill;
+            labelIncidentPlace.Location = new Point(3, 36);
+            labelIncidentPlace.Name = "labelIncidentPlace";
+            labelIncidentPlace.Size = new Size(86, 46);
+            labelIncidentPlace.TabIndex = 4;
+            labelIncidentPlace.Text = "Incident Place:";
+            labelIncidentPlace.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // textBoxIncidentPlace
+            // 
+            tableLayoutPanelExposureTop.SetColumnSpan(textBoxIncidentPlace, 3);
+            textBoxIncidentPlace.Dock = DockStyle.Fill;
+            textBoxIncidentPlace.Location = new Point(95, 42);
+            textBoxIncidentPlace.Margin = new Padding(3, 6, 3, 6);
+            textBoxIncidentPlace.Name = "textBoxIncidentPlace";
+            textBoxIncidentPlace.Size = new Size(524, 23);
+            textBoxIncidentPlace.TabIndex = 5;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 4;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.Controls.Add(comboBoxWoundClasification, 3, 2);
+            tableLayoutPanel2.Controls.Add(labelWoundClassification, 2, 2);
+            tableLayoutPanel2.Controls.Add(labelExposureCategory, 0, 3);
+            tableLayoutPanel2.Controls.Add(labelProphylaxisType, 2, 3);
+            tableLayoutPanel2.Controls.Add(comboBoxProphylaxisType, 3, 3);
+            tableLayoutPanel2.Controls.Add(labelAnimalStatus, 0, 1);
+            tableLayoutPanel2.Controls.Add(comboBoxAnimalStatus, 1, 1);
+            tableLayoutPanel2.Controls.Add(comboBoxAnimalClassification, 3, 0);
+            tableLayoutPanel2.Controls.Add(labelAnimalClassification, 2, 0);
+            tableLayoutPanel2.Controls.Add(comboBoxAnimalType, 1, 0);
+            tableLayoutPanel2.Controls.Add(labelAnimalType, 0, 0);
+            tableLayoutPanel2.Controls.Add(comboBoxWoundCount, 1, 2);
+            tableLayoutPanel2.Controls.Add(labelWoundCount, 0, 2);
+            tableLayoutPanel2.Controls.Add(labelWoundType, 2, 1);
+            tableLayoutPanel2.Controls.Add(comboBoxWoundType, 3, 1);
+            tableLayoutPanel2.Controls.Add(checkBoxWoundWashed, 1, 3);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(3, 91);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 5;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel2.Size = new Size(622, 207);
+            tableLayoutPanel2.TabIndex = 1;
+            // 
+            // comboBoxWoundClasification
+            // 
+            comboBoxWoundClasification.Dock = DockStyle.Fill;
+            comboBoxWoundClasification.FormattingEnabled = true;
+            comboBoxWoundClasification.Location = new Point(468, 122);
+            comboBoxWoundClasification.Margin = new Padding(3, 22, 3, 6);
+            comboBoxWoundClasification.Name = "comboBoxWoundClasification";
+            comboBoxWoundClasification.Size = new Size(151, 23);
+            comboBoxWoundClasification.TabIndex = 15;
+            // 
+            // labelWoundClassification
+            // 
+            labelWoundClassification.AutoSize = true;
+            labelWoundClassification.Dock = DockStyle.Fill;
+            labelWoundClassification.Location = new Point(313, 100);
+            labelWoundClassification.Name = "labelWoundClassification";
+            labelWoundClassification.Size = new Size(149, 50);
+            labelWoundClassification.TabIndex = 14;
+            labelWoundClassification.Text = "Wound Classification:";
+            labelWoundClassification.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // labelExposureCategory
+            // 
+            labelExposureCategory.AutoSize = true;
+            labelExposureCategory.Dock = DockStyle.Fill;
+            labelExposureCategory.Location = new Point(3, 150);
+            labelExposureCategory.Name = "labelExposureCategory";
+            labelExposureCategory.Size = new Size(149, 50);
+            labelExposureCategory.TabIndex = 10;
+            labelExposureCategory.Text = "Wound Washed";
+            labelExposureCategory.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // labelProphylaxisType
+            // 
+            labelProphylaxisType.AutoSize = true;
+            labelProphylaxisType.Dock = DockStyle.Fill;
+            labelProphylaxisType.Location = new Point(313, 150);
+            labelProphylaxisType.Name = "labelProphylaxisType";
+            labelProphylaxisType.Size = new Size(149, 50);
+            labelProphylaxisType.TabIndex = 12;
+            labelProphylaxisType.Text = "Prophylaxis Type:";
+            labelProphylaxisType.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxProphylaxisType
+            // 
+            comboBoxProphylaxisType.Dock = DockStyle.Fill;
+            comboBoxProphylaxisType.FormattingEnabled = true;
+            comboBoxProphylaxisType.Location = new Point(468, 167);
+            comboBoxProphylaxisType.Margin = new Padding(3, 17, 3, 6);
+            comboBoxProphylaxisType.Name = "comboBoxProphylaxisType";
+            comboBoxProphylaxisType.Size = new Size(151, 23);
+            comboBoxProphylaxisType.TabIndex = 13;
+            // 
+            // labelAnimalStatus
+            // 
+            labelAnimalStatus.AutoSize = true;
+            labelAnimalStatus.Dock = DockStyle.Fill;
+            labelAnimalStatus.Location = new Point(3, 50);
+            labelAnimalStatus.Name = "labelAnimalStatus";
+            labelAnimalStatus.Size = new Size(149, 50);
+            labelAnimalStatus.TabIndex = 6;
+            labelAnimalStatus.Text = "Animal Status:";
+            labelAnimalStatus.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxAnimalStatus
+            // 
+            comboBoxAnimalStatus.Dock = DockStyle.Fill;
+            comboBoxAnimalStatus.FormattingEnabled = true;
+            comboBoxAnimalStatus.Items.AddRange(new object[] { "Alive", "Sick", "Dead", "Unknown" });
+            comboBoxAnimalStatus.Location = new Point(158, 74);
+            comboBoxAnimalStatus.Margin = new Padding(3, 24, 3, 6);
+            comboBoxAnimalStatus.Name = "comboBoxAnimalStatus";
+            comboBoxAnimalStatus.Size = new Size(149, 23);
+            comboBoxAnimalStatus.TabIndex = 7;
+            // 
+            // comboBoxAnimalClassification
+            // 
+            comboBoxAnimalClassification.Dock = DockStyle.Fill;
+            comboBoxAnimalClassification.FormattingEnabled = true;
+            comboBoxAnimalClassification.Items.AddRange(new object[] { "Pet", "Stray", "Unknown" });
+            comboBoxAnimalClassification.Location = new Point(468, 24);
+            comboBoxAnimalClassification.Margin = new Padding(3, 24, 3, 6);
+            comboBoxAnimalClassification.Name = "comboBoxAnimalClassification";
+            comboBoxAnimalClassification.Size = new Size(151, 23);
+            comboBoxAnimalClassification.TabIndex = 3;
+            // 
+            // labelAnimalClassification
+            // 
+            labelAnimalClassification.AutoSize = true;
+            labelAnimalClassification.Dock = DockStyle.Fill;
+            labelAnimalClassification.Location = new Point(313, 0);
+            labelAnimalClassification.Name = "labelAnimalClassification";
+            labelAnimalClassification.Size = new Size(149, 50);
+            labelAnimalClassification.TabIndex = 2;
+            labelAnimalClassification.Text = "Animal Classification:";
+            labelAnimalClassification.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxAnimalType
+            // 
+            comboBoxAnimalType.Dock = DockStyle.Fill;
+            comboBoxAnimalType.FormattingEnabled = true;
+            comboBoxAnimalType.Location = new Point(158, 24);
+            comboBoxAnimalType.Margin = new Padding(3, 24, 3, 6);
+            comboBoxAnimalType.Name = "comboBoxAnimalType";
+            comboBoxAnimalType.Size = new Size(149, 23);
+            comboBoxAnimalType.TabIndex = 1;
+            // 
+            // labelAnimalType
+            // 
+            labelAnimalType.AutoSize = true;
+            labelAnimalType.Dock = DockStyle.Fill;
+            labelAnimalType.Location = new Point(3, 0);
+            labelAnimalType.Name = "labelAnimalType";
+            labelAnimalType.Size = new Size(149, 50);
+            labelAnimalType.TabIndex = 0;
+            labelAnimalType.Text = "Animal Type:";
+            labelAnimalType.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxWoundCount
+            // 
+            comboBoxWoundCount.Dock = DockStyle.Fill;
+            comboBoxWoundCount.FormattingEnabled = true;
+            comboBoxWoundCount.Location = new Point(158, 122);
+            comboBoxWoundCount.Margin = new Padding(3, 22, 3, 6);
+            comboBoxWoundCount.Name = "comboBoxWoundCount";
+            comboBoxWoundCount.Size = new Size(149, 23);
+            comboBoxWoundCount.TabIndex = 3;
+            // 
+            // labelWoundCount
+            // 
+            labelWoundCount.AutoSize = true;
+            labelWoundCount.Dock = DockStyle.Fill;
+            labelWoundCount.Location = new Point(3, 100);
+            labelWoundCount.Name = "labelWoundCount";
+            labelWoundCount.Size = new Size(149, 50);
+            labelWoundCount.TabIndex = 2;
+            labelWoundCount.Text = "Wound Count:";
+            labelWoundCount.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // labelWoundType
+            // 
+            labelWoundType.AutoSize = true;
+            labelWoundType.Dock = DockStyle.Fill;
+            labelWoundType.Location = new Point(313, 50);
+            labelWoundType.Name = "labelWoundType";
+            labelWoundType.Size = new Size(149, 50);
+            labelWoundType.TabIndex = 0;
+            labelWoundType.Text = "Wound Type:";
+            labelWoundType.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // comboBoxWoundType
+            // 
+            comboBoxWoundType.Dock = DockStyle.Fill;
+            comboBoxWoundType.FormattingEnabled = true;
+            comboBoxWoundType.Location = new Point(468, 72);
+            comboBoxWoundType.Margin = new Padding(3, 22, 3, 6);
+            comboBoxWoundType.Name = "comboBoxWoundType";
+            comboBoxWoundType.Size = new Size(151, 23);
+            comboBoxWoundType.TabIndex = 1;
+            // 
+            // checkBoxWoundWashed
+            // 
+            checkBoxWoundWashed.AutoSize = true;
+            checkBoxWoundWashed.CheckAlign = ContentAlignment.MiddleCenter;
+            checkBoxWoundWashed.Dock = DockStyle.Fill;
+            checkBoxWoundWashed.Location = new Point(158, 153);
+            checkBoxWoundWashed.Name = "checkBoxWoundWashed";
+            checkBoxWoundWashed.Size = new Size(149, 44);
+            checkBoxWoundWashed.TabIndex = 16;
+            checkBoxWoundWashed.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(groupBoxCategoryBasis, 1, 0);
+            tableLayoutPanel1.Controls.Add(groupBoxExposure, 0, 0);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanelRight, 1, 1);
+            tableLayoutPanel1.Controls.Add(panel1, 0, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 41.2195129F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 58.7804871F));
+            tableLayoutPanel1.Size = new Size(1280, 820);
+            tableLayoutPanel1.TabIndex = 1;
+            // 
+            // groupBoxCategoryBasis
+            // 
+            groupBoxCategoryBasis.Controls.Add(tableLayoutPanelCategory);
+            groupBoxCategoryBasis.Dock = DockStyle.Fill;
+            groupBoxCategoryBasis.Location = new Point(643, 3);
+            groupBoxCategoryBasis.Name = "groupBoxCategoryBasis";
+            groupBoxCategoryBasis.Size = new Size(634, 332);
+            groupBoxCategoryBasis.TabIndex = 11;
+            groupBoxCategoryBasis.TabStop = false;
+            groupBoxCategoryBasis.Text = "CATEGORY BASIS ";
+            // 
+            // tableLayoutPanelCategory
+            // 
+            tableLayoutPanelCategory.AutoScroll = true;
+            tableLayoutPanelCategory.ColumnCount = 3;
+            tableLayoutPanelCategory.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33333F));
+            tableLayoutPanelCategory.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33333F));
+            tableLayoutPanelCategory.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.33334F));
+            tableLayoutPanelCategory.Controls.Add(panelCategoryI, 0, 0);
+            tableLayoutPanelCategory.Controls.Add(panelCategoryII, 1, 0);
+            tableLayoutPanelCategory.Controls.Add(panelCategoryIII, 2, 0);
+            tableLayoutPanelCategory.Dock = DockStyle.Fill;
+            tableLayoutPanelCategory.Location = new Point(3, 19);
+            tableLayoutPanelCategory.Name = "tableLayoutPanelCategory";
+            tableLayoutPanelCategory.RowCount = 1;
+            tableLayoutPanelCategory.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanelCategory.Size = new Size(628, 310);
+            tableLayoutPanelCategory.TabIndex = 0;
+            // 
+            // panelCategoryI
+            // 
+            panelCategoryI.BorderStyle = BorderStyle.FixedSingle;
+            panelCategoryI.Controls.Add(flowLayoutPanelCategoryI);
+            panelCategoryI.Controls.Add(labelCategoryI);
+            panelCategoryI.Dock = DockStyle.Fill;
+            panelCategoryI.Location = new Point(3, 3);
+            panelCategoryI.Name = "panelCategoryI";
+            panelCategoryI.Size = new Size(203, 304);
+            panelCategoryI.TabIndex = 0;
+            // 
+            // flowLayoutPanelCategoryI
+            // 
+            flowLayoutPanelCategoryI.AutoScroll = true;
+            flowLayoutPanelCategoryI.Dock = DockStyle.Fill;
+            flowLayoutPanelCategoryI.Enabled = false;
+            flowLayoutPanelCategoryI.Location = new Point(0, 32);
+            flowLayoutPanelCategoryI.Name = "flowLayoutPanelCategoryI";
+            flowLayoutPanelCategoryI.Size = new Size(201, 270);
+            flowLayoutPanelCategoryI.TabIndex = 1;
+            // 
+            // labelCategoryI
+            // 
+            labelCategoryI.Dock = DockStyle.Top;
+            labelCategoryI.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelCategoryI.ForeColor = Color.Firebrick;
+            labelCategoryI.Location = new Point(0, 0);
+            labelCategoryI.Name = "labelCategoryI";
+            labelCategoryI.Size = new Size(201, 32);
+            labelCategoryI.TabIndex = 0;
+            labelCategoryI.Text = "CATEGORY I";
+            labelCategoryI.TextAlign = ContentAlignment.MiddleCenter;
+            labelCategoryI.Click += labelCategoryI_Click;
+            // 
+            // panelCategoryII
+            // 
+            panelCategoryII.BorderStyle = BorderStyle.FixedSingle;
+            panelCategoryII.Controls.Add(flowLayoutPanelCategoryII);
+            panelCategoryII.Controls.Add(labelCategoryII);
+            panelCategoryII.Dock = DockStyle.Fill;
+            panelCategoryII.Location = new Point(212, 3);
+            panelCategoryII.Name = "panelCategoryII";
+            panelCategoryII.Size = new Size(203, 304);
+            panelCategoryII.TabIndex = 1;
+            // 
+            // flowLayoutPanelCategoryII
+            // 
+            flowLayoutPanelCategoryII.AutoScroll = true;
+            flowLayoutPanelCategoryII.Dock = DockStyle.Fill;
+            flowLayoutPanelCategoryII.Enabled = false;
+            flowLayoutPanelCategoryII.Location = new Point(0, 32);
+            flowLayoutPanelCategoryII.Name = "flowLayoutPanelCategoryII";
+            flowLayoutPanelCategoryII.Size = new Size(201, 270);
+            flowLayoutPanelCategoryII.TabIndex = 2;
+            // 
+            // labelCategoryII
+            // 
+            labelCategoryII.Dock = DockStyle.Top;
+            labelCategoryII.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelCategoryII.ForeColor = Color.DarkOrange;
+            labelCategoryII.Location = new Point(0, 0);
+            labelCategoryII.Name = "labelCategoryII";
+            labelCategoryII.Size = new Size(201, 32);
+            labelCategoryII.TabIndex = 0;
+            labelCategoryII.Text = "CATEGORY II";
+            labelCategoryII.TextAlign = ContentAlignment.MiddleCenter;
+            labelCategoryII.Click += labelCategoryII_Click;
+            // 
+            // panelCategoryIII
+            // 
+            panelCategoryIII.BorderStyle = BorderStyle.FixedSingle;
+            panelCategoryIII.Controls.Add(flowLayoutPanelCategoryIII);
+            panelCategoryIII.Controls.Add(labelCategoryIII);
+            panelCategoryIII.Dock = DockStyle.Fill;
+            panelCategoryIII.Location = new Point(421, 3);
+            panelCategoryIII.Name = "panelCategoryIII";
+            panelCategoryIII.Size = new Size(204, 304);
+            panelCategoryIII.TabIndex = 2;
+            // 
+            // flowLayoutPanelCategoryIII
+            // 
+            flowLayoutPanelCategoryIII.AutoScroll = true;
+            flowLayoutPanelCategoryIII.Dock = DockStyle.Fill;
+            flowLayoutPanelCategoryIII.Enabled = false;
+            flowLayoutPanelCategoryIII.Location = new Point(0, 32);
+            flowLayoutPanelCategoryIII.Name = "flowLayoutPanelCategoryIII";
+            flowLayoutPanelCategoryIII.Size = new Size(202, 270);
+            flowLayoutPanelCategoryIII.TabIndex = 2;
+            // 
+            // labelCategoryIII
+            // 
+            labelCategoryIII.Dock = DockStyle.Top;
+            labelCategoryIII.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            labelCategoryIII.ForeColor = Color.ForestGreen;
+            labelCategoryIII.Location = new Point(0, 0);
+            labelCategoryIII.Name = "labelCategoryIII";
+            labelCategoryIII.Size = new Size(202, 32);
+            labelCategoryIII.TabIndex = 0;
+            labelCategoryIII.Text = "CATEGORY III";
+            labelCategoryIII.TextAlign = ContentAlignment.MiddleCenter;
+            labelCategoryIII.Click += labelCategoryIII_Click;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(groupBox1);
+            panel1.Dock = DockStyle.Fill;
+            panel1.Location = new Point(3, 341);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(634, 476);
+            panel1.TabIndex = 10;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(tableLayoutPanel3);
+            groupBox1.Controls.Add(groupBox3);
+            groupBox1.Dock = DockStyle.Fill;
+            groupBox1.Location = new Point(0, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(634, 476);
+            groupBox1.TabIndex = 8;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "MEDICAL BACKGROUND ";
+            // 
+            // tableLayoutPanel3
+            // 
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.Controls.Add(PEDGV, 1, 0);
+            tableLayoutPanel3.Controls.Add(chronicDGV, 0, 0);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new Point(3, 19);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 1;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel3.Size = new Size(628, 377);
+            tableLayoutPanel3.TabIndex = 6;
+            // 
+            // PEDGV
+            // 
+            PEDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            PEDGV.BackgroundColor = Color.White;
+            PEDGV.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(248, 249, 250);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(0, 123, 255);
+            dataGridViewCellStyle1.SelectionForeColor = Color.White;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            PEDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            PEDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PEDGV.Columns.AddRange(new DataGridViewColumn[] { peColumn });
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(73, 80, 87);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(0, 123, 255);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            PEDGV.DefaultCellStyle = dataGridViewCellStyle2;
+            PEDGV.Dock = DockStyle.Fill;
+            PEDGV.GridColor = Color.FromArgb(222, 226, 230);
+            PEDGV.Location = new Point(317, 3);
+            PEDGV.Name = "PEDGV";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            PEDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            PEDGV.Size = new Size(308, 371);
+            PEDGV.TabIndex = 7;
+            // 
+            // peColumn
+            // 
+            peColumn.HeaderText = "PE S/S/Sx";
+            peColumn.Name = "peColumn";
+            // 
+            // chronicDGV
+            // 
+            chronicDGV.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            chronicDGV.BackgroundColor = Color.White;
+            chronicDGV.BorderStyle = BorderStyle.Fixed3D;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(248, 249, 250);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = Color.FromArgb(33, 37, 41);
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(0, 123, 255);
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            chronicDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            chronicDGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            chronicDGV.Columns.AddRange(new DataGridViewColumn[] { ChronicIllnessColumn });
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.FromArgb(73, 80, 87);
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(0, 123, 255);
+            dataGridViewCellStyle5.SelectionForeColor = Color.White;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            chronicDGV.DefaultCellStyle = dataGridViewCellStyle5;
+            chronicDGV.Dock = DockStyle.Fill;
+            chronicDGV.GridColor = Color.FromArgb(222, 226, 230);
+            chronicDGV.Location = new Point(3, 3);
+            chronicDGV.Name = "chronicDGV";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            chronicDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            chronicDGV.Size = new Size(308, 371);
+            chronicDGV.TabIndex = 6;
+            // 
+            // ChronicIllnessColumn
+            // 
+            ChronicIllnessColumn.HeaderText = "Chronic Illness";
+            ChronicIllnessColumn.Name = "ChronicIllnessColumn";
+            // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(tableLayoutPanel4);
+            groupBox3.Dock = DockStyle.Bottom;
+            groupBox3.Location = new Point(3, 396);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(628, 77);
+            groupBox3.TabIndex = 5;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Vaccine History";
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 6;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel4.Controls.Add(comboBoxBrand, 1, 0);
+            tableLayoutPanel4.Controls.Add(label1, 0, 0);
+            tableLayoutPanel4.Controls.Add(dateTimePickerCompletePEP, 5, 0);
+            tableLayoutPanel4.Controls.Add(label3, 4, 0);
+            tableLayoutPanel4.Controls.Add(checkBoxBooster, 3, 0);
+            tableLayoutPanel4.Controls.Add(label2, 2, 0);
+            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Location = new Point(3, 19);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel4.Size = new Size(622, 55);
+            tableLayoutPanel4.TabIndex = 4;
+            // 
+            // comboBoxBrand
+            // 
+            comboBoxBrand.Dock = DockStyle.Fill;
+            comboBoxBrand.FormattingEnabled = true;
+            comboBoxBrand.Location = new Point(106, 22);
+            comboBoxBrand.Margin = new Padding(3, 22, 3, 6);
+            comboBoxBrand.Name = "comboBoxBrand";
+            comboBoxBrand.Size = new Size(97, 23);
+            comboBoxBrand.TabIndex = 19;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Dock = DockStyle.Fill;
+            label1.Location = new Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(97, 50);
+            label1.TabIndex = 18;
+            label1.Text = "Brand";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // dateTimePickerCompletePEP
+            // 
+            dateTimePickerCompletePEP.Dock = DockStyle.Bottom;
+            dateTimePickerCompletePEP.Format = DateTimePickerFormat.Short;
+            dateTimePickerCompletePEP.Location = new Point(518, 24);
+            dateTimePickerCompletePEP.Name = "dateTimePickerCompletePEP";
+            dateTimePickerCompletePEP.Size = new Size(101, 23);
+            dateTimePickerCompletePEP.TabIndex = 17;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Dock = DockStyle.Fill;
+            label3.Location = new Point(415, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(97, 50);
+            label3.TabIndex = 12;
+            label3.Text = "If Yes, Date PEP Completed";
+            label3.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // checkBoxBooster
+            // 
+            checkBoxBooster.AutoSize = true;
+            checkBoxBooster.CheckAlign = ContentAlignment.MiddleCenter;
+            checkBoxBooster.Dock = DockStyle.Fill;
+            checkBoxBooster.Location = new Point(312, 3);
+            checkBoxBooster.Name = "checkBoxBooster";
+            checkBoxBooster.Size = new Size(97, 44);
+            checkBoxBooster.TabIndex = 16;
+            checkBoxBooster.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Dock = DockStyle.Fill;
+            label2.Location = new Point(209, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(97, 50);
+            label2.TabIndex = 10;
+            label2.Text = "Booster";
+            label2.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // UpsertBiteCaseUserControl
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(tableLayoutPanel1);
+            Font = new Font("Segoe UI", 9F);
+            Name = "UpsertBiteCaseUserControl";
+            Size = new Size(1280, 820);
+            Load += UpsertBiteCaseUserControl_Load;
+            tableLayoutPanelRight.ResumeLayout(false);
+            groupBoxAnatomicalLocation.ResumeLayout(false);
+            tableLayoutPanelBottomRight.ResumeLayout(false);
+            panelRemarks.ResumeLayout(false);
+            panelRemarks.PerformLayout();
+            panelBiteChart.ResumeLayout(false);
+            tableLayoutPanelBiteChart.ResumeLayout(false);
+            tableLayoutPanelBiteChart.PerformLayout();
+            groupBoxExposure.ResumeLayout(false);
+            tableLayoutPanelExposure.ResumeLayout(false);
+            tableLayoutPanelExposureTop.ResumeLayout(false);
+            tableLayoutPanelExposureTop.PerformLayout();
+            tableLayoutPanel2.ResumeLayout(false);
+            tableLayoutPanel2.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            groupBoxCategoryBasis.ResumeLayout(false);
+            tableLayoutPanelCategory.ResumeLayout(false);
+            panelCategoryI.ResumeLayout(false);
+            panelCategoryII.ResumeLayout(false);
+            panelCategoryIII.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)PEDGV).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chronicDGV).EndInit();
+            groupBox3.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
+            tableLayoutPanel4.PerformLayout();
+            ResumeLayout(false);
+        }
+
+        #endregion
+
+        private TableLayoutPanel tableLayoutPanelRight;
+        private TableLayoutPanel tableLayoutPanelBottomRight;
+        private Button saveButton;
+        private GroupBox groupBoxExposure;
+        private TableLayoutPanel tableLayoutPanelExposure;
+        private TableLayoutPanel tableLayoutPanelExposureTop;
+        private Label labelExposureDate;
+        private DateTimePicker dateTimePickerExposureDate;
+        private Label labelIncidentPlace;
+        private TextBox textBoxIncidentPlace;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Label labelWoundClassification;
+        private Label labelExposureCategory;
+        private Label labelProphylaxisType;
+        private ComboBox comboBoxProphylaxisType;
+        private Label labelAnimalStatus;
+        private ComboBox comboBoxAnimalStatus;
+        private ComboBox comboBoxAnimalClassification;
+        private Label labelAnimalClassification;
+        private ComboBox comboBoxAnimalType;
+        private Label labelAnimalType;
+        private ComboBox comboBoxWoundCount;
+        private Label labelWoundCount;
+        private Label labelWoundType;
+        private ComboBox comboBoxWoundType;
+        private GroupBox groupBoxAnatomicalLocation;
+        private TableLayoutPanel tableLayoutPanel1;
+        private GroupBox groupBox1;
+        private ComboBox comboBoxWoundClasification;
+        private Shared.Components.PanAndZoomPictureBox panAndZoomPictureBox1;
+        private Panel panelRemarks;
+        private RichTextBox richTextBoxRemarks;
+        private Label labelRemarks;
+        private CheckBox checkBoxWoundWashed;
+        private Label label4;
+        private TextBox textBoxTreatment;
+        private Panel panel1;
+        private TableLayoutPanel tableLayoutPanel3;
+        private DataGridView PEDGV;
+        private DataGridView chronicDGV;
+        private GroupBox groupBox3;
+        private TableLayoutPanel tableLayoutPanel4;
+        private ComboBox comboBoxBrand;
+        private Label label1;
+        private DateTimePicker dateTimePickerCompletePEP;
+        private Label label3;
+        private CheckBox checkBoxBooster;
+        private Label label2;
+        private DataGridViewTextBoxColumn peColumn;
+        private DataGridViewTextBoxColumn ChronicIllnessColumn;
+        private GroupBox groupBoxCategoryBasis;
+        private TableLayoutPanel tableLayoutPanelCategory;
+        private Panel panelCategoryI;
+        private FlowLayoutPanel flowLayoutPanelCategoryI;
+        private Label labelCategoryI;
+        private Panel panelCategoryII;
+        private FlowLayoutPanel flowLayoutPanelCategoryII;
+        private Label labelCategoryII;
+        private Panel panelCategoryIII;
+        private FlowLayoutPanel flowLayoutPanelCategoryIII;
+        private Label labelCategoryIII;
+        private Panel panelBiteChart;
+        private TableLayoutPanel tableLayoutPanelBiteChart;
+        private ABMS_2026.UI.Shared.Components.PanAndZoomPictureBox panAndZoomPictureBoxBiteChart;
+        private Button buttonBrowseBiteChart;
+        private Label labelBiteChart;
+    }
+}

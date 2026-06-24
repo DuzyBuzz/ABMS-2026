@@ -1,0 +1,322 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" width="1600" height="1100">
+  <defs>
+    <style>
+      .title { font: 700 30px "Segoe UI", Arial, sans-serif; fill: #1f3b63; }
+      .subtitle { font: 400 14px "Segoe UI", Arial, sans-serif; fill: #64748b; }
+      .view-label { font: 700 20px "Segoe UI", Arial, sans-serif; fill: #1f3b63; }
+      .part {
+        fill: url(#skinGrad);
+        fill-opacity: 0.98;
+        stroke: #9b6f50;
+        stroke-width: 1.6;
+        vector-effect: non-scaling-stroke;
+        cursor: pointer;
+        transition: fill .15s ease, stroke .15s ease, opacity .15s ease;
+        paint-order: stroke fill;
+        stroke-linejoin: round;
+        stroke-linecap: round;
+      }
+      .part:hover {
+        fill: url(#skinHoverGrad);
+        stroke: #2563eb;
+      }
+      .guide {
+        fill: none;
+        stroke: #cbd5e1;
+        stroke-width: 2;
+        vector-effect: non-scaling-stroke;
+      }
+      .skinline {
+        fill: none;
+        stroke: rgba(170, 120, 85, 0.28);
+        stroke-width: 1.3;
+        vector-effect: non-scaling-stroke;
+      }
+      .legendText { font: 600 13px "Segoe UI", Arial, sans-serif; fill: #334155; }
+      .small { font: 400 12px "Segoe UI", Arial, sans-serif; fill: #475569; }
+    </style>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbe2d1"/>
+      <stop offset="45%" stop-color="#f5cfb0"/>
+      <stop offset="100%" stop-color="#e5b38b"/>
+    </linearGradient>
+    <linearGradient id="skinHoverGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffe4d2"/>
+      <stop offset="45%" stop-color="#f8d7be"/>
+      <stop offset="100%" stop-color="#efc09b"/>
+    </linearGradient>
+
+  </defs>
+
+  <rect width="100%" height="100%" fill="#ffffff"></rect>
+
+  <text x="800" y="42" text-anchor="middle" class="title">ANATOMICAL LOCATION MAP</text>
+  <text x="800" y="68" text-anchor="middle" class="subtitle">Click a body region to record the wound location</text>
+
+  <text x="395" y="108" text-anchor="middle" class="view-label">FRONT VIEW</text>
+  <text x="1205" y="108" text-anchor="middle" class="view-label">BACK VIEW</text>
+
+  <!-- Legend -->
+  <g transform="translate(690,120)">
+    <rect x="0" y="0" width="220" height="120" rx="14" fill="#f8fafc" stroke="#e2e8f0"></rect>
+    <circle cx="24" cy="32" r="8" fill="#f6d2b0" stroke="#a97c56"></circle>
+    <text x="42" y="36" class="legendText">Selectable region</text>
+    <circle cx="24" cy="62" r="6" fill="#ef4444"></circle>
+    <text x="42" y="66" class="legendText">Bite marker</text>
+    <circle cx="24" cy="88" r="6" fill="#f97316"></circle>
+    <text x="42" y="92" class="legendText">Scratch marker</text>
+  </g>
+
+  <!-- FRONT VIEW -->
+  <g id="front_view" transform="translate(180,140)">
+    <!-- Head -->
+    <g id="front_scalp" data-display-name="Scalp" class="part">
+      <title>Scalp</title>
+      <path d="M176 80 Q220 24 264 80 Q254 104 220 106 Q186 104 176 80 Z"></path>
+    </g>
+    <g id="front_forehead" data-display-name="Forehead" class="part">
+      <title>Forehead</title>
+      <path d="M186 38 Q220 20 254 38 L248 62 Q220 54 192 62 Z"></path>
+    </g>
+    <g id="front_right_temple" data-display-name="Right Temple" class="part">
+      <title>Right Temple</title>
+      <path d="M252 45 Q266 56 262 82 Q252 76 244 63 Z"></path>
+    </g>
+    <g id="front_left_temple" data-display-name="Left Temple" class="part">
+      <title>Left Temple</title>
+      <path d="M188 45 Q174 56 178 82 Q188 76 196 63 Z"></path>
+    </g>
+    <g id="front_right_ear" data-display-name="Right Ear" class="part">
+      <title>Right Ear</title>
+      <path d="M263 70 Q279 80 272 98 Q261 103 255 88 Z"></path>
+    </g>
+    <g id="front_left_ear" data-display-name="Left Ear" class="part">
+      <title>Left Ear</title>
+      <path d="M177 70 Q161 80 168 98 Q179 103 185 88 Z"></path>
+    </g>
+    <g id="front_right_cheek" data-display-name="Right Cheek" class="part">
+      <title>Right Cheek</title>
+      <path d="M244 84 Q265 96 258 124 Q244 128 230 112 Z"></path>
+    </g>
+    <g id="front_left_cheek" data-display-name="Left Cheek" class="part">
+      <title>Left Cheek</title>
+      <path d="M196 84 Q175 96 182 124 Q196 128 210 112 Z"></path>
+    </g>
+    <g id="front_nose" data-display-name="Nose" class="part">
+      <title>Nose</title>
+      <path d="M212 92 Q220 84 228 92 L233 118 Q220 126 207 118 Z"></path>
+    </g>
+    <g id="front_upper_lip" data-display-name="Upper Lip" class="part">
+      <title>Upper Lip</title>
+      <path d="M207 120 Q220 112 233 120 Q220 130 207 120 Z"></path>
+    </g>
+    <g id="front_lower_lip" data-display-name="Lower Lip" class="part">
+      <title>Lower Lip</title>
+      <path d="M208 129 Q220 135 232 129 Q220 144 208 129 Z"></path>
+    </g>
+    <g id="front_chin" data-display-name="Chin" class="part">
+      <title>Chin</title>
+      <path d="M201 142 Q220 154 239 142 Q233 174 220 176 Q207 174 201 142 Z"></path>
+    </g>
+
+    <!-- Neck -->
+    <g id="front_anterior_neck" data-display-name="Anterior Neck" class="part">
+      <title>Anterior Neck</title>
+      <path d="M202 130 Q220 122 238 130 L242 170 Q220 178 198 170 Z"></path>
+    </g>
+
+    <!-- Torso -->
+    <g id="front_left_shoulder" data-display-name="Left Shoulder" class="part">
+      <title>Left Shoulder</title>
+      <path d="M156 155 Q176 138 194 150 L190 190 Q164 194 142 175 Z"></path>
+    </g>
+    <g id="front_right_shoulder" data-display-name="Right Shoulder" class="part">
+      <title>Right Shoulder</title>
+      <path d="M246 150 Q264 138 284 155 L294 175 Q272 194 248 190 Z"></path>
+    </g>
+    <g id="front_left_chest" data-display-name="Left Chest" class="part">
+      <title>Left Chest</title>
+      <path d="M166 166 Q194 154 214 168 L210 252 Q174 258 156 240 Z"></path>
+    </g>
+    <g id="front_sternum" data-display-name="Sternum" class="part">
+      <title>Sternum</title>
+      <path d="M212 160 Q220 156 228 160 L230 255 Q220 260 210 255 Z"></path>
+    </g>
+    <g id="front_right_chest" data-display-name="Right Chest" class="part">
+      <title>Right Chest</title>
+      <path d="M226 168 Q246 154 274 166 L286 240 Q266 258 230 252 Z"></path>
+    </g>
+    <g id="front_upper_abdomen" data-display-name="Upper Abdomen" class="part">
+      <title>Upper Abdomen</title>
+      <path d="M178 250 Q220 234 262 250 L258 322 Q220 334 182 322 Z"></path>
+    </g>
+    <g id="front_lower_abdomen" data-display-name="Lower Abdomen" class="part">
+      <title>Lower Abdomen</title>
+      <path d="M182 318 Q220 306 258 318 L252 372 Q220 384 186 372 Z"></path>
+    </g>
+    <g id="front_pelvis" data-display-name="Pelvis" class="part">
+      <title>Pelvis</title>
+      <path d="M186 372 Q220 358 254 372 L246 408 Q220 424 194 408 Z"></path>
+    </g>
+    <g id="front_genital_area" data-display-name="Genital Area" class="part">
+      <title>Genital Area</title>
+      <path d="M206 394 Q220 386 234 394 L230 420 Q220 430 210 420 Z"></path>
+    </g>
+
+    <!-- Left Arm -->
+    <g id="front_left_upper_arm" data-display-name="Left Upper Arm" class="part">
+      <title>Left Upper Arm</title>
+      <path d="M142 176 Q154 164 166 176 L160 280 Q146 294 132 282 Z"></path>
+    </g>
+    <g id="front_left_elbow" data-display-name="Left Elbow" class="part">
+      <title>Left Elbow</title>
+      <ellipse cx="146" cy="288" rx="12" ry="14"></ellipse>
+    </g>
+    <g id="front_left_forearm" data-display-name="Left Forearm" class="part">
+      <title>Left Forearm</title>
+      <path d="M136 290 Q148 284 160 290 L158 394 Q146 406 134 394 Z"></path>
+    </g>
+    <g id="front_left_wrist" data-display-name="Left Wrist" class="part">
+      <title>Left Wrist</title>
+      <ellipse cx="146" cy="400" rx="9" ry="8"></ellipse>
+    </g>
+    <g id="front_left_hand" data-display-name="Left Hand" class="part">
+      <title>Left Hand</title>
+      <path d="M128 400 Q146 392 160 400 L164 444 Q146 454 126 444 Z"></path>
+    </g>
+    <g id="front_left_thumb" data-display-name="Left Thumb" class="part"><title>Left Thumb</title><path d="M124 420 Q130 410 136 420 L132 438 Q124 434 124 420 Z"></path></g>
+    <g id="front_left_index_finger" data-display-name="Left Index Finger" class="part"><title>Left Index Finger</title><path d="M134 396 Q138 390 142 396 L140 432 Q134 436 132 430 Z"></path></g>
+    <g id="front_left_middle_finger" data-display-name="Left Middle Finger" class="part"><title>Left Middle Finger</title><path d="M141 394 Q145 388 149 394 L148 434 Q142 438 140 432 Z"></path></g>
+    <g id="front_left_ring_finger" data-display-name="Left Ring Finger" class="part"><title>Left Ring Finger</title><path d="M148 396 Q152 390 156 396 L156 432 Q150 436 148 430 Z"></path></g>
+    <g id="front_left_little_finger" data-display-name="Left Little Finger" class="part"><title>Left Little Finger</title><path d="M155 400 Q159 394 162 400 L162 428 Q156 432 155 426 Z"></path></g>
+
+    <!-- Right Arm -->
+    <g id="front_right_upper_arm" data-display-name="Right Upper Arm" class="part">
+      <title>Right Upper Arm</title>
+      <path d="M274 176 Q286 164 298 176 L304 282 Q290 294 276 280 Z"></path>
+    </g>
+    <g id="front_right_elbow" data-display-name="Right Elbow" class="part">
+      <title>Right Elbow</title>
+      <ellipse cx="290" cy="288" rx="12" ry="14"></ellipse>
+    </g>
+    <g id="front_right_forearm" data-display-name="Right Forearm" class="part">
+      <title>Right Forearm</title>
+      <path d="M280 290 Q292 284 304 290 L306 394 Q294 406 282 394 Z"></path>
+    </g>
+    <g id="front_right_wrist" data-display-name="Right Wrist" class="part">
+      <title>Right Wrist</title>
+      <ellipse cx="290" cy="400" rx="9" ry="8"></ellipse>
+    </g>
+    <g id="front_right_hand" data-display-name="Right Hand" class="part">
+      <title>Right Hand</title>
+      <path d="M276 400 Q294 392 312 400 L314 444 Q294 454 274 444 Z"></path>
+    </g>
+    <g id="front_right_thumb" data-display-name="Right Thumb" class="part"><title>Right Thumb</title><path d="M316 420 Q322 410 328 420 L324 438 Q316 434 316 420 Z"></path></g>
+    <g id="front_right_index_finger" data-display-name="Right Index Finger" class="part"><title>Right Index Finger</title><path d="M282 396 Q286 390 290 396 L288 432 Q282 436 280 430 Z"></path></g>
+    <g id="front_right_middle_finger" data-display-name="Right Middle Finger" class="part"><title>Right Middle Finger</title><path d="M289 394 Q293 388 297 394 L296 434 Q290 438 288 432 Z"></path></g>
+    <g id="front_right_ring_finger" data-display-name="Right Ring Finger" class="part"><title>Right Ring Finger</title><path d="M296 396 Q300 390 304 396 L304 432 Q298 436 296 430 Z"></path></g>
+    <g id="front_right_little_finger" data-display-name="Right Little Finger" class="part"><title>Right Little Finger</title><path d="M303 400 Q307 394 310 400 L310 428 Q304 432 303 426 Z"></path></g>
+
+    <!-- Legs -->
+    <g id="front_left_hip" data-display-name="Left Hip" class="part"><title>Left Hip</title><path d="M186 406 Q200 398 210 406 L208 438 Q196 446 186 438 Z"></path></g>
+    <g id="front_right_hip" data-display-name="Right Hip" class="part"><title>Right Hip</title><path d="M230 406 Q240 398 254 406 L254 438 Q244 446 232 438 Z"></path></g>
+
+    <g id="front_left_thigh" data-display-name="Left Thigh" class="part"><title>Left Thigh</title><path d="M180 438 Q200 430 210 438 L210 578 Q196 590 182 578 Z"></path></g>
+    <g id="front_right_thigh" data-display-name="Right Thigh" class="part"><title>Right Thigh</title><path d="M230 438 Q240 430 260 438 L258 578 Q244 590 230 578 Z"></path></g>
+    <g id="front_left_knee" data-display-name="Left Knee" class="part"><title>Left Knee</title><ellipse cx="196" cy="592" rx="15" ry="18"></ellipse></g>
+    <g id="front_right_knee" data-display-name="Right Knee" class="part"><title>Right Knee</title><ellipse cx="246" cy="592" rx="15" ry="18"></ellipse></g>
+
+    <g id="front_left_leg" data-display-name="Left Leg" class="part"><title>Left Leg</title><path d="M180 606 Q196 596 210 606 L208 726 Q194 738 182 726 Z"></path></g>
+    <g id="front_right_leg" data-display-name="Right Leg" class="part"><title>Right Leg</title><path d="M230 606 Q244 596 260 606 L262 726 Q244 738 230 726 Z"></path></g>
+    <g id="front_left_ankle" data-display-name="Left Ankle" class="part"><title>Left Ankle</title><ellipse cx="196" cy="732" rx="11" ry="9"></ellipse></g>
+    <g id="front_right_ankle" data-display-name="Right Ankle" class="part"><title>Right Ankle</title><ellipse cx="246" cy="732" rx="11" ry="9"></ellipse></g>
+
+    <g id="front_left_foot" data-display-name="Left Foot" class="part"><title>Left Foot</title><path d="M170 728 Q196 722 210 734 L206 762 Q188 770 168 762 Z"></path></g>
+    <g id="front_right_foot" data-display-name="Right Foot" class="part"><title>Right Foot</title><path d="M228 734 Q244 722 270 728 L272 762 Q250 770 230 762 Z"></path></g>
+
+    <g id="front_left_toe_1" data-display-name="Left Great Toe" class="part"><title>Left Great Toe</title><path d="M168 746 Q176 742 182 746 L180 762 Q172 766 166 762 Z"></path></g>
+    <g id="front_left_toe_2" data-display-name="Left Toe 2" class="part"><title>Left Toe 2</title><path d="M177 744 Q183 742 188 746 L186 760 Q180 764 176 760 Z"></path></g>
+    <g id="front_left_toe_3" data-display-name="Left Toe 3" class="part"><title>Left Toe 3</title><path d="M185 744 Q191 742 196 746 L194 760 Q188 764 184 760 Z"></path></g>
+    <g id="front_left_toe_4" data-display-name="Left Toe 4" class="part"><title>Left Toe 4</title><path d="M193 744 Q199 742 204 746 L202 760 Q196 764 192 760 Z"></path></g>
+    <g id="front_left_toe_5" data-display-name="Left Toe 5" class="part"><title>Left Toe 5</title><path d="M201 746 Q207 744 212 748 L210 760 Q204 764 200 760 Z"></path></g>
+
+    <g id="front_right_toe_1" data-display-name="Right Great Toe" class="part"><title>Right Great Toe</title><path d="M228 746 Q236 742 242 746 L240 762 Q232 766 226 762 Z"></path></g>
+    <g id="front_right_toe_2" data-display-name="Right Toe 2" class="part"><title>Right Toe 2</title><path d="M237 744 Q243 742 248 746 L246 760 Q240 764 236 760 Z"></path></g>
+    <g id="front_right_toe_3" data-display-name="Right Toe 3" class="part"><title>Right Toe 3</title><path d="M245 744 Q251 742 256 746 L254 760 Q248 764 244 760 Z"></path></g>
+    <g id="front_right_toe_4" data-display-name="Right Toe 4" class="part"><title>Right Toe 4</title><path d="M253 744 Q259 742 264 746 L262 760 Q256 764 252 760 Z"></path></g>
+    <g id="front_right_toe_5" data-display-name="Right Toe 5" class="part"><title>Right Toe 5</title><path d="M261 746 Q267 744 272 748 L270 760 Q264 764 260 760 Z"></path></g>
+
+    <path class="guide" d="M220 18 Q172 18 172 72 Q172 110 186 132 L186 160 Q156 168 140 194 L128 280 L136 394 L154 444 L180 578 L180 726 Q172 766 168 762"></path>
+    <path class="guide" d="M220 18 Q268 18 268 72 Q268 110 254 132 L254 160 Q284 168 300 194 L312 280 L304 394 L286 444 L260 578 L260 726 Q268 766 272 762"></path>
+  </g>
+
+  <!-- BACK VIEW -->
+  <g id="back_view" transform="translate(900,140)">
+    <!-- Head -->
+    <g id="back_scalp" data-display-name="Scalp" class="part"><title>Scalp</title><path d="M176 80 Q220 24 264 80 Q254 104 220 106 Q186 104 176 80 Z"></path></g>
+    <g id="back_posterior_head" data-display-name="Back of Head" class="part">
+      <title>Back of Head</title>
+      <path d="M186 38 Q220 20 254 38 L248 86 Q220 102 192 86 Z"></path>
+    </g>
+    <g id="back_right_ear" data-display-name="Right Ear" class="part"><title>Right Ear</title><path d="M263 70 Q279 80 272 98 Q261 103 255 88 Z"></path></g>
+    <g id="back_left_ear" data-display-name="Left Ear" class="part"><title>Left Ear</title><path d="M177 70 Q161 80 168 98 Q179 103 185 88 Z"></path></g>
+    <g id="back_posterior_neck" data-display-name="Posterior Neck" class="part">
+      <title>Posterior Neck</title>
+      <path d="M202 130 Q220 122 238 130 L242 170 Q220 178 198 170 Z"></path>
+    </g>
+
+    <!-- Torso -->
+    <g id="back_left_shoulder" data-display-name="Left Shoulder" class="part"><title>Left Shoulder</title><path d="M156 155 Q176 138 194 150 L190 190 Q164 194 142 175 Z"></path></g>
+    <g id="back_right_shoulder" data-display-name="Right Shoulder" class="part"><title>Right Shoulder</title><path d="M246 150 Q264 138 284 155 L294 175 Q272 194 248 190 Z"></path></g>
+
+    <g id="back_upper_back_left" data-display-name="Upper Back Left" class="part"><title>Upper Back Left</title><path d="M166 166 Q194 154 214 168 L210 252 Q174 258 158 240 Z"></path></g>
+    <g id="back_upper_back_center" data-display-name="Upper Back Center" class="part"><title>Upper Back Center</title><path d="M214 166 Q220 162 226 166 L230 252 Q220 258 210 252 Z"></path></g>
+    <g id="back_upper_back_right" data-display-name="Upper Back Right" class="part"><title>Upper Back Right</title><path d="M226 168 Q246 154 274 166 L286 240 Q266 258 230 252 Z"></path></g>
+
+    <g id="back_mid_back_left" data-display-name="Mid Back Left" class="part"><title>Mid Back Left</title><path d="M160 252 Q188 240 210 252 L208 320 Q174 326 158 306 Z"></path></g>
+    <g id="back_mid_back_center" data-display-name="Mid Back Center" class="part"><title>Mid Back Center</title><path d="M210 252 Q220 248 230 252 L232 320 Q220 326 208 320 Z"></path></g>
+    <g id="back_mid_back_right" data-display-name="Mid Back Right" class="part"><title>Mid Back Right</title><path d="M230 252 Q246 240 276 252 L286 306 Q266 326 232 320 Z"></path></g>
+
+    <g id="back_lower_back_left" data-display-name="Lower Back Left" class="part"><title>Lower Back Left</title><path d="M158 320 Q188 308 208 320 L206 370 Q176 380 156 356 Z"></path></g>
+    <g id="back_lower_back_center" data-display-name="Lower Back Center" class="part"><title>Lower Back Center</title><path d="M208 320 Q220 316 232 320 L234 370 Q220 380 206 370 Z"></path></g>
+    <g id="back_lower_back_right" data-display-name="Lower Back Right" class="part"><title>Lower Back Right</title><path d="M232 320 Q246 308 276 320 L286 356 Q266 380 234 370 Z"></path></g>
+
+    <g id="back_left_buttock" data-display-name="Left Buttock" class="part"><title>Left Buttock</title><path d="M170 370 Q190 356 212 370 L208 426 Q182 436 166 414 Z"></path></g>
+    <g id="back_right_buttock" data-display-name="Right Buttock" class="part"><title>Right Buttock</title><path d="M228 370 Q250 356 270 370 L274 414 Q258 436 232 426 Z"></path></g>
+
+    <!-- Arms -->
+    <g id="back_left_upper_arm" data-display-name="Left Upper Arm" class="part"><title>Left Upper Arm</title><path d="M144 176 Q156 164 168 176 L162 280 Q148 294 134 282 Z"></path></g>
+    <g id="back_left_elbow" data-display-name="Left Elbow" class="part"><title>Left Elbow</title><ellipse cx="148" cy="288" rx="12" ry="14"></ellipse></g>
+    <g id="back_left_forearm" data-display-name="Left Forearm" class="part"><title>Left Forearm</title><path d="M138 290 Q150 284 162 290 L160 394 Q148 406 136 394 Z"></path></g>
+    <g id="back_left_wrist" data-display-name="Left Wrist" class="part"><title>Left Wrist</title><ellipse cx="148" cy="400" rx="9" ry="8"></ellipse></g>
+    <g id="back_left_hand" data-display-name="Left Hand" class="part"><title>Left Hand</title><path d="M130 400 Q148 392 162 400 L166 444 Q148 454 128 444 Z"></path></g>
+
+    <g id="back_right_upper_arm" data-display-name="Right Upper Arm" class="part"><title>Right Upper Arm</title><path d="M276 176 Q288 164 300 176 L306 282 Q292 294 278 280 Z"></path></g>
+    <g id="back_right_elbow" data-display-name="Right Elbow" class="part"><title>Right Elbow</title><ellipse cx="292" cy="288" rx="12" ry="14"></ellipse></g>
+    <g id="back_right_forearm" data-display-name="Right Forearm" class="part"><title>Right Forearm</title><path d="M282 290 Q294 284 306 290 L308 394 Q296 406 284 394 Z"></path></g>
+    <g id="back_right_wrist" data-display-name="Right Wrist" class="part"><title>Right Wrist</title><ellipse cx="292" cy="400" rx="9" ry="8"></ellipse></g>
+    <g id="back_right_hand" data-display-name="Right Hand" class="part"><title>Right Hand</title><path d="M274 400 Q292 392 306 400 L310 444 Q292 454 272 444 Z"></path></g>
+
+    <!-- Legs -->
+    <g id="back_left_hip" data-display-name="Left Hip" class="part"><title>Left Hip</title><path d="M182 408 Q198 400 210 408 L208 440 Q196 448 182 440 Z"></path></g>
+    <g id="back_right_hip" data-display-name="Right Hip" class="part"><title>Right Hip</title><path d="M230 408 Q242 400 258 408 L258 440 Q244 448 232 440 Z"></path></g>
+
+    <g id="back_left_thigh" data-display-name="Left Thigh" class="part"><title>Left Thigh</title><path d="M176 440 Q194 432 210 440 L210 580 Q196 592 182 580 Z"></path></g>
+    <g id="back_right_thigh" data-display-name="Right Thigh" class="part"><title>Right Thigh</title><path d="M230 440 Q242 432 260 440 L258 580 Q244 592 230 580 Z"></path></g>
+
+    <g id="back_left_knee" data-display-name="Left Knee" class="part"><title>Left Knee</title><ellipse cx="196" cy="592" rx="15" ry="18"></ellipse></g>
+    <g id="back_right_knee" data-display-name="Right Knee" class="part"><title>Right Knee</title><ellipse cx="246" cy="592" rx="15" ry="18"></ellipse></g>
+
+    <g id="back_left_leg" data-display-name="Left Leg" class="part"><title>Left Leg</title><path d="M176 606 Q194 596 210 606 L208 726 Q196 738 182 726 Z"></path></g>
+    <g id="back_right_leg" data-display-name="Right Leg" class="part"><title>Right Leg</title><path d="M230 606 Q244 596 260 606 L262 726 Q244 738 230 726 Z"></path></g>
+
+    <g id="back_left_ankle" data-display-name="Left Ankle" class="part"><title>Left Ankle</title><ellipse cx="196" cy="732" rx="11" ry="9"></ellipse></g>
+    <g id="back_right_ankle" data-display-name="Right Ankle" class="part"><title>Right Ankle</title><ellipse cx="246" cy="732" rx="11" ry="9"></ellipse></g>
+
+    <g id="back_left_foot" data-display-name="Left Foot" class="part"><title>Left Foot</title><path d="M168 728 Q194 722 210 734 L206 762 Q188 770 166 762 Z"></path></g>
+    <g id="back_right_foot" data-display-name="Right Foot" class="part"><title>Right Foot</title><path d="M228 734 Q244 722 270 728 L272 762 Q250 770 230 762 Z"></path></g>
+
+    <path class="guide" d="M220 18 Q172 18 172 72 Q172 110 186 132 L186 160 Q156 168 140 194 L128 280 L136 394 L154 444 L182 580 L176 726 Q168 766 166 762"></path>
+    <path class="guide" d="M220 18 Q268 18 268 72 Q268 110 254 132 L254 160 Q284 168 300 194 L312 280 L304 394 L286 444 L258 580 L260 726 Q268 766 272 762"></path>
+  </g>
+</svg>

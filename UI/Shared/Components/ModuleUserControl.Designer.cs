@@ -26,6 +26,7 @@
             moduleSearchTextBox = new TextBox();
             moduleSearchButton = new Button();
             moduleRefreshButton = new Button();
+            modulePrintButton = new Button();
             moduleAddButton = new Button();
             moduleDataGridView = new DataGridView();
             rowContextMenuStrip = new ContextMenuStrip(components);
@@ -58,9 +59,10 @@
             // 
             // topLayout
             // 
-            topLayout.ColumnCount = 5;
+            topLayout.ColumnCount = 6;
             topLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
             topLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            topLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90F));
             topLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90F));
             topLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 90F));
             topLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 110F));
@@ -68,7 +70,8 @@
             topLayout.Controls.Add(moduleSearchTextBox, 1, 0);
             topLayout.Controls.Add(moduleSearchButton, 2, 0);
             topLayout.Controls.Add(moduleRefreshButton, 3, 0);
-            topLayout.Controls.Add(moduleAddButton, 4, 0);
+            topLayout.Controls.Add(modulePrintButton, 4, 0);
+            topLayout.Controls.Add(moduleAddButton, 5, 0);
             topLayout.Dock = DockStyle.Fill;
             topLayout.Location = new Point(20, 16);
             topLayout.Name = "topLayout";
@@ -100,7 +103,7 @@
             moduleSearchTextBox.Margin = new Padding(3, 10, 8, 10);
             moduleSearchTextBox.Name = "moduleSearchTextBox";
             moduleSearchTextBox.PlaceholderText = "Type to search...";
-            moduleSearchTextBox.Size = new Size(729, 18);
+            moduleSearchTextBox.Size = new Size(639, 18);
             moduleSearchTextBox.TabIndex = 1;
             // 
             // moduleSearchButton
@@ -113,7 +116,7 @@
             moduleSearchButton.FlatStyle = FlatStyle.Flat;
             moduleSearchButton.Font = new Font("Segoe UI", 9.5F, FontStyle.Regular, GraphicsUnit.Point, 0);
             moduleSearchButton.ForeColor = Color.White;
-            moduleSearchButton.Location = new Point(813, 10);
+            moduleSearchButton.Location = new Point(723, 10);
             moduleSearchButton.Margin = new Padding(3, 10, 8, 10);
             moduleSearchButton.Name = "moduleSearchButton";
             moduleSearchButton.Size = new Size(79, 28);
@@ -131,13 +134,31 @@
             moduleRefreshButton.FlatStyle = FlatStyle.Flat;
             moduleRefreshButton.Font = new Font("Segoe UI", 10F);
             moduleRefreshButton.ForeColor = Color.White;
-            moduleRefreshButton.Location = new Point(903, 8);
+            moduleRefreshButton.Location = new Point(813, 8);
             moduleRefreshButton.Margin = new Padding(3, 8, 8, 8);
             moduleRefreshButton.Name = "moduleRefreshButton";
             moduleRefreshButton.Size = new Size(79, 32);
             moduleRefreshButton.TabIndex = 3;
             moduleRefreshButton.Text = "Refresh";
             moduleRefreshButton.UseVisualStyleBackColor = false;
+            // 
+            // modulePrintButton
+            // 
+            modulePrintButton.BackColor = Color.FromArgb(0, 123, 255);
+            modulePrintButton.Cursor = Cursors.Hand;
+            modulePrintButton.Dock = DockStyle.Fill;
+            modulePrintButton.FlatAppearance.BorderColor = Color.FromArgb(0, 86, 179);
+            modulePrintButton.FlatAppearance.BorderSize = 0;
+            modulePrintButton.FlatStyle = FlatStyle.Flat;
+            modulePrintButton.Font = new Font("Segoe UI", 10F);
+            modulePrintButton.ForeColor = Color.White;
+            modulePrintButton.Location = new Point(903, 8);
+            modulePrintButton.Margin = new Padding(3, 8, 8, 8);
+            modulePrintButton.Name = "modulePrintButton";
+            modulePrintButton.Size = new Size(79, 32);
+            modulePrintButton.TabIndex = 4;
+            modulePrintButton.Text = "Print";
+            modulePrintButton.UseVisualStyleBackColor = false;
             // 
             // moduleAddButton
             // 
@@ -153,7 +174,7 @@
             moduleAddButton.Margin = new Padding(3, 8, 3, 8);
             moduleAddButton.Name = "moduleAddButton";
             moduleAddButton.Size = new Size(104, 32);
-            moduleAddButton.TabIndex = 4;
+            moduleAddButton.TabIndex = 5;
             moduleAddButton.Text = "Add New";
             moduleAddButton.UseVisualStyleBackColor = false;
             // 
@@ -348,6 +369,7 @@
         private TextBox moduleSearchTextBox;
         private Button moduleSearchButton;
         private Button moduleRefreshButton;
+        private Button modulePrintButton;
         private Button moduleAddButton;
         private DataGridView moduleDataGridView;
         private ContextMenuStrip rowContextMenuStrip;

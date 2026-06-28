@@ -72,10 +72,13 @@ WHERE is_active = 1";
                 DataTable table = new DataTable();
                 adapter.Fill(table);
 
+                // Create columns FIRST
+                SetupDataGridViewColumns();
+
+                // Then bind
                 itemsDataGridView.DataSource = null;
                 itemsDataGridView.AutoGenerateColumns = false;
                 itemsDataGridView.DataSource = table;
-
                 // Configure columns
                 SetupDataGridViewColumns();
             }
@@ -88,13 +91,16 @@ WHERE is_active = 1";
 
         private void SetupDataGridViewColumns()
         {
+            if (itemsDataGridView.Columns.Count > 0)
+                return;
+
+            itemsDataGridView.AutoGenerateColumns = false;
             itemsDataGridView.Columns.Clear();
 
-            // Add columns manually for better control
+            // Hidden ID column
             itemsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "item_id",
-                HeaderText = "ID",
                 DataPropertyName = "item_id",
                 Visible = false
             });
@@ -150,7 +156,8 @@ WHERE is_active = 1";
                 HeaderText = "On Hand",
                 DataPropertyName = "quantity_on_hand",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
-                FillWeight = 10
+                FillWeight = 10,
+                DefaultCellStyle = { Format = "N2" }
             });
 
             itemsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
@@ -159,10 +166,10 @@ WHERE is_active = 1";
                 HeaderText = "Exp Date",
                 DataPropertyName = "expiration_date",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
-                FillWeight = 5
+                FillWeight = 10,
+                DefaultCellStyle = { Format = "MM/dd/yyyy" }
             });
 
-            // Apply styling
             itemsDataGridView.ReadOnly = true;
             itemsDataGridView.AllowUserToAddRows = false;
             itemsDataGridView.AllowUserToDeleteRows = false;

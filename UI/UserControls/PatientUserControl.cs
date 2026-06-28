@@ -27,7 +27,7 @@ namespace ABMS_2026.UI.UserControls
             {
                 SourceName = "v_patients",
                 TargetTableName = "patients",
-
+                ModuleName = "Patients",
                 PrimaryKeyColumn = "patient_id",
 
                 DisplayColumns = new()

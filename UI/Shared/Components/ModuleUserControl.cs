@@ -1,4 +1,5 @@
 ﻿using ABMS_2026.Common.Helpers;
+using ABMS_2026.Common.Printing;
 using ABMS_2026.Data.MySql;
 using MySql.Data.MySqlClient;
 using System;
@@ -41,6 +42,7 @@ namespace ABMS_2026.UI.Shared.Components
 
             moduleSearchButton.Click += moduleSearchButton_Click;
             moduleRefreshButton.Click += moduleRefreshButton_Click;
+            modulePrintButton.Click += modulePrintButton_Click;
             moduleAddButton.Click += moduleAddButton_Click;
             prevButton.Click += prevButton_Click;
             nextButton.Click += nextButton_Click;
@@ -450,6 +452,12 @@ ORDER BY {orderBy}
                 return;
             }
 
+            // Skip action columns if HideActionButtons is set (for read-only views)
+            if (_options != null && _options.HideActionButtons)
+            {
+                return;
+            }
+
             var editColumn = new DataGridViewButtonColumn
             {
                 Name = ActionEditColumnName,
@@ -640,6 +648,25 @@ ORDER BY {orderBy}
 
             _currentPage = 1;
             LoadGrid();
+        }
+
+        private void modulePrintButton_Click(object? sender, EventArgs e)
+        {
+            if (_options == null) return;
+
+            string moduleName = _options.ModuleName ?? _options.SourceName;
+            string logoPath = @"C:\Users\wenwe\source\repos\ABMS-2026\Resources\Images\shoot-animalbitelogo.png";
+
+            try
+            {
+                var printHelper = new PrintModuleHelper(moduleDataGridView, moduleName, logoPath);
+                printHelper.Print();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error printing: {ex.Message}", "Print Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void moduleAddButton_Click(object? sender, EventArgs e)
@@ -1083,6 +1110,7 @@ LIMIT 1;";
     {
         public string SourceName { get; set; } = string.Empty;          // table or view name for SELECT
         public string TargetTableName { get; set; } = string.Empty;     // table name for UPDATE/DELETE; defaults to SourceName
+        public string? ModuleName { get; set; }                        // display name for the module (used in printing)
 
         public string PrimaryKeyColumn { get; set; } = string.Empty;
 
@@ -1101,6 +1129,7 @@ LIMIT 1;";
         public string RefreshButtonText { get; set; } = "Refresh";
         public string SearchButtonText { get; set; } = "Search";
         public bool HideAddButton { get; set; } = false;
+        public bool HideActionButtons { get; set; } = false;          // Hide Edit/Delete buttons for read-only views
 
         public Action<Form, ModuleRecordContext>? FormConfigureCallback { get; set; }
 

@@ -226,5 +226,10 @@ namespace ABMS_2026.UI.Forms
             ProfileEditForm profileEditForm = new ProfileEditForm();
             profileEditForm.ShowDialog();
         }
+
+        private void MonitoringButton_Click(object sender, EventArgs e)
+        {
+            UserControlLoaderHelper.Load(mainContentPanel, new ExposureMonitoringUserControl());
+        }
     }
 } 

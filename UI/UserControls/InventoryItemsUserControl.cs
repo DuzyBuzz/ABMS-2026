@@ -24,7 +24,7 @@ namespace ABMS_2026.UI.UserControls
             {
                 SourceName = "inventory_items",
                 TargetTableName = "inventory_items",
-
+                ModuleName = "Inventory Items",
                 PrimaryKeyColumn = "item_id",
 
                 DisplayColumns = new()

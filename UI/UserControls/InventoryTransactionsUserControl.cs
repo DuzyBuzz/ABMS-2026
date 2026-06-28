@@ -24,25 +24,20 @@ namespace ABMS_2026.UI.UserControls
             {
                 SourceName = "v_transactions",
                 TargetTableName = "inventory_transactions",
-
+                ModuleName = "Inventory Transactions",
                 PrimaryKeyColumn = "transaction_id",
 
                 DisplayColumns = new()
                 {
+                    "transaction_date",
                     "generic_name",
                     "brand_name",
-                    "item_name",
                     "category",
                     "strength",
-                    "dosage_form",
                     "unit",
                     "transaction_type",
                     "quantity",
                     "remarks",
-                    "reference_no",
-                    "created_by",
-                    "transaction_date",
-                    "treatment_schedule_id",
                     "expiration_date"
                 },
 

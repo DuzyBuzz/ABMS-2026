@@ -29,8 +29,9 @@ namespace ABMS_2026.UI.Forms
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             sidebarPanel = new Panel();
-            settingsButton = new Button();
             userButton = new Button();
+            MonitoringButton = new Button();
+            settingsButton = new Button();
             transactionButton = new Button();
             inventoryButton = new Button();
             calendarButton = new Button();
@@ -52,8 +53,9 @@ namespace ABMS_2026.UI.Forms
             // sidebarPanel
             // 
             sidebarPanel.BackColor = Color.FromArgb(7, 102, 255);
-            sidebarPanel.Controls.Add(settingsButton);
             sidebarPanel.Controls.Add(userButton);
+            sidebarPanel.Controls.Add(MonitoringButton);
+            sidebarPanel.Controls.Add(settingsButton);
             sidebarPanel.Controls.Add(transactionButton);
             sidebarPanel.Controls.Add(inventoryButton);
             sidebarPanel.Controls.Add(calendarButton);
@@ -67,6 +69,44 @@ namespace ABMS_2026.UI.Forms
             sidebarPanel.Name = "sidebarPanel";
             sidebarPanel.Size = new Size(60, 800);
             sidebarPanel.TabIndex = 0;
+            // 
+            // userButton
+            // 
+            userButton.BackColor = Color.Transparent;
+            userButton.Cursor = Cursors.Hand;
+            userButton.Dock = DockStyle.Top;
+            userButton.FlatAppearance.BorderSize = 0;
+            userButton.FlatStyle = FlatStyle.Flat;
+            userButton.Font = new Font("Segoe UI Emoji", 16F);
+            userButton.ForeColor = Color.White;
+            userButton.Location = new Point(0, 330);
+            userButton.Margin = new Padding(10);
+            userButton.Name = "userButton";
+            userButton.Size = new Size(60, 40);
+            userButton.TabIndex = 45;
+            userButton.Text = "🔐";
+            toolTip1.SetToolTip(userButton, "Users");
+            userButton.UseVisualStyleBackColor = true;
+            userButton.Click += userButton_Click;
+            // 
+            // MonitoringButton
+            // 
+            MonitoringButton.BackColor = Color.Transparent;
+            MonitoringButton.Cursor = Cursors.Hand;
+            MonitoringButton.Dock = DockStyle.Top;
+            MonitoringButton.FlatAppearance.BorderSize = 0;
+            MonitoringButton.FlatStyle = FlatStyle.Flat;
+            MonitoringButton.Font = new Font("Segoe UI Emoji", 16F);
+            MonitoringButton.ForeColor = Color.White;
+            MonitoringButton.Location = new Point(0, 290);
+            MonitoringButton.Margin = new Padding(10);
+            MonitoringButton.Name = "MonitoringButton";
+            MonitoringButton.Size = new Size(60, 40);
+            MonitoringButton.TabIndex = 44;
+            MonitoringButton.Text = "🚨";
+            toolTip1.SetToolTip(MonitoringButton, "Users");
+            MonitoringButton.UseVisualStyleBackColor = true;
+            MonitoringButton.Click += MonitoringButton_Click;
             // 
             // settingsButton
             // 
@@ -85,25 +125,6 @@ namespace ABMS_2026.UI.Forms
             toolTip1.SetToolTip(settingsButton, "User Logs");
             settingsButton.UseVisualStyleBackColor = true;
             settingsButton.Click += settingsButton_Click;
-            // 
-            // userButton
-            // 
-            userButton.BackColor = Color.Transparent;
-            userButton.Cursor = Cursors.Hand;
-            userButton.Dock = DockStyle.Top;
-            userButton.FlatAppearance.BorderSize = 0;
-            userButton.FlatStyle = FlatStyle.Flat;
-            userButton.Font = new Font("Segoe UI Emoji", 16F);
-            userButton.ForeColor = Color.White;
-            userButton.Location = new Point(0, 290);
-            userButton.Margin = new Padding(10);
-            userButton.Name = "userButton";
-            userButton.Size = new Size(60, 40);
-            userButton.TabIndex = 40;
-            userButton.Text = "🔐";
-            toolTip1.SetToolTip(userButton, "Users");
-            userButton.UseVisualStyleBackColor = true;
-            userButton.Click += userButton_Click;
             // 
             // transactionButton
             // 
@@ -342,7 +363,6 @@ namespace ABMS_2026.UI.Forms
         private Button biteCaseButton;
         private Button patientButton;
         private Button dashboardsButton;
-        private Button userButton;
         private Button transactionButton;
         private ToolTip toolTip1;
         private Panel headerTilePanel;
@@ -350,5 +370,7 @@ namespace ABMS_2026.UI.Forms
         private Button settingsButton;
         private Label pageTitleLabel;
         private Label userNameLabel;
+        private Button MonitoringButton;
+        private Button userButton;
     }
 }

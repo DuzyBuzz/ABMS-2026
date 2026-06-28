@@ -28,7 +28,7 @@ namespace ABMS_2026.UI.UserControls
                 TargetTableName = "bite_cases",
 
                 PrimaryKeyColumn = "bite_case_id",
-
+                ModuleName = "National Rabies Prevention and Control Program Rabies Exposure Registry",
                 DisplayColumns = new()
                 {
                     "created_at",
@@ -42,10 +42,6 @@ namespace ABMS_2026.UI.UserControls
                     "incident_place",
                     "animal_type",
                     "animal_classification",
-                    "animal_status",
-                    "wound_type",
-                    "wound_count",
-                    "wound_classification",
                 },
 
                 SearchableColumns = new()

@@ -110,11 +110,12 @@ WHERE bite_case_id = @bite_case_id";
                 adapter.Fill(table);
 
                 _totalRecords = table.Rows.Count;
-
                 moduleDataGridView.DataSource = null;
                 moduleDataGridView.AutoGenerateColumns = false;
-                moduleDataGridView.DataSource = table;
 
+                SetupDataGridViewColumns();
+
+                moduleDataGridView.DataSource = table;
                 SetupDataGridViewColumns();
                 ApplyGridSettings();
                 UpdateSummary();

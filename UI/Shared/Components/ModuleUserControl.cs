@@ -49,6 +49,9 @@ namespace ABMS_2026.UI.Shared.Components
             moduleDateFromDateTimePicker.ValueChanged += DateFilterChanged;
             moduleDateToDateTimePicker.ValueChanged += DateFilterChanged;
             moduleDataGridView.CellContentClick += moduleDataGridView_CellContentClick;
+            moduleDataGridView.CellMouseClick += moduleDataGridView_CellMouseClick;
+            rowContextMenuStrip.Opening += rowContextMenuStrip_Opening;
+            rowContextMenuStrip.ItemClicked += rowContextMenuStrip_ItemClicked;
 
             ApplyDefaultVisualState();
         }
@@ -64,6 +67,7 @@ namespace ABMS_2026.UI.Shared.Components
             moduleAddButton.Text = options.AddButtonText;
             moduleRefreshButton.Text = options.RefreshButtonText;
             moduleSearchButton.Text = options.SearchButtonText;
+            moduleAddButton.Visible = !options.HideAddButton;
 
             _hidePrimaryKeyColumn = !options.DisplayColumns.Any(c =>
                 string.Equals(c, options.PrimaryKeyColumn, StringComparison.OrdinalIgnoreCase));
@@ -440,6 +444,12 @@ ORDER BY {orderBy}
         {
             RemoveActionColumns();
 
+            // Skip action columns if context menu is enabled and configured to hide them
+            if (_options != null && _options.EnableContextMenu && _options.HideActionButtonsWhenContextMenuEnabled)
+            {
+                return;
+            }
+
             var editColumn = new DataGridViewButtonColumn
             {
                 Name = ActionEditColumnName,
@@ -671,6 +681,79 @@ ORDER BY {orderBy}
             else if (moduleDataGridView.Columns[e.ColumnIndex].Name == ActionDeleteColumnName)
             {
                 DeleteRow(moduleDataGridView.Rows[e.RowIndex]);
+            }
+        }
+
+        private void moduleDataGridView_CellMouseClick(object? sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (_options == null) return;
+            if (!_options.EnableContextMenu) return;
+            if (e.Button != MouseButtons.Right) return;
+            if (e.RowIndex < 0) return;
+
+            // Select the row that was right-clicked
+            moduleDataGridView.ClearSelection();
+            moduleDataGridView.Rows[e.RowIndex].Selected = true;
+
+            // Show context menu beside the actual mouse cursor position
+            Point cursorPosition = Cursor.Position;
+            Point menuPosition = new Point(cursorPosition.X + 10, cursorPosition.Y + 10);
+            rowContextMenuStrip.Show(menuPosition);
+        }
+
+        private void rowContextMenuStrip_Opening(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (_options == null || !_options.EnableContextMenu)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            // Build context menu from configuration
+            rowContextMenuStrip.Items.Clear();
+
+            foreach (var menuItem in _options.ContextMenuItems)
+            {
+                if (menuItem.IsSeparator)
+                {
+                    rowContextMenuStrip.Items.Add(new ToolStripSeparator());
+                }
+                else
+                {
+                    var toolStripItem = new ToolStripMenuItem(menuItem.Text)
+                    {
+                        Name = menuItem.Name,
+                        Tag = menuItem
+                    };
+                    rowContextMenuStrip.Items.Add(toolStripItem);
+                }
+            }
+
+            // If no items, cancel the menu
+            if (rowContextMenuStrip.Items.Count == 0)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void rowContextMenuStrip_ItemClicked(object? sender, ToolStripItemClickedEventArgs e)
+        {
+            if (_options == null) return;
+            if (moduleDataGridView.SelectedRows.Count == 0) return;
+
+            var clickedItem = e.ClickedItem;
+            if (clickedItem.Tag is not ModuleContextMenuItem menuItem) return;
+
+            var selectedRow = moduleDataGridView.SelectedRows[0];
+            var context = CreateContext(isEditMode: true, row: selectedRow);
+
+            // Execute the custom action
+            menuItem.Action?.Invoke(context);
+
+            // Reload grid if configured to do so
+            if (menuItem.ReloadGridAfterAction)
+            {
+                LoadGrid();
             }
         }
 
@@ -987,6 +1070,15 @@ LIMIT 1;";
             LoadGrid();
         }
     }
+    public sealed class ModuleContextMenuItem
+    {
+        public string Text { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;
+        public Action<ModuleRecordContext>? Action { get; set; }
+        public bool IsSeparator { get; set; }
+        public bool ReloadGridAfterAction { get; set; } = true;
+    }
+
     public sealed class ModuleUserControlOptions
     {
         public string SourceName { get; set; } = string.Empty;          // table or view name for SELECT
@@ -1008,8 +1100,14 @@ LIMIT 1;";
         public string AddButtonText { get; set; } = "Add New";
         public string RefreshButtonText { get; set; } = "Refresh";
         public string SearchButtonText { get; set; } = "Search";
+        public bool HideAddButton { get; set; } = false;
 
         public Action<Form, ModuleRecordContext>? FormConfigureCallback { get; set; }
+
+        // Context menu configuration
+        public bool EnableContextMenu { get; set; } = false;
+        public List<ModuleContextMenuItem> ContextMenuItems { get; set; } = new();
+        public bool HideActionButtonsWhenContextMenuEnabled { get; set; } = true;
     }
 
     public sealed class ModuleRecordContext

@@ -30,12 +30,10 @@ namespace ABMS_2026.UI.Forms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             sidebarPanel = new Panel();
             settingsButton = new Button();
-            userLogsButton = new Button();
             userButton = new Button();
             transactionButton = new Button();
             inventoryButton = new Button();
             calendarButton = new Button();
-            queingButton = new Button();
             biteCaseButton = new Button();
             patientButton = new Button();
             dashboardsButton = new Button();
@@ -55,12 +53,10 @@ namespace ABMS_2026.UI.Forms
             // 
             sidebarPanel.BackColor = Color.FromArgb(7, 102, 255);
             sidebarPanel.Controls.Add(settingsButton);
-            sidebarPanel.Controls.Add(userLogsButton);
             sidebarPanel.Controls.Add(userButton);
             sidebarPanel.Controls.Add(transactionButton);
             sidebarPanel.Controls.Add(inventoryButton);
             sidebarPanel.Controls.Add(calendarButton);
-            sidebarPanel.Controls.Add(queingButton);
             sidebarPanel.Controls.Add(biteCaseButton);
             sidebarPanel.Controls.Add(patientButton);
             sidebarPanel.Controls.Add(dashboardsButton);
@@ -88,25 +84,7 @@ namespace ABMS_2026.UI.Forms
             settingsButton.Text = "⚙️";
             toolTip1.SetToolTip(settingsButton, "User Logs");
             settingsButton.UseVisualStyleBackColor = true;
-            // 
-            // userLogsButton
-            // 
-            userLogsButton.BackColor = Color.Transparent;
-            userLogsButton.Cursor = Cursors.Hand;
-            userLogsButton.Dock = DockStyle.Top;
-            userLogsButton.FlatAppearance.BorderSize = 0;
-            userLogsButton.FlatStyle = FlatStyle.Flat;
-            userLogsButton.Font = new Font("Segoe UI Emoji", 16F);
-            userLogsButton.ForeColor = Color.White;
-            userLogsButton.Location = new Point(0, 370);
-            userLogsButton.Margin = new Padding(10);
-            userLogsButton.Name = "userLogsButton";
-            userLogsButton.Size = new Size(60, 40);
-            userLogsButton.TabIndex = 41;
-            userLogsButton.Text = "\U0001f9fe";
-            toolTip1.SetToolTip(userLogsButton, "User Logs");
-            userLogsButton.UseVisualStyleBackColor = true;
-            userLogsButton.Click += userLogsButton_Click;
+            settingsButton.Click += settingsButton_Click;
             // 
             // userButton
             // 
@@ -117,7 +95,7 @@ namespace ABMS_2026.UI.Forms
             userButton.FlatStyle = FlatStyle.Flat;
             userButton.Font = new Font("Segoe UI Emoji", 16F);
             userButton.ForeColor = Color.White;
-            userButton.Location = new Point(0, 330);
+            userButton.Location = new Point(0, 290);
             userButton.Margin = new Padding(10);
             userButton.Name = "userButton";
             userButton.Size = new Size(60, 40);
@@ -136,7 +114,7 @@ namespace ABMS_2026.UI.Forms
             transactionButton.FlatStyle = FlatStyle.Flat;
             transactionButton.Font = new Font("Segoe UI Emoji", 16F);
             transactionButton.ForeColor = Color.White;
-            transactionButton.Location = new Point(0, 290);
+            transactionButton.Location = new Point(0, 250);
             transactionButton.Margin = new Padding(10);
             transactionButton.Name = "transactionButton";
             transactionButton.Size = new Size(60, 40);
@@ -155,7 +133,7 @@ namespace ABMS_2026.UI.Forms
             inventoryButton.FlatStyle = FlatStyle.Flat;
             inventoryButton.Font = new Font("Segoe UI Emoji", 16F);
             inventoryButton.ForeColor = Color.White;
-            inventoryButton.Location = new Point(0, 250);
+            inventoryButton.Location = new Point(0, 210);
             inventoryButton.Margin = new Padding(10);
             inventoryButton.Name = "inventoryButton";
             inventoryButton.Size = new Size(60, 40);
@@ -174,7 +152,7 @@ namespace ABMS_2026.UI.Forms
             calendarButton.FlatStyle = FlatStyle.Flat;
             calendarButton.Font = new Font("Segoe UI Emoji", 16F);
             calendarButton.ForeColor = Color.White;
-            calendarButton.Location = new Point(0, 210);
+            calendarButton.Location = new Point(0, 170);
             calendarButton.Margin = new Padding(10);
             calendarButton.Name = "calendarButton";
             calendarButton.Size = new Size(60, 40);
@@ -183,25 +161,6 @@ namespace ABMS_2026.UI.Forms
             toolTip1.SetToolTip(calendarButton, "Calendar");
             calendarButton.UseVisualStyleBackColor = true;
             calendarButton.Click += calendarButton_Click;
-            // 
-            // queingButton
-            // 
-            queingButton.BackColor = Color.Transparent;
-            queingButton.Cursor = Cursors.Hand;
-            queingButton.Dock = DockStyle.Top;
-            queingButton.FlatAppearance.BorderSize = 0;
-            queingButton.FlatStyle = FlatStyle.Flat;
-            queingButton.Font = new Font("Segoe UI Emoji", 16F);
-            queingButton.ForeColor = Color.White;
-            queingButton.Location = new Point(0, 170);
-            queingButton.Margin = new Padding(10);
-            queingButton.Name = "queingButton";
-            queingButton.Size = new Size(60, 40);
-            queingButton.TabIndex = 33;
-            queingButton.Text = "🕘";
-            toolTip1.SetToolTip(queingButton, "Queing");
-            queingButton.UseVisualStyleBackColor = true;
-            queingButton.Click += queingButton_Click;
             // 
             // biteCaseButton
             // 
@@ -380,11 +339,9 @@ namespace ABMS_2026.UI.Forms
         }
         private PictureBox pictureBox1;
         private Button calendarButton;
-        private Button queingButton;
         private Button biteCaseButton;
         private Button patientButton;
         private Button dashboardsButton;
-        private Button userLogsButton;
         private Button userButton;
         private Button transactionButton;
         private ToolTip toolTip1;

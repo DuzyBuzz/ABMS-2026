@@ -32,7 +32,6 @@ namespace ABMS_2026.UI.UserControls
 
                 DisplayColumns = new()
         {
-            "registration_no",
             "last_name",
             "first_name",
             "middle_name",
@@ -58,8 +57,58 @@ namespace ABMS_2026.UI.UserControls
 
                 PageSize = 1000,
 
-                UpsertFormType = typeof(PatientProfileForm)
+                UpsertFormType = typeof(PatientProfileForm),
+
+                // Enable context menu with custom actions
+                EnableContextMenu = true,
+                HideActionButtonsWhenContextMenuEnabled = false,
+                ContextMenuItems = new List<ModuleContextMenuItem>
+                {
+                    new ModuleContextMenuItem
+                    {
+                        Text = "New Bite Case",
+                        Name = "new_bite_case",
+                        Action = NewBiteCaseAction,
+                        ReloadGridAfterAction = false
+                    },
+                    new ModuleContextMenuItem
+                    {
+                        Text = "Bite Case History",
+                        Name = "bite_case_history",
+                        Action = BiteCaseHistoryAction,
+                        ReloadGridAfterAction = false
+                    }
+                }
             });
+        }
+
+        private void NewBiteCaseAction(ModuleRecordContext context)
+        {
+            if (context.PrimaryKeyValue == null) return;
+
+            int patientId = Convert.ToInt32(context.PrimaryKeyValue);
+
+            using (var biteCaseForm = new BiteCaseForm(patientId))
+            {
+                biteCaseForm.StartPosition = FormStartPosition.CenterParent;
+                if (biteCaseForm.ShowDialog(FindForm()) == DialogResult.OK)
+                {
+                    // Optionally refresh or notify of success
+                }
+            }
+        }
+
+        private void BiteCaseHistoryAction(ModuleRecordContext context)
+        {
+            if (context.PrimaryKeyValue == null) return;
+
+            int patientId = Convert.ToInt32(context.PrimaryKeyValue);
+
+            // Show bite case history for this patient
+            using (var historyForm = new Form())
+            {
+
+            }
         }
     }
 }

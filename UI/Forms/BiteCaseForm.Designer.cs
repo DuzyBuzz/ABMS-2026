@@ -2,262 +2,260 @@
 {
     partial class BiteCaseForm
     {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
                 components.Dispose();
             }
-            base.Dispose(disposing);
+            base.Dispose(disposing); 
         }
 
         #region Windows Form Designer generated code
 
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BiteCaseForm));
+            patientInfoPanel = new Panel();
+            weightLabel = new Label();
+            contactNoLabel = new Label();
+            statusLabel = new Label();
             sexLabel = new Label();
+            patientPictureBox = new PictureBox();
             ageLabel = new Label();
-            patientPickerButton = new Button();
-            patientTextBox = new TextBox();
-            patientLabel = new Label();
             addressLabel = new Label();
-            registrationLabel = new Label();
-            birthDateLabel = new Label();
-            civilStatusLabel = new Label();
-            contactLabel = new Label();
-            biteCaseInformationLabel = new Label();
-            topPanel = new Panel();
-            patientImagePictureBox = new PictureBox();
-            biteCaseTabControl = new TabControl();
-            exposureDetailsTabPage = new TabPage();
+            patientNameLabel = new Label();
+            tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            biteCaseDetailPanel = new Panel();
             tabPage2 = new TabPage();
-            topPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)patientImagePictureBox).BeginInit();
-            biteCaseTabControl.SuspendLayout();
+            doctorsOrderPanel = new Panel();
+            tabPage3 = new TabPage();
+            treatmentSchedulePanel = new Panel();
+            patientInfoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)patientPictureBox).BeginInit();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
             SuspendLayout();
+            // 
+            // patientInfoPanel
+            // 
+            patientInfoPanel.Controls.Add(weightLabel);
+            patientInfoPanel.Controls.Add(contactNoLabel);
+            patientInfoPanel.Controls.Add(statusLabel);
+            patientInfoPanel.Controls.Add(sexLabel);
+            patientInfoPanel.Controls.Add(patientPictureBox);
+            patientInfoPanel.Controls.Add(ageLabel);
+            patientInfoPanel.Controls.Add(addressLabel);
+            patientInfoPanel.Controls.Add(patientNameLabel);
+            patientInfoPanel.Dock = DockStyle.Top;
+            patientInfoPanel.Location = new Point(0, 0);
+            patientInfoPanel.Name = "patientInfoPanel";
+            patientInfoPanel.Size = new Size(1200, 100);
+            patientInfoPanel.TabIndex = 0;
+            // 
+            // weightLabel
+            // 
+            weightLabel.AutoSize = true;
+            weightLabel.Location = new Point(1001, 54);
+            weightLabel.Name = "weightLabel";
+            weightLabel.Size = new Size(72, 15);
+            weightLabel.TabIndex = 9;
+            weightLabel.Text = "Weight (kg):";
+            // 
+            // contactNoLabel
+            // 
+            contactNoLabel.AutoSize = true;
+            contactNoLabel.Location = new Point(806, 54);
+            contactNoLabel.Name = "contactNoLabel";
+            contactNoLabel.Size = new Size(71, 15);
+            contactNoLabel.TabIndex = 8;
+            contactNoLabel.Text = "Contact No:";
+            // 
+            // statusLabel
+            // 
+            statusLabel.AutoSize = true;
+            statusLabel.Location = new Point(672, 54);
+            statusLabel.Name = "statusLabel";
+            statusLabel.Size = new Size(39, 15);
+            statusLabel.TabIndex = 7;
+            statusLabel.Text = "Status";
             // 
             // sexLabel
             // 
             sexLabel.AutoSize = true;
-            sexLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            sexLabel.Location = new Point(908, 94);
+            sexLabel.Location = new Point(580, 54);
             sexLabel.Name = "sexLabel";
-            sexLabel.Size = new Size(41, 21);
-            sexLabel.TabIndex = 14;
-            sexLabel.Text = "Sex:";
+            sexLabel.Size = new Size(25, 15);
+            sexLabel.TabIndex = 6;
+            sexLabel.Text = "Sex";
+            // 
+            // patientPictureBox
+            // 
+            patientPictureBox.Dock = DockStyle.Right;
+            patientPictureBox.Image = (Image)resources.GetObject("patientPictureBox.Image");
+            patientPictureBox.Location = new Point(1100, 0);
+            patientPictureBox.Name = "patientPictureBox";
+            patientPictureBox.Size = new Size(100, 100);
+            patientPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            patientPictureBox.TabIndex = 5;
+            patientPictureBox.TabStop = false;
+            patientPictureBox.Click += patientPictureBox_Click;
             // 
             // ageLabel
             // 
             ageLabel.AutoSize = true;
-            ageLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            ageLabel.Location = new Point(816, 94);
+            ageLabel.Location = new Point(502, 54);
             ageLabel.Name = "ageLabel";
-            ageLabel.Size = new Size(44, 21);
-            ageLabel.TabIndex = 12;
+            ageLabel.Size = new Size(31, 15);
+            ageLabel.TabIndex = 4;
             ageLabel.Text = "Age:";
-            // 
-            // patientPickerButton
-            // 
-            patientPickerButton.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            patientPickerButton.Location = new Point(590, 47);
-            patientPickerButton.Name = "patientPickerButton";
-            patientPickerButton.Size = new Size(30, 25);
-            patientPickerButton.TabIndex = 11;
-            patientPickerButton.Text = "...";
-            patientPickerButton.UseVisualStyleBackColor = true;
-            patientPickerButton.Click += patientPickerButton_Click;
-            // 
-            // patientTextBox
-            // 
-            patientTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            patientTextBox.Location = new Point(109, 41);
-            patientTextBox.Name = "patientTextBox";
-            patientTextBox.Size = new Size(457, 29);
-            patientTextBox.TabIndex = 10;
-            // 
-            // patientLabel
-            // 
-            patientLabel.AutoSize = true;
-            patientLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            patientLabel.Location = new Point(11, 49);
-            patientLabel.Name = "patientLabel";
-            patientLabel.Size = new Size(69, 21);
-            patientLabel.TabIndex = 9;
-            patientLabel.Text = "Patient:";
             // 
             // addressLabel
             // 
             addressLabel.AutoSize = true;
-            addressLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            addressLabel.Location = new Point(11, 94);
+            addressLabel.Location = new Point(23, 54);
             addressLabel.Name = "addressLabel";
-            addressLabel.Size = new Size(74, 21);
-            addressLabel.TabIndex = 7;
-            addressLabel.Text = "Address:";
+            addressLabel.Size = new Size(55, 15);
+            addressLabel.TabIndex = 3;
+            addressLabel.Text = "Address: ";
             // 
-            // registrationLabel
+            // patientNameLabel
             // 
-            registrationLabel.AutoSize = true;
-            registrationLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            registrationLabel.Location = new Point(637, 49);
-            registrationLabel.Name = "registrationLabel";
-            registrationLabel.Size = new Size(80, 21);
-            registrationLabel.TabIndex = 17;
-            registrationLabel.Text = "Reg No: -";
+            patientNameLabel.AutoSize = true;
+            patientNameLabel.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            patientNameLabel.ForeColor = Color.FromArgb(22, 54, 105);
+            patientNameLabel.Location = new Point(23, 13);
+            patientNameLabel.Name = "patientNameLabel";
+            patientNameLabel.Size = new Size(99, 30);
+            patientNameLabel.TabIndex = 1;
+            patientNameLabel.Text = "Patient: ";
             // 
-            // birthDateLabel
+            // tabControl1
             // 
-            birthDateLabel.AutoSize = true;
-            birthDateLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            birthDateLabel.Location = new Point(637, 94);
-            birthDateLabel.Name = "birthDateLabel";
-            birthDateLabel.Size = new Size(61, 21);
-            birthDateLabel.TabIndex = 18;
-            birthDateLabel.Text = "Birth: -";
-            // 
-            // civilStatusLabel
-            // 
-            civilStatusLabel.AutoSize = true;
-            civilStatusLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            civilStatusLabel.Location = new Point(1144, 49);
-            civilStatusLabel.Name = "civilStatusLabel";
-            civilStatusLabel.Size = new Size(109, 21);
-            civilStatusLabel.TabIndex = 19;
-            civilStatusLabel.Text = "Civil Status: -";
-            // 
-            // contactLabel
-            // 
-            contactLabel.AutoSize = true;
-            contactLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            contactLabel.Location = new Point(1144, 94);
-            contactLabel.Name = "contactLabel";
-            contactLabel.Size = new Size(83, 21);
-            contactLabel.TabIndex = 20;
-            contactLabel.Text = "Contact: -";
-            // 
-            // biteCaseInformationLabel
-            // 
-            biteCaseInformationLabel.AutoSize = true;
-            biteCaseInformationLabel.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            biteCaseInformationLabel.ForeColor = Color.MidnightBlue;
-            biteCaseInformationLabel.Location = new Point(11, 8);
-            biteCaseInformationLabel.Name = "biteCaseInformationLabel";
-            biteCaseInformationLabel.Size = new Size(199, 28);
-            biteCaseInformationLabel.TabIndex = 1;
-            biteCaseInformationLabel.Text = "Patient Information";
-            // 
-            // topPanel
-            // 
-            topPanel.BackColor = Color.White;
-            topPanel.BorderStyle = BorderStyle.FixedSingle;
-            topPanel.Controls.Add(contactLabel);
-            topPanel.Controls.Add(civilStatusLabel);
-            topPanel.Controls.Add(birthDateLabel);
-            topPanel.Controls.Add(registrationLabel);
-            topPanel.Controls.Add(patientImagePictureBox);
-            topPanel.Controls.Add(biteCaseInformationLabel);
-            topPanel.Controls.Add(addressLabel);
-            topPanel.Controls.Add(patientLabel);
-            topPanel.Controls.Add(patientTextBox);
-            topPanel.Controls.Add(patientPickerButton);
-            topPanel.Controls.Add(ageLabel);
-            topPanel.Controls.Add(sexLabel);
-            topPanel.Dock = DockStyle.Top;
-            topPanel.Location = new Point(0, 0);
-            topPanel.Name = "topPanel";
-            topPanel.Size = new Size(1520, 130);
-            topPanel.TabIndex = 0;
-            // 
-            // patientImagePictureBox
-            // 
-            patientImagePictureBox.Dock = DockStyle.Right;
-            patientImagePictureBox.Location = new Point(1398, 0);
-            patientImagePictureBox.Name = "patientImagePictureBox";
-            patientImagePictureBox.Size = new Size(120, 128);
-            patientImagePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            patientImagePictureBox.TabIndex = 15;
-            patientImagePictureBox.TabStop = false;
-            // 
-            // biteCaseTabControl
-            // 
-            biteCaseTabControl.Controls.Add(exposureDetailsTabPage);
-            biteCaseTabControl.Controls.Add(tabPage1);
-            biteCaseTabControl.Controls.Add(tabPage2);
-            biteCaseTabControl.Dock = DockStyle.Fill;
-            biteCaseTabControl.Location = new Point(0, 130);
-            biteCaseTabControl.Name = "biteCaseTabControl";
-            biteCaseTabControl.SelectedIndex = 0;
-            biteCaseTabControl.Size = new Size(1520, 932);
-            biteCaseTabControl.TabIndex = 1;
-            // 
-            // exposureDetailsTabPage
-            // 
-            exposureDetailsTabPage.Location = new Point(4, 24);
-            exposureDetailsTabPage.Name = "exposureDetailsTabPage";
-            exposureDetailsTabPage.Size = new Size(1512, 904);
-            exposureDetailsTabPage.TabIndex = 0;
-            exposureDetailsTabPage.Text = "EXPOSURE DETAILS";
-            exposureDetailsTabPage.UseVisualStyleBackColor = true;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Dock = DockStyle.Fill;
+            tabControl1.Location = new Point(0, 100);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(1200, 700);
+            tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
+            tabPage1.Controls.Add(biteCaseDetailPanel);
             tabPage1.Location = new Point(4, 24);
             tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(1512, 904);
-            tabPage1.TabIndex = 1;
-            tabPage1.Text = "DOCTOR'S ORDER ";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1192, 672);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Bite Case Details";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // biteCaseDetailPanel
+            // 
+            biteCaseDetailPanel.Dock = DockStyle.Fill;
+            biteCaseDetailPanel.Location = new Point(3, 3);
+            biteCaseDetailPanel.Name = "biteCaseDetailPanel";
+            biteCaseDetailPanel.Size = new Size(1186, 666);
+            biteCaseDetailPanel.TabIndex = 0;
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(doctorsOrderPanel);
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
-            tabPage2.Size = new Size(1512, 904);
-            tabPage2.TabIndex = 2;
-            tabPage2.Text = "TREATMENT SCHEDULE";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1192, 672);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Doctors Orders";
             tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // doctorsOrderPanel
+            // 
+            doctorsOrderPanel.Dock = DockStyle.Fill;
+            doctorsOrderPanel.Location = new Point(3, 3);
+            doctorsOrderPanel.Name = "doctorsOrderPanel";
+            doctorsOrderPanel.Size = new Size(1186, 666);
+            doctorsOrderPanel.TabIndex = 1;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(treatmentSchedulePanel);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(1192, 672);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Treatment Schedules";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // treatmentSchedulePanel
+            // 
+            treatmentSchedulePanel.Dock = DockStyle.Fill;
+            treatmentSchedulePanel.Location = new Point(3, 3);
+            treatmentSchedulePanel.Name = "treatmentSchedulePanel";
+            treatmentSchedulePanel.Size = new Size(1186, 666);
+            treatmentSchedulePanel.TabIndex = 0;
             // 
             // BiteCaseForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.WhiteSmoke;
-            ClientSize = new Size(1520, 1062);
-            Controls.Add(biteCaseTabControl);
-            Controls.Add(topPanel);
-            Font = new Font("Segoe UI", 9F);
-            MinimumSize = new Size(1400, 900);
+            ClientSize = new Size(1200, 800);
+            Controls.Add(tabControl1);
+            Controls.Add(patientInfoPanel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "BiteCaseForm";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Bite Case";
+            Text = "BiteCaseForm";
+            WindowState = FormWindowState.Maximized;
             Load += BiteCaseForm_Load;
-            topPanel.ResumeLayout(false);
-            topPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)patientImagePictureBox).EndInit();
-            biteCaseTabControl.ResumeLayout(false);
+            patientInfoPanel.ResumeLayout(false);
+            patientInfoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)patientPictureBox).EndInit();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private Label sexLabel;
-        private Label ageLabel;
-        private Button patientPickerButton;
-        private TextBox patientTextBox;
-        private Label patientLabel;
+
+        private Panel patientInfoPanel;
+        private Label label1;
+        private Label PatientNameLabel;
         private Label addressLabel;
-        private Label registrationLabel;
-        private Label birthDateLabel;
-        private Label civilStatusLabel;
-        private Label contactLabel;
-        private Label biteCaseInformationLabel;
-        private Panel topPanel;
-        private PictureBox patientImagePictureBox;
-        private TabControl biteCaseTabControl;
-        private TabPage exposureDetailsTabPage;
-        private TabPage tabPage1;
+        private Label ageLabel;
+        private PictureBox patientPictureBox;
+        private Label weightLabel;
+        private Label contactNoLabel;
+        private Label statusLabel;
+        private Label sexLabel;
+        private TabControl tabControl1;
         private TabPage tabPage2;
+        private TabPage tabPage3;
+        private Label patientNameLabel;
+        private TabPage tabPage1;
+        private Panel biteCaseDetailPanel;
+        private Panel doctorsOrderPanel;
+        private Panel treatmentSchedulePanel;
     }
 }

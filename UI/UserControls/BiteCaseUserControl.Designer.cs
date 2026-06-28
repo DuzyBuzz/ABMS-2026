@@ -1,4 +1,7 @@
-﻿namespace ABMS_2026.UI.UserControls
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace ABMS_2026.UI.UserControls
 {
     partial class BiteCaseUserControl
     {
@@ -39,7 +42,7 @@
             moduleUserControl.Location = new Point(0, 0);
             moduleUserControl.Name = "moduleUserControl";
             moduleUserControl.Size = new Size(1140, 750);
-            moduleUserControl.TabIndex = 1;
+            moduleUserControl.TabIndex = 0;
             // 
             // BiteCaseUserControl
             // 
@@ -54,7 +57,6 @@
 
         #endregion
 
-        private Shared.Components.ModuleUserControl moduleUserControl1;
         private Shared.Components.ModuleUserControl moduleUserControl;
     }
 }

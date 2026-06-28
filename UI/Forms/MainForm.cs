@@ -1,9 +1,9 @@
-using System;
-using System.Windows.Forms;
-using ABMS_2026.UI.UserControls;
-using ABMS_2026.Common.Session;
-using System.Drawing;
 using ABMS_2026.Common.Helpers;
+using ABMS_2026.Common.Session;
+using ABMS_2026.UI.UserControls;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace ABMS_2026.UI.Forms
 {
@@ -161,7 +161,7 @@ namespace ABMS_2026.UI.Forms
         private void patientButton_Click(object sender, EventArgs e)
         {
             pageTitleLabel.Text = "Patients";
-            UserControlLoaderHelper.Load(mainContentPanel,new  PatientUserControl());
+            UserControlLoaderHelper.Load(mainContentPanel, new PatientUserControl());
             HighlightButton(patientButton);
         }
 
@@ -173,51 +173,58 @@ namespace ABMS_2026.UI.Forms
         {
             pageTitleLabel.Text = "Dashboard";
             HighlightButton(dashboardsButton);
+            UserControlLoaderHelper.Load(mainContentPanel, new DashboardUserControl());
         }
 
         private void biteCaseButton_Click(object sender, EventArgs e)
         {
             pageTitleLabel.Text = "Bite Cases";
-            UserControlLoaderHelper.Load(mainContentPanel, new BiteCaseUserControl());
             HighlightButton(biteCaseButton);
+            UserControlLoaderHelper.Load(mainContentPanel, new BiteCaseUserControl());
         }
 
         private void queingButton_Click(object sender, EventArgs e)
         {
             pageTitleLabel.Text = "Queing";
-            UserControlLoaderHelper.Load(mainContentPanel, new UpsertBiteCaseUserControl());
         }
 
         private void calendarButton_Click(object sender, EventArgs e)
         {
             pageTitleLabel.Text = "Schedule";
             HighlightButton(calendarButton);
-            BiteCaseForm biteCaseForm = new BiteCaseForm(3);
-            biteCaseForm.ShowDialog();
+            UserControlLoaderHelper.Load(mainContentPanel, new TreatmentScheduleUserControl());
         }
 
         private void inventoryButton_Click(object sender, EventArgs e)
         {
             pageTitleLabel.Text = "Inventory";
             HighlightButton(inventoryButton);
+            UserControlLoaderHelper.Load(mainContentPanel, new InventoryItemsUserControl());
         }
 
         private void transactionButton_Click(object sender, EventArgs e)
         {
             pageTitleLabel.Text = "Transactions";
             HighlightButton(transactionButton);
+            UserControlLoaderHelper.Load(mainContentPanel, new InventoryTransactionsUserControl());
+
         }
 
         private void userButton_Click(object sender, EventArgs e)
         {
             pageTitleLabel.Text = "User Management";
             HighlightButton(userButton);
+            UserControlLoaderHelper.Load(mainContentPanel, new UserUserControl());
         }
 
         private void userLogsButton_Click(object sender, EventArgs e)
         {
-            pageTitleLabel.Text = "User Logs";
-            HighlightButton(userLogsButton);
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            ProfileEditForm profileEditForm = new ProfileEditForm();
+            profileEditForm.ShowDialog();
         }
     }
 } 

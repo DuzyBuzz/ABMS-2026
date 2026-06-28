@@ -1,4 +1,3 @@
-﻿using ABMS_2026.Common.Helpers;
 using ABMS_2026.Data.MySql;
 using MySql.Data.MySqlClient;
 using System;
@@ -10,114 +9,39 @@ namespace ABMS_2026.UI.Forms
     public partial class PatientPickerForm : Form
     {
         private readonly MySqlConnectionHelper _connectionHelper;
-
-        private DataTable _patientTable =
-            new DataTable();
-
-        public int SelectedPatientId
-        {
-            get;
-            private set;
-        }
-
-        public string SelectedPatientName
-        {
-            get;
-            private set;
-        } = string.Empty;
+        public int? SelectedPatientId { get; private set; }
+        public string SelectedPatientName { get; private set; } = string.Empty;
 
         public PatientPickerForm()
         {
             InitializeComponent();
-
-            _connectionHelper =
-                new MySqlConnectionHelper();
-
-            HookEvents();
+            _connectionHelper = new MySqlConnectionHelper();
         }
 
-        private void HookEvents()
-        {
-            Load += PatientPickerForm_Load;
-
-            refreshButton.Click +=
-                RefreshButton_Click;
-
-            searchTextBox.TextChanged +=
-                SearchTextBox_TextChanged;
-
-            selectButton.Click +=
-                SelectButton_Click;
-
-            cancelButton.Click +=
-                CancelButton_Click;
-
-            patientDataGridView.CellDoubleClick +=
-                PatientDataGridView_CellDoubleClick;
-        }
-
-        private void PatientPickerForm_Load(
-            object sender,
-            EventArgs e)
+        private void PatientPickerForm_Load(object sender, EventArgs e)
         {
             LoadPatients();
-            LoadSearchSuggestions();
+            WireUpEvents();
         }
 
-        private void RefreshButton_Click(
-            object sender,
-            EventArgs e)
+        private void WireUpEvents()
         {
-            LoadPatients();
+            searchTextBox.KeyDown += SearchTextBox_KeyDown;
+            searchButton.Click += SearchButton_Click;
+            selectButton.Click += SelectButton_Click;
+            cancelButton.Click += CancelButton_Click;
+            patientsDataGridView.DoubleClick += PatientsDataGridView_DoubleClick;
         }
 
-        private void SearchTextBox_TextChanged(
-            object sender,
-            EventArgs e)
-        {
-            ApplySearch();
-        }
-
-        private void SelectButton_Click(
-            object sender,
-            EventArgs e)
-        {
-            SelectCurrentPatient();
-        }
-
-        private void CancelButton_Click(
-            object sender,
-            EventArgs e)
-        {
-            DialogResult =
-                DialogResult.Cancel;
-
-            Close();
-        }
-
-        private void PatientDataGridView_CellDoubleClick(
-            object sender,
-            DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0)
-            {
-                return;
-            }
-
-            SelectCurrentPatient();
-        }
-
-        private void LoadPatients()
+        private void LoadPatients(string searchTerm = "")
         {
             try
             {
-                using (var connection =
-                    _connectionHelper.GetConnection())
-                {
-                    connection.Open();
+                using var connection = _connectionHelper.GetConnection();
+                connection.Open();
 
-                    const string sql = @"
-SELECT
+                string query = @"
+SELECT 
     patient_id,
     registration_no,
     last_name,
@@ -129,236 +53,177 @@ SELECT
     civil_status,
     address,
     contact_no
-FROM v_patients
-ORDER BY patient_id DESC
-LIMIT 20;";
+FROM patients
+WHERE is_active = 1";
 
-                    using (var adapter =
-                        new MySqlDataAdapter(
-                            sql,
-                            connection))
-                    {
-                        _patientTable =
-                            new DataTable();
-
-                        adapter.Fill(
-                            _patientTable);
-                    }
+                if (!string.IsNullOrWhiteSpace(searchTerm))
+                {
+                    query += " AND (last_name LIKE @search OR first_name LIKE @search OR middle_name LIKE @search OR registration_no LIKE @search)";
                 }
 
-                patientDataGridView.DataSource =
-                    _patientTable;
+                query += " ORDER BY last_name, first_name LIMIT 100;";
 
-                FormatGrid();
+                using var command = new MySqlCommand(query, connection);
+                
+                if (!string.IsNullOrWhiteSpace(searchTerm))
+                {
+                    command.Parameters.AddWithValue("@search", $"%{searchTerm}%");
+                }
 
-                totalLabel.Text =
-                    $"{_patientTable.Rows.Count:N0} Patients";
+                using var adapter = new MySqlDataAdapter(command);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
 
-                ApplySearch();
+                patientsDataGridView.DataSource = null;
+                patientsDataGridView.AutoGenerateColumns = false;
+                patientsDataGridView.DataSource = table;
+
+                SetupDataGridViewColumns();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    ex.Message,
-                    "Patients",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading patients: {ex.Message}", "Load Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void ApplySearch()
+        private void SetupDataGridViewColumns()
         {
-            if (_patientTable == null)
+            patientsDataGridView.Columns.Clear();
+
+            // Add columns manually for better control
+            patientsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
-                return;
-            }
+                Name = "patient_id",
+                HeaderText = "ID",
+                DataPropertyName = "patient_id",
+                Visible = false
+            });
 
-            string search =
-                searchTextBox.Text.Trim()
-                .Replace("'", "''");
-
-            DataView view =
-                _patientTable.DefaultView;
-
-            if (string.IsNullOrWhiteSpace(search))
+            patientsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
             {
-                view.RowFilter =
-                    string.Empty;
-            }
-            else
-            {
-                view.RowFilter =
-                    $"Convert(registration_no,'System.String') LIKE '%{search}%' " +
-                    $"OR Convert(last_name,'System.String') LIKE '%{search}%' " +
-                    $"OR Convert(first_name,'System.String') LIKE '%{search}%' " +
-                    $"OR Convert(middle_name,'System.String') LIKE '%{search}%' " +
-                    $"OR Convert(contact_no,'System.String') LIKE '%{search}%'";
-            }
+                Name = "registration_no",
+                HeaderText = "Reg No",
+                DataPropertyName = "registration_no",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                FillWeight = 15
+            });
 
-            totalLabel.Text =
-                $"{view.Count:N0} Patients";
+            patientsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "last_name",
+                HeaderText = "Last Name",
+                DataPropertyName = "last_name",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                FillWeight = 15
+            });
+
+            patientsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "first_name",
+                HeaderText = "First Name",
+                DataPropertyName = "first_name",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                FillWeight = 15
+            });
+
+            patientsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "middle_name",
+                HeaderText = "Middle Name",
+                DataPropertyName = "middle_name",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                FillWeight = 10
+            });
+
+            patientsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "age",
+                HeaderText = "Age",
+                DataPropertyName = "age",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                FillWeight = 10
+            });
+
+            patientsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "sex",
+                HeaderText = "Sex",
+                DataPropertyName = "sex",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                FillWeight = 10
+            });
+
+            patientsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "address",
+                HeaderText = "Address",
+                DataPropertyName = "address",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                FillWeight = 25
+            });
+
+            // Apply styling
+            patientsDataGridView.ReadOnly = true;
+            patientsDataGridView.AllowUserToAddRows = false;
+            patientsDataGridView.AllowUserToDeleteRows = false;
+            patientsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            patientsDataGridView.MultiSelect = false;
+            patientsDataGridView.RowHeadersVisible = false;
         }
 
-        private void FormatGrid()
+        private void SearchTextBox_KeyDown(object? sender, KeyEventArgs e)
         {
-            if (patientDataGridView.Columns.Count == 0)
+            if (e.KeyCode == Keys.Enter)
             {
-                return;
+                e.SuppressKeyPress = true;
+                LoadPatients(searchTextBox.Text.Trim());
             }
-
-            patientDataGridView.Columns["patient_id"]
-                .Visible = false;
-
-            patientDataGridView.Columns["registration_no"]
-                .HeaderText = "Registration No";
-
-            patientDataGridView.Columns["last_name"]
-                .HeaderText = "Last Name";
-
-            patientDataGridView.Columns["first_name"]
-                .HeaderText = "First Name";
-
-            patientDataGridView.Columns["middle_name"]
-                .HeaderText = "Middle Name";
-
-            patientDataGridView.Columns["birth_date"]
-                .HeaderText = "Birth Date";
-
-            patientDataGridView.Columns["age"]
-                .HeaderText = "Age";
-
-            patientDataGridView.Columns["sex"]
-                .HeaderText = "Sex";
-
-            patientDataGridView.Columns["civil_status"]
-                .HeaderText = "Civil Status";
-
-            patientDataGridView.Columns["address"]
-                .HeaderText = "Address";
-
-            patientDataGridView.Columns["contact_no"]
-                .HeaderText = "Contact No";
-
-            // Apply header styling
-            patientDataGridView.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(22, 54, 105);
-            patientDataGridView.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            patientDataGridView.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font(patientDataGridView.Font, System.Drawing.FontStyle.Bold);
-            patientDataGridView.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            // Auto-format columns
-            AutoFormatColumns();
         }
 
-        private void AutoFormatColumns()
+        private void SearchButton_Click(object? sender, EventArgs e)
         {
-            if (_patientTable == null) return;
+            LoadPatients(searchTextBox.Text.Trim());
+        }
 
-            foreach (DataGridViewColumn column in patientDataGridView.Columns)
-            {
-                if (column.Name == "patient_id")
-                    continue;
+        private void SelectButton_Click(object? sender, EventArgs e)
+        {
+            SelectCurrentPatient();
+        }
 
-                if (!_patientTable.Columns.Contains(column.Name))
-                    continue;
-
-                DataColumn dataColumn = _patientTable.Columns[column.Name];
-
-                // Format date columns
-                if (dataColumn.DataType == typeof(DateTime) || dataColumn.DataType == typeof(DateTime?))
-                {
-                    column.DefaultCellStyle.Format = "yyyy-MM-dd";
-                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                }
-                // Format numeric columns
-                else if (dataColumn.DataType == typeof(int) || dataColumn.DataType == typeof(int?))
-                {
-                    column.DefaultCellStyle.Format = "N0";
-                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                }
-                // Text columns - left align
-                else
-                {
-                    column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                }
-            }
+        private void PatientsDataGridView_DoubleClick(object? sender, EventArgs e)
+        {
+            SelectCurrentPatient();
         }
 
         private void SelectCurrentPatient()
         {
-            if (patientDataGridView.CurrentRow == null)
+            if (patientsDataGridView.SelectedRows.Count == 0)
             {
-                MessageBox.Show(
-                    "Please select a patient.",
-                    "Patient",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
+                MessageBox.Show("Please select a patient.", "No Selection",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            SelectedPatientId =
-                Convert.ToInt32(
-                    patientDataGridView
-                    .CurrentRow
-                    .Cells["patient_id"]
-                    .Value);
-
-            string lastName = patientDataGridView.CurrentRow.Cells["last_name"].Value?.ToString() ?? string.Empty;
-            string firstName = patientDataGridView.CurrentRow.Cells["first_name"].Value?.ToString() ?? string.Empty;
-            string middleName = patientDataGridView.CurrentRow.Cells["middle_name"].Value?.ToString() ?? string.Empty;
-
+            var selectedRow = patientsDataGridView.SelectedRows[0];
+            SelectedPatientId = Convert.ToInt32(selectedRow.Cells["patient_id"].Value);
+            
+            var lastName = selectedRow.Cells["last_name"].Value?.ToString() ?? "";
+            var firstName = selectedRow.Cells["first_name"].Value?.ToString() ?? "";
+            var middleName = selectedRow.Cells["middle_name"].Value?.ToString() ?? "";
+            
             SelectedPatientName = $"{lastName}, {firstName} {middleName}".Trim();
 
-            DialogResult =
-                DialogResult.OK;
-
-            Close();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
-        private void LoadSearchSuggestions()
+        private void CancelButton_Click(object? sender, EventArgs e)
         {
-            try
-            {
-                AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
-
-                using var connection = _connectionHelper.GetConnection();
-                connection.Open();
-
-                // Load suggestions from all searchable columns
-                string[] columns = { "registration_no", "last_name", "first_name", "middle_name", "contact_no" };
-
-                foreach (string column in columns)
-                {
-                    string query = $@"
-SELECT DISTINCT {column}
-FROM v_patients
-WHERE {column} IS NOT NULL
-AND {column} <> ''
-ORDER BY {column}
-LIMIT 100;";
-
-                    using var command = new MySqlCommand(query, connection);
-                    using var reader = command.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        string value = reader[column].ToString();
-                        if (!string.IsNullOrWhiteSpace(value) && !collection.Contains(value))
-                        {
-                            collection.Add(value);
-                        }
-                    }
-                }
-
-                searchTextBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                searchTextBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                searchTextBox.AutoCompleteCustomSource = collection;
-            }
-            catch (Exception ex)
-            {
-                // Silently fail - suggestions are optional
-                System.Diagnostics.Debug.WriteLine($"Failed to load search suggestions: {ex.Message}");
-            }
+            SelectedPatientId = null;
+            SelectedPatientName = string.Empty;
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

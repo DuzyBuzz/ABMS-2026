@@ -15,31 +15,39 @@ namespace ABMS_2026.UI.Shared.Components
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PanAndZoomPictureBox));
             pictureBoxEditor = new PictureBox();
+            contextMenuStrip = new ContextMenuStrip(components);
             ((System.ComponentModel.ISupportInitialize)pictureBoxEditor).BeginInit();
             SuspendLayout();
             // 
             // pictureBoxEditor
             // 
-            pictureBoxEditor.BackColor = System.Drawing.Color.White;
-            pictureBoxEditor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            pictureBoxEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            pictureBoxEditor.Location = new System.Drawing.Point(0, 0);
-            pictureBoxEditor.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            pictureBoxEditor.BackColor = Color.White;
+            pictureBoxEditor.BorderStyle = BorderStyle.FixedSingle;
+            pictureBoxEditor.Dock = DockStyle.Fill;
+            pictureBoxEditor.Image = (Image)resources.GetObject("pictureBoxEditor.Image");
+            pictureBoxEditor.Location = new Point(0, 0);
+            pictureBoxEditor.Margin = new Padding(4, 3, 4, 3);
             pictureBoxEditor.Name = "pictureBoxEditor";
-            pictureBoxEditor.Size = new System.Drawing.Size(700, 577);
-            pictureBoxEditor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            pictureBoxEditor.Size = new Size(700, 577);
+            pictureBoxEditor.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxEditor.TabIndex = 0;
-            pictureBoxEditor.TabStop = true;
+            // 
+            // contextMenuStrip
+            // 
+            contextMenuStrip.Name = "contextMenuStrip";
+            contextMenuStrip.Size = new Size(61, 4);
             // 
             // PanAndZoomPictureBox
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(pictureBoxEditor);
-            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "PanAndZoomPictureBox";
-            Size = new System.Drawing.Size(700, 577);
+            Size = new Size(700, 577);
             ((System.ComponentModel.ISupportInitialize)pictureBoxEditor).EndInit();
             ResumeLayout(false);
 
@@ -47,5 +55,6 @@ namespace ABMS_2026.UI.Shared.Components
 
         #endregion
         private PictureBox pictureBoxEditor;
+        private ContextMenuStrip contextMenuStrip;
     }
 }

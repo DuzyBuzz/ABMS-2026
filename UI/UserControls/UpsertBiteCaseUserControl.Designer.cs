@@ -36,17 +36,11 @@
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tableLayoutPanelRight = new TableLayoutPanel();
             groupBoxAnatomicalLocation = new GroupBox();
-            panAndZoomPictureBox1 = new ABMS_2026.UI.Shared.Components.PanAndZoomPictureBox();
             tableLayoutPanelBottomRight = new TableLayoutPanel();
             panelRemarks = new Panel();
             richTextBoxRemarks = new RichTextBox();
             labelRemarks = new Label();
             saveButton = new Button();
-            panelBiteChart = new Panel();
-            tableLayoutPanelBiteChart = new TableLayoutPanel();
-            labelBiteChart = new Label();
-            panAndZoomPictureBoxBiteChart = new ABMS_2026.UI.Shared.Components.PanAndZoomPictureBox();
-            buttonBrowseBiteChart = new Button();
             groupBoxExposure = new GroupBox();
             tableLayoutPanelExposure = new TableLayoutPanel();
             tableLayoutPanelExposureTop = new TableLayoutPanel();
@@ -91,19 +85,22 @@
             chronicDGV = new DataGridView();
             ChronicIllnessColumn = new DataGridViewTextBoxColumn();
             groupBox3 = new GroupBox();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            comboBox1 = new ComboBox();
+            label4 = new Label();
+            dateTimePicker1 = new DateTimePicker();
+            label5 = new Label();
+            checkBox1 = new CheckBox();
+            label6 = new Label();
             tableLayoutPanel4 = new TableLayoutPanel();
-            comboBoxBrand = new ComboBox();
+            dateTimePickerDateGiven = new DateTimePicker();
             label1 = new Label();
             dateTimePickerCompletePEP = new DateTimePicker();
             label3 = new Label();
-            checkBoxBooster = new CheckBox();
             label2 = new Label();
             tableLayoutPanelRight.SuspendLayout();
-            groupBoxAnatomicalLocation.SuspendLayout();
             tableLayoutPanelBottomRight.SuspendLayout();
             panelRemarks.SuspendLayout();
-            panelBiteChart.SuspendLayout();
-            tableLayoutPanelBiteChart.SuspendLayout();
             groupBoxExposure.SuspendLayout();
             tableLayoutPanelExposure.SuspendLayout();
             tableLayoutPanelExposureTop.SuspendLayout();
@@ -120,6 +117,7 @@
             ((System.ComponentModel.ISupportInitialize)PEDGV).BeginInit();
             ((System.ComponentModel.ISupportInitialize)chronicDGV).BeginInit();
             groupBox3.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             SuspendLayout();
             // 
@@ -134,30 +132,19 @@
             tableLayoutPanelRight.Name = "tableLayoutPanelRight";
             tableLayoutPanelRight.RowCount = 2;
             tableLayoutPanelRight.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanelRight.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
+            tableLayoutPanelRight.RowStyles.Add(new RowStyle(SizeType.Absolute, 81F));
             tableLayoutPanelRight.Size = new Size(634, 476);
             tableLayoutPanelRight.TabIndex = 3;
             // 
             // groupBoxAnatomicalLocation
             // 
-            groupBoxAnatomicalLocation.Controls.Add(panAndZoomPictureBox1);
             groupBoxAnatomicalLocation.Dock = DockStyle.Fill;
             groupBoxAnatomicalLocation.Location = new Point(3, 3);
             groupBoxAnatomicalLocation.Name = "groupBoxAnatomicalLocation";
-            groupBoxAnatomicalLocation.Size = new Size(628, 320);
+            groupBoxAnatomicalLocation.Size = new Size(628, 389);
             groupBoxAnatomicalLocation.TabIndex = 7;
             groupBoxAnatomicalLocation.TabStop = false;
             groupBoxAnatomicalLocation.Text = "ANATOMICAL LOCATION";
-            // 
-            // panAndZoomPictureBox1
-            // 
-            panAndZoomPictureBox1.BackColor = Color.White;
-            panAndZoomPictureBox1.Dock = DockStyle.Fill;
-            panAndZoomPictureBox1.Location = new Point(3, 19);
-            panAndZoomPictureBox1.Margin = new Padding(4, 3, 4, 3);
-            panAndZoomPictureBox1.Name = "panAndZoomPictureBox1";
-            panAndZoomPictureBox1.Size = new Size(622, 298);
-            panAndZoomPictureBox1.TabIndex = 4;
             // 
             // tableLayoutPanelBottomRight
             // 
@@ -166,24 +153,22 @@
             tableLayoutPanelBottomRight.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 120F));
             tableLayoutPanelBottomRight.Controls.Add(panelRemarks, 0, 0);
             tableLayoutPanelBottomRight.Controls.Add(saveButton, 1, 0);
-            tableLayoutPanelBottomRight.Controls.Add(panelBiteChart, 0, 1);
             tableLayoutPanelBottomRight.Dock = DockStyle.Fill;
-            tableLayoutPanelBottomRight.Location = new Point(3, 329);
+            tableLayoutPanelBottomRight.Location = new Point(3, 398);
             tableLayoutPanelBottomRight.Name = "tableLayoutPanelBottomRight";
-            tableLayoutPanelBottomRight.RowCount = 2;
+            tableLayoutPanelBottomRight.RowCount = 1;
             tableLayoutPanelBottomRight.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanelBottomRight.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanelBottomRight.Size = new Size(628, 144);
+            tableLayoutPanelBottomRight.Size = new Size(628, 75);
             tableLayoutPanelBottomRight.TabIndex = 1;
             // 
             // panelRemarks
             // 
             panelRemarks.Controls.Add(richTextBoxRemarks);
             panelRemarks.Controls.Add(labelRemarks);
-            panelRemarks.Dock = DockStyle.Bottom;
+            panelRemarks.Dock = DockStyle.Fill;
             panelRemarks.Location = new Point(3, 3);
             panelRemarks.Name = "panelRemarks";
-            panelRemarks.Size = new Size(502, 34);
+            panelRemarks.Size = new Size(502, 69);
             panelRemarks.TabIndex = 4;
             // 
             // richTextBoxRemarks
@@ -191,7 +176,7 @@
             richTextBoxRemarks.Dock = DockStyle.Fill;
             richTextBoxRemarks.Location = new Point(0, 15);
             richTextBoxRemarks.Name = "richTextBoxRemarks";
-            richTextBoxRemarks.Size = new Size(502, 19);
+            richTextBoxRemarks.Size = new Size(502, 54);
             richTextBoxRemarks.TabIndex = 1;
             richTextBoxRemarks.Text = "";
             // 
@@ -208,69 +193,12 @@
             // saveButton
             // 
             saveButton.Dock = DockStyle.Bottom;
-            saveButton.Location = new Point(511, 3);
+            saveButton.Location = new Point(511, 38);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(114, 34);
             saveButton.TabIndex = 0;
             saveButton.Text = "Save";
             saveButton.UseVisualStyleBackColor = true;
-            // 
-            // panelBiteChart
-            // 
-            panelBiteChart.Controls.Add(tableLayoutPanelBiteChart);
-            panelBiteChart.Dock = DockStyle.Fill;
-            panelBiteChart.Location = new Point(3, 43);
-            panelBiteChart.Name = "panelBiteChart";
-            panelBiteChart.Size = new Size(502, 98);
-            panelBiteChart.TabIndex = 5;
-            // 
-            // tableLayoutPanelBiteChart
-            // 
-            tableLayoutPanelBiteChart.ColumnCount = 2;
-            tableLayoutPanelBiteChart.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100F));
-            tableLayoutPanelBiteChart.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanelBiteChart.Controls.Add(labelBiteChart, 0, 0);
-            tableLayoutPanelBiteChart.Controls.Add(panAndZoomPictureBoxBiteChart, 1, 0);
-            tableLayoutPanelBiteChart.Controls.Add(buttonBrowseBiteChart, 1, 1);
-            tableLayoutPanelBiteChart.Dock = DockStyle.Fill;
-            tableLayoutPanelBiteChart.Location = new Point(0, 0);
-            tableLayoutPanelBiteChart.Name = "tableLayoutPanelBiteChart";
-            tableLayoutPanelBiteChart.RowCount = 2;
-            tableLayoutPanelBiteChart.RowStyles.Add(new RowStyle(SizeType.Absolute, 25F));
-            tableLayoutPanelBiteChart.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanelBiteChart.Size = new Size(502, 98);
-            tableLayoutPanelBiteChart.TabIndex = 0;
-            // 
-            // labelBiteChart
-            // 
-            labelBiteChart.AutoSize = true;
-            labelBiteChart.Dock = DockStyle.Fill;
-            labelBiteChart.Location = new Point(3, 0);
-            labelBiteChart.Name = "labelBiteChart";
-            labelBiteChart.Size = new Size(94, 25);
-            labelBiteChart.TabIndex = 0;
-            labelBiteChart.Text = "Bite Chart:";
-            labelBiteChart.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // panAndZoomPictureBoxBiteChart
-            // 
-            panAndZoomPictureBoxBiteChart.BackColor = Color.White;
-            panAndZoomPictureBoxBiteChart.Dock = DockStyle.Fill;
-            panAndZoomPictureBoxBiteChart.Location = new Point(104, 3);
-            panAndZoomPictureBoxBiteChart.Margin = new Padding(4, 3, 4, 3);
-            panAndZoomPictureBoxBiteChart.Name = "panAndZoomPictureBoxBiteChart";
-            panAndZoomPictureBoxBiteChart.Size = new Size(394, 19);
-            panAndZoomPictureBoxBiteChart.TabIndex = 1;
-            // 
-            // buttonBrowseBiteChart
-            // 
-            buttonBrowseBiteChart.Dock = DockStyle.Fill;
-            buttonBrowseBiteChart.Location = new Point(103, 28);
-            buttonBrowseBiteChart.Name = "buttonBrowseBiteChart";
-            buttonBrowseBiteChart.Size = new Size(396, 67);
-            buttonBrowseBiteChart.TabIndex = 2;
-            buttonBrowseBiteChart.Text = "Browse...";
-            buttonBrowseBiteChart.UseVisualStyleBackColor = true;
             // 
             // groupBoxExposure
             // 
@@ -640,7 +568,7 @@
             // 
             labelCategoryI.Dock = DockStyle.Top;
             labelCategoryI.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            labelCategoryI.ForeColor = Color.Firebrick;
+            labelCategoryI.ForeColor = SystemColors.ActiveCaptionText;
             labelCategoryI.Location = new Point(0, 0);
             labelCategoryI.Name = "labelCategoryI";
             labelCategoryI.Size = new Size(201, 32);
@@ -674,7 +602,7 @@
             // 
             labelCategoryII.Dock = DockStyle.Top;
             labelCategoryII.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            labelCategoryII.ForeColor = Color.DarkOrange;
+            labelCategoryII.ForeColor = SystemColors.ActiveCaptionText;
             labelCategoryII.Location = new Point(0, 0);
             labelCategoryII.Name = "labelCategoryII";
             labelCategoryII.Size = new Size(201, 32);
@@ -708,7 +636,7 @@
             // 
             labelCategoryIII.Dock = DockStyle.Top;
             labelCategoryIII.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            labelCategoryIII.ForeColor = Color.ForestGreen;
+            labelCategoryIII.ForeColor = SystemColors.ActiveCaptionText;
             labelCategoryIII.Location = new Point(0, 0);
             labelCategoryIII.Name = "labelCategoryIII";
             labelCategoryIII.Size = new Size(202, 32);
@@ -751,7 +679,7 @@
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(628, 377);
+            tableLayoutPanel3.Size = new Size(628, 264);
             tableLayoutPanel3.TabIndex = 6;
             // 
             // PEDGV
@@ -789,7 +717,7 @@
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             PEDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            PEDGV.Size = new Size(308, 371);
+            PEDGV.Size = new Size(308, 258);
             PEDGV.TabIndex = 7;
             // 
             // peColumn
@@ -832,7 +760,7 @@
             dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
             chronicDGV.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            chronicDGV.Size = new Size(308, 371);
+            chronicDGV.Size = new Size(308, 258);
             chronicDGV.TabIndex = 6;
             // 
             // ChronicIllnessColumn
@@ -842,48 +770,136 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(tableLayoutPanel5);
             groupBox3.Controls.Add(tableLayoutPanel4);
             groupBox3.Dock = DockStyle.Bottom;
-            groupBox3.Location = new Point(3, 396);
+            groupBox3.Location = new Point(3, 283);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(628, 77);
+            groupBox3.Size = new Size(628, 190);
             groupBox3.TabIndex = 5;
             groupBox3.TabStop = false;
             groupBox3.Text = "Vaccine History";
             // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 6;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.66667F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
+            tableLayoutPanel5.Controls.Add(comboBox1, 1, 0);
+            tableLayoutPanel5.Controls.Add(label4, 0, 0);
+            tableLayoutPanel5.Controls.Add(dateTimePicker1, 5, 0);
+            tableLayoutPanel5.Controls.Add(label5, 4, 0);
+            tableLayoutPanel5.Controls.Add(checkBox1, 3, 0);
+            tableLayoutPanel5.Controls.Add(label6, 2, 0);
+            tableLayoutPanel5.Dock = DockStyle.Top;
+            tableLayoutPanel5.Location = new Point(3, 71);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 3;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.Size = new Size(622, 52);
+            tableLayoutPanel5.TabIndex = 5;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Dock = DockStyle.Fill;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(106, 22);
+            comboBox1.Margin = new Padding(3, 22, 3, 6);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(97, 23);
+            comboBox1.TabIndex = 19;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Dock = DockStyle.Fill;
+            label4.Location = new Point(3, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(97, 50);
+            label4.TabIndex = 18;
+            label4.Text = "Brand";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Dock = DockStyle.Bottom;
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(518, 24);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(101, 23);
+            dateTimePicker1.TabIndex = 17;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Dock = DockStyle.Fill;
+            label5.Location = new Point(415, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(97, 50);
+            label5.TabIndex = 12;
+            label5.Text = "If Yes, Date PEP Completed";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.CheckAlign = ContentAlignment.MiddleCenter;
+            checkBox1.Dock = DockStyle.Fill;
+            checkBox1.Location = new Point(312, 3);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(97, 44);
+            checkBox1.TabIndex = 16;
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Dock = DockStyle.Fill;
+            label6.Location = new Point(209, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(97, 50);
+            label6.TabIndex = 10;
+            label6.Text = "Booster";
+            label6.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // tableLayoutPanel4
             // 
             tableLayoutPanel4.ColumnCount = 6;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.6666718F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 16.666666F));
-            tableLayoutPanel4.Controls.Add(comboBoxBrand, 1, 0);
+            tableLayoutPanel4.Controls.Add(dateTimePickerDateGiven, 1, 0);
             tableLayoutPanel4.Controls.Add(label1, 0, 0);
             tableLayoutPanel4.Controls.Add(dateTimePickerCompletePEP, 5, 0);
             tableLayoutPanel4.Controls.Add(label3, 4, 0);
-            tableLayoutPanel4.Controls.Add(checkBoxBooster, 3, 0);
             tableLayoutPanel4.Controls.Add(label2, 2, 0);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Dock = DockStyle.Top;
             tableLayoutPanel4.Location = new Point(3, 19);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 2;
+            tableLayoutPanel4.RowCount = 3;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel4.Size = new Size(622, 55);
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.Size = new Size(622, 52);
             tableLayoutPanel4.TabIndex = 4;
             // 
-            // comboBoxBrand
+            // dateTimePickerDateGiven
             // 
-            comboBoxBrand.Dock = DockStyle.Fill;
-            comboBoxBrand.FormattingEnabled = true;
-            comboBoxBrand.Location = new Point(106, 22);
-            comboBoxBrand.Margin = new Padding(3, 22, 3, 6);
-            comboBoxBrand.Name = "comboBoxBrand";
-            comboBoxBrand.Size = new Size(97, 23);
-            comboBoxBrand.TabIndex = 19;
+            dateTimePickerDateGiven.Dock = DockStyle.Bottom;
+            dateTimePickerDateGiven.Format = DateTimePickerFormat.Short;
+            dateTimePickerDateGiven.Location = new Point(106, 24);
+            dateTimePickerDateGiven.Name = "dateTimePickerDateGiven";
+            dateTimePickerDateGiven.Size = new Size(97, 23);
+            dateTimePickerDateGiven.TabIndex = 19;
             // 
             // label1
             // 
@@ -893,7 +909,7 @@
             label1.Name = "label1";
             label1.Size = new Size(97, 50);
             label1.TabIndex = 18;
-            label1.Text = "Brand";
+            label1.Text = "Date Given";
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // dateTimePickerCompletePEP
@@ -916,17 +932,6 @@
             label3.Text = "If Yes, Date PEP Completed";
             label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // checkBoxBooster
-            // 
-            checkBoxBooster.AutoSize = true;
-            checkBoxBooster.CheckAlign = ContentAlignment.MiddleCenter;
-            checkBoxBooster.Dock = DockStyle.Fill;
-            checkBoxBooster.Location = new Point(312, 3);
-            checkBoxBooster.Name = "checkBoxBooster";
-            checkBoxBooster.Size = new Size(97, 44);
-            checkBoxBooster.TabIndex = 16;
-            checkBoxBooster.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -948,13 +953,9 @@
             Size = new Size(1280, 820);
             Load += UpsertBiteCaseUserControl_Load;
             tableLayoutPanelRight.ResumeLayout(false);
-            groupBoxAnatomicalLocation.ResumeLayout(false);
             tableLayoutPanelBottomRight.ResumeLayout(false);
             panelRemarks.ResumeLayout(false);
             panelRemarks.PerformLayout();
-            panelBiteChart.ResumeLayout(false);
-            tableLayoutPanelBiteChart.ResumeLayout(false);
-            tableLayoutPanelBiteChart.PerformLayout();
             groupBoxExposure.ResumeLayout(false);
             tableLayoutPanelExposure.ResumeLayout(false);
             tableLayoutPanelExposureTop.ResumeLayout(false);
@@ -973,6 +974,8 @@
             ((System.ComponentModel.ISupportInitialize)PEDGV).EndInit();
             ((System.ComponentModel.ISupportInitialize)chronicDGV).EndInit();
             groupBox3.ResumeLayout(false);
+            tableLayoutPanel5.ResumeLayout(false);
+            tableLayoutPanel5.PerformLayout();
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
             ResumeLayout(false);
@@ -1009,12 +1012,11 @@
         private TableLayoutPanel tableLayoutPanel1;
         private GroupBox groupBox1;
         private ComboBox comboBoxWoundClasification;
-        private Shared.Components.PanAndZoomPictureBox panAndZoomPictureBox1;
+        private Shared.Components.PanAndZoomPictureBox panAndZoomPictureBoxBiteChart;
         private Panel panelRemarks;
         private RichTextBox richTextBoxRemarks;
         private Label labelRemarks;
         private CheckBox checkBoxWoundWashed;
-        private Label label4;
         private TextBox textBoxTreatment;
         private Panel panel1;
         private TableLayoutPanel tableLayoutPanel3;
@@ -1022,11 +1024,9 @@
         private DataGridView chronicDGV;
         private GroupBox groupBox3;
         private TableLayoutPanel tableLayoutPanel4;
-        private ComboBox comboBoxBrand;
         private Label label1;
         private DateTimePicker dateTimePickerCompletePEP;
         private Label label3;
-        private CheckBox checkBoxBooster;
         private Label label2;
         private DataGridViewTextBoxColumn peColumn;
         private DataGridViewTextBoxColumn ChronicIllnessColumn;
@@ -1041,10 +1041,13 @@
         private Panel panelCategoryIII;
         private FlowLayoutPanel flowLayoutPanelCategoryIII;
         private Label labelCategoryIII;
-        private Panel panelBiteChart;
-        private TableLayoutPanel tableLayoutPanelBiteChart;
-        private ABMS_2026.UI.Shared.Components.PanAndZoomPictureBox panAndZoomPictureBoxBiteChart;
-        private Button buttonBrowseBiteChart;
-        private Label labelBiteChart;
+        private TableLayoutPanel tableLayoutPanel5;
+        private ComboBox comboBox1;
+        private Label label4;
+        private DateTimePicker dateTimePicker1;
+        private Label label5;
+        private CheckBox checkBox1;
+        private Label label6;
+        private DateTimePicker dateTimePickerDateGiven;
     }
 }

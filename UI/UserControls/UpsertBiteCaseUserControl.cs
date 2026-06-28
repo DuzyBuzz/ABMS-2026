@@ -50,7 +50,6 @@ namespace ABMS_2026.UI.UserControls
             saveButton.Click += SaveButton_Click;
             
             // Wire up browse button
-            buttonBrowseBiteChart.Click += ButtonBrowseBiteChart_Click;
         }
 
         public void LoadModuleRecord(ModuleRecordContext context)
@@ -58,7 +57,7 @@ namespace ABMS_2026.UI.UserControls
             _context = context;
             _biteCaseId = context.PrimaryKeyValue as int?;
             _patientId = context.Values.ContainsKey("patient_id") ? context.Values["patient_id"] as int? : null;
-
+            
             if (_biteCaseId.HasValue)
             {
                 LoadBiteCaseData(_biteCaseId.Value);
@@ -73,15 +72,11 @@ namespace ABMS_2026.UI.UserControls
             CollectionHelper.LoadComboBoxDistinct(comboBoxWoundCount, "bite_cases", "wound_count");
             CollectionHelper.LoadComboBoxDistinct(comboBoxWoundClasification, "bite_cases", "wound_classification");
             CollectionHelper.LoadComboBoxDistinct(comboBoxProphylaxisType, "bite_cases", "prophylaxis_type");
-            CollectionHelper.LoadComboBoxDistinct(comboBoxBrand, "bite_cases", "prophylaxis_type"); // Re-use for brand
-        }
-
-        private void LoadCollectionHelper()
-        {
-                    CollectionHelper.LoadTextBoxSuggestions(
-             textBoxIncidentPlace,
-             "bite_cases",
-             "incident_place");
+            //CollectionHelper.LoadComboBoxDistinct(comboBoxBrand, "bite_cases", "prophylaxis_type"); // Re-use for brand
+            CollectionHelper.LoadTextBoxSuggestions(
+textBoxIncidentPlace,
+"bite_cases",
+"incident_place");
             CollectionHelper.LoadDataGridViewTextBoxSuggestions(
     chronicDGV,
     "ChronicIllnessColumn",     // DataGridView column name
@@ -96,6 +91,11 @@ namespace ABMS_2026.UI.UserControls
 );
         }
 
+        private void LoadCollectionHelper()
+        {
+
+        }
+
         private void InitializePanAndZoomPictureBox()
         {
             try
@@ -107,7 +107,7 @@ namespace ABMS_2026.UI.UserControls
                 if (File.Exists(imagePath))
                 {
                     Image anatomyImage = Image.FromFile(imagePath);
-                    panAndZoomPictureBox1.SetImage(anatomyImage);
+                    panAndZoomPictureBoxBiteChart.SetImage(anatomyImage);
                 }
                 else
                 {
@@ -121,7 +121,7 @@ namespace ABMS_2026.UI.UserControls
                         g.DrawString("Place your anatomy image at: " + imagePath,
                             new Font("Arial", 10), Brushes.Gray, 10, 30);
                     }
-                    panAndZoomPictureBox1.SetImage(placeholder);
+                    panAndZoomPictureBoxBiteChart.SetImage(placeholder);
                 }
             }
             catch (Exception ex)
@@ -283,38 +283,36 @@ namespace ABMS_2026.UI.UserControls
 
         private string SaveBiteChartImage(int biteCaseId)
         {
-            // If no new image was selected and we're updating, keep the existing path
-            if (_currentBiteChartImage == null)
-            {
-                return _currentBiteChartPath ?? string.Empty;
-            }
-
             try
             {
-                // Create directory structure: upload/patient_id/bite_case_id/bite_case_chart/
+                // Get the current image from the picture box (edited state)
+                Image? currentImage = panAndZoomPictureBoxBiteChart.GetImage();
+                
+                if (currentImage == null)
+                {
+                    // If no image in picture box and we're updating, keep the existing path
+                    return _currentBiteChartPath ?? string.Empty;
+                }
+
+                // Create directory structure: upload/bite_case_id/
                 string baseDirectory = Application.StartupPath;
                 string uploadDirectory = Path.Combine(baseDirectory, "upload");
-                string patientDirectory = Path.Combine(uploadDirectory, _patientId?.ToString() ?? "unknown");
-                string biteCaseDirectory = Path.Combine(patientDirectory, biteCaseId.ToString());
-                string biteChartDirectory = Path.Combine(biteCaseDirectory, "bite_case_chart");
+                string biteCaseDirectory = Path.Combine(uploadDirectory, biteCaseId.ToString());
 
                 // Create all directories if they don't exist
                 Directory.CreateDirectory(uploadDirectory);
-                Directory.CreateDirectory(patientDirectory);
                 Directory.CreateDirectory(biteCaseDirectory);
-                Directory.CreateDirectory(biteChartDirectory);
 
                 // Generate filename with datetime
                 string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
                 string fileName = $"bite_chart_{timestamp}.png";
-                string filePath = Path.Combine(biteChartDirectory, fileName);
+                string filePath = Path.Combine(biteCaseDirectory, fileName);
 
                 // Save the image
-                _currentBiteChartImage.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
+                currentImage.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
 
                 // Return relative path from base directory
-                string relativePath = Path.Combine("upload", _patientId?.ToString() ?? "unknown", 
-                    biteCaseId.ToString(), "bite_case_chart", fileName);
+                string relativePath = Path.Combine("upload", biteCaseId.ToString(), fileName);
                 
                 // Update current path
                 _currentBiteChartPath = relativePath;

@@ -17,6 +17,7 @@
 
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panelTop = new Panel();
@@ -27,6 +28,7 @@
             moduleRefreshButton = new Button();
             moduleAddButton = new Button();
             moduleDataGridView = new DataGridView();
+            rowContextMenuStrip = new ContextMenuStrip(components);
             panelBottom = new Panel();
             bottomLayout = new TableLayoutPanel();
             summaryLabel = new Label();
@@ -182,6 +184,11 @@
             moduleDataGridView.Name = "moduleDataGridView";
             moduleDataGridView.Size = new Size(1140, 660);
             moduleDataGridView.TabIndex = 1;
+            // 
+            // rowContextMenuStrip
+            // 
+            rowContextMenuStrip.Name = "rowContextMenuStrip";
+            rowContextMenuStrip.Size = new Size(61, 4);
             // 
             // panelBottom
             // 
@@ -343,6 +350,7 @@
         private Button moduleRefreshButton;
         private Button moduleAddButton;
         private DataGridView moduleDataGridView;
+        private ContextMenuStrip rowContextMenuStrip;
         private Panel panelBottom;
         private TableLayoutPanel bottomLayout;
         private Label summaryLabel;

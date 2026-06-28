@@ -1,260 +1,121 @@
-﻿using ABMS_2026.Common.Helpers;
-using ABMS_2026.Data.MySql;
-using ABMS_2026.UI.Shared.Components;
+using ABMS_2026.Common.Helpers;
 using ABMS_2026.UI.UserControls;
-using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.IO;
+using System.Drawing.Imaging;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ABMS_2026.UI.Forms
 {
     public partial class BiteCaseForm : Form
     {
-        private readonly MySqlConnectionHelper _connectionHelper;
-        private int _selectedPatientId;
-        private int? _biteCaseId;
-
-        public BiteCaseForm()
-        {
-            InitializeComponent();
-            _connectionHelper = new MySqlConnectionHelper();
-        }
+        private readonly int _patientId;
+        private BiteCaseDetailsUserControl? _biteCaseDetailsUserControl;
 
         public BiteCaseForm(int patientId)
         {
+            _patientId = patientId;
             InitializeComponent();
-            _connectionHelper = new MySqlConnectionHelper();
-            _selectedPatientId = patientId;
-        }
-
-        public BiteCaseForm(int biteCaseId, bool isEditMode)
-        {
-            InitializeComponent();
-            _connectionHelper = new MySqlConnectionHelper();
-            _biteCaseId = biteCaseId;
-            LoadPatient(biteCaseId);
         }
 
         private void BiteCaseForm_Load(object sender, EventArgs e)
         {
-            if (_biteCaseId.HasValue)
+            this.Text = "New Bite Case";
+            LoadPatientData();
+            LoadUserControls();
+        }
+
+        private void LoadUserControls()
+        {
+            // Load bite case details for creating new case
+            _biteCaseDetailsUserControl = new BiteCaseDetailsUserControl(_patientId, null);
+            _biteCaseDetailsUserControl.BiteCaseSaved += OnBiteCaseSaved;
+            UserControlLoaderHelper.Load(biteCaseDetailPanel, _biteCaseDetailsUserControl);
+
+            // Don't load doctor orders and treatment schedules yet - will be loaded after bite case is saved
+        }
+
+        private void OnBiteCaseSaved(int biteCaseId)
+        {
+            LoadDoctorOrdersForBiteCase(biteCaseId);
+            LoadTreatmentSchedulesForBiteCase(biteCaseId);
+        }
+
+        private void LoadDoctorOrdersForBiteCase(int biteCaseId)
+        {
+            UserControlLoaderHelper.Load(doctorsOrderPanel, new DoctorsOrdersUserControl(biteCaseId));
+        }
+
+        private void LoadTreatmentSchedulesForBiteCase(int biteCaseId)
+        {
+            UserControlLoaderHelper.Load(treatmentSchedulePanel, new TreatmentUserControl(biteCaseId));
+        }
+
+        private void LoadPatientData()
+        {
+            var patient = PatientInfoHelper.GetPatient(_patientId);
+
+            if (patient != null)
             {
-                // Edit mode - patient ID was loaded in constructor
-                LoadPatientInfo(_selectedPatientId);
-                LoadTabPages(true);
-            }
-            else
-            {
-                // Create mode - clear and load provided patient
-                ClearPatientInfo();
-                LoadPatientInfo(_selectedPatientId);
-                LoadTabPages(false);
+                patientNameLabel.Text = "Patient: " + patient.FullName.ToUpper();
+                ageLabel.Text = "Age: " + patient.Age?.ToString();
+                sexLabel.Text = "Sex: " + patient.Sex;
+                statusLabel.Text = "Status: " + patient.CivilStatus;
+                addressLabel.Text = "Address: " + patient.Address;
+                contactNoLabel.Text = "Contact No: " + patient.ContactNo;
+                weightLabel.Text = "Weight: " + patient.Weight?.ToString();
+
+                if (patient.Image != null)
+                {
+                    using var ms = new MemoryStream(patient.Image);
+                    patientPictureBox.Image = Image.FromStream(ms);
+                }
+                else
+                {
+                    patientPictureBox.Image = null;
+                }
             }
         }
 
-        private void LoadTabPages(bool isEditMode)
+        private void patientPictureBox_Click(object sender, EventArgs e)
         {
-            var upsertControl = new UpsertBiteCaseUserControl();
-            
-            var context = new ModuleRecordContext
-            {
-                IsEditMode = isEditMode,
-                SourceName = "bite_cases",
-                TargetTableName = "bite_cases",
-                PrimaryKeyColumn = "bite_case_id",
-                PrimaryKeyValue = _biteCaseId,
-                Values = new Dictionary<string, object?>
-                {
-                    { "patient_id", _selectedPatientId }
-                }
-            };
-            
-            upsertControl.LoadModuleRecord(context);
-            UserControlLoaderHelper.Load(exposureDetailsTabPage, upsertControl);
-        }
-
-        private void patientPickerButton_Click(object sender, EventArgs e)
-        {
-            using (var pickerForm = new PatientPickerForm())
-            {
-                if (pickerForm.ShowDialog() == DialogResult.OK)
-                {
-                    _selectedPatientId = pickerForm.SelectedPatientId;
-                    patientTextBox.Text = pickerForm.SelectedPatientName;
-                    LoadPatientInfo(_selectedPatientId);
-                }
-            }
-        }
-
-        private void LoadPatient(int biteCaseId)
-        {
-            try
-            {
-                using MySqlConnection connection = new MySqlConnectionHelper().GetConnection();
-                connection.Open();
-
-                const string sql = @"
-SELECT
-    bite_case_id,
-    patient_id
-FROM v_bite_case_details
-WHERE bite_case_id = @bite_case_id
-LIMIT 1;";
-
-                using MySqlCommand command = new MySqlCommand(sql, connection);
-                command.Parameters.AddWithValue("@bite_case_id", biteCaseId);
-
-                using MySqlDataReader reader = command.ExecuteReader();
-
-                if (!reader.Read())
-                {
-                    MessageBox.Show("Patient record not found.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-
-                _selectedPatientId = Convert.ToInt32(reader["patient_id"]);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to load patient.\n\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void LoadPatientInfo(int patientId)
-        {
-            try
-            {
-                using (var connection = _connectionHelper.GetConnection())
-                {
-                    connection.Open();
-
-                    const string sql = @"
-SELECT
-    patient_id,
-    registration_no,
-    last_name,
-    first_name,
-    middle_name,
-    birth_date,
-    age,
-    sex,
-    civil_status,
-    address,
-    contact_no,
-    image
-FROM v_patients
-WHERE patient_id = @patient_id
-LIMIT 1;";
-
-                    using (var command = new MySqlCommand(sql, connection))
-                    {
-                        command.Parameters.AddWithValue("@patient_id", patientId);
-
-                        using (var reader = command.ExecuteReader())
-                        {
-                            if (reader.Read())
-                            {
-                                // Update labels with patient information
-                                addressLabel.Text = $"Address: {reader["address"]?.ToString() ?? "N/A"}";
-                                registrationLabel.Text = $"Reg No: {reader["registration_no"]?.ToString() ?? "N/A"}";
-                                
-                                if (reader["birth_date"] != DBNull.Value)
-                                {
-                                    DateTime birthDate = Convert.ToDateTime(reader["birth_date"]);
-                                    birthDateLabel.Text = $"Birth: {birthDate:yyyy-MM-dd}";
-                                }
-                                else
-                                {
-                                    birthDateLabel.Text = "Birth: N/A";
-                                }
-
-                                civilStatusLabel.Text = $"Civil Status: {reader["civil_status"]?.ToString() ?? "N/A"}";
-                                contactLabel.Text = $"Contact: {reader["contact_no"]?.ToString() ?? "N/A"}";
-                                ageLabel.Text = $"Age: {reader["age"]?.ToString() ?? "0"}";
-                                sexLabel.Text = $"Sex: {reader["sex"]?.ToString() ?? "N/A"}";
-
-                                // Load patient image
-                                LoadPatientImage(reader["image"]);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
+            if (patientPictureBox.Image == null)
             {
                 MessageBox.Show(
-                    $"Failed to load patient information.\n\n{ex.Message}",
-                    "Error",
+                    "No image available.",
+                    "Patient Photo",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
+                    MessageBoxIcon.Information);
 
-        private void LoadPatientImage(object imageValue)
-        {
-            if (imageValue == DBNull.Value || imageValue == null)
-            {
-                // Clear existing image
-                if (patientImagePictureBox.Image != null)
-                {
-                    var oldImage = patientImagePictureBox.Image;
-                    patientImagePictureBox.Image = null;
-                    oldImage.Dispose();
-                }
                 return;
             }
 
             try
             {
-                byte[] imageBytes = (byte[])imageValue;
-                using (var ms = new MemoryStream(imageBytes))
-                {
-                    using (var tempImage = Image.FromStream(ms))
-                    {
-                        // Dispose old image
-                        if (patientImagePictureBox.Image != null)
-                        {
-                            var oldImage = patientImagePictureBox.Image;
-                            patientImagePictureBox.Image = null;
-                            oldImage.Dispose();
-                        }
+                string tempFile = Path.Combine(
+                    Path.GetTempPath(),
+                    $"ABMS_Patient_{Guid.NewGuid()}.png");
 
-                        // Set new image
-                        patientImagePictureBox.Image = new Bitmap(tempImage);
-                    }
-                }
+                patientPictureBox.Image.Save(tempFile, ImageFormat.Png);
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = tempFile,
+                    UseShellExecute = true
+                });
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"Failed to load patient image.\n\n{ex.Message}",
-                    "Image Error",
+                    $"Unable to open image.\n\n{ex.Message}",
+                    "Error",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            }
-        }
-
-        private void ClearPatientInfo()
-        {
-            patientTextBox.Clear();
-            addressLabel.Text = "Address: -";
-            registrationLabel.Text = "Reg No: -";
-            birthDateLabel.Text = "Birth: -";
-            civilStatusLabel.Text = "Civil Status: -";
-            contactLabel.Text = "Contact: -";
-            ageLabel.Text = "Age: 0";
-            sexLabel.Text = "Sex: -";
-
-            // Clear patient image
-            if (patientImagePictureBox.Image != null)
-            {
-                var oldImage = patientImagePictureBox.Image;
-                patientImagePictureBox.Image = null;
-                oldImage.Dispose();
+                    MessageBoxIcon.Error);
             }
         }
     }

@@ -50,6 +50,8 @@ namespace ABMS_2026.UI.Shared.Components
             pictureBoxEditor.KeyDown += PictureBoxEditor_KeyDown;
             pictureBoxEditor.Click += PictureBoxEditor_Click;
             this.Load += PanAndZoomPictureBox_Load;
+            contextMenuStrip.Opening += ContextMenuStrip_Opening;
+            contextMenuStrip.ItemClicked += ContextMenuStrip_ItemClicked;
         }
 
         private void PictureBoxEditor_Click(object? sender, EventArgs e)
@@ -95,6 +97,15 @@ namespace ABMS_2026.UI.Shared.Components
 
         private void PictureBoxEditor_MouseDown(object? sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Right)
+            {
+                // Show context menu beside the cursor (offset to the right)
+                Point cursorPosition = pictureBoxEditor.PointToScreen(e.Location);
+                Point menuPosition = new Point(cursorPosition.X + 10, cursorPosition.Y + 10);
+                contextMenuStrip.Show(menuPosition);
+                return;
+            }
+
             if (!_isFocused)
             {
                 return;
@@ -384,6 +395,12 @@ namespace ABMS_2026.UI.Shared.Components
             RedrawCanvas();
         }
 
+        public Image? GetImage()
+        {
+            // Return the current display bitmap (with edits applied)
+            return _displayBitmap ?? _originalBitmap;
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -400,6 +417,75 @@ namespace ABMS_2026.UI.Shared.Components
                 }
             }
             base.Dispose(disposing);
+        }
+
+        private void ContextMenuStrip_Opening(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            contextMenuStrip.Items.Clear();
+
+            // Add zoom options
+            var zoomInItem = new ToolStripMenuItem("Zoom In");
+            zoomInItem.Name = "zoomIn";
+            zoomInItem.Enabled = _zoomFactor < MAX_ZOOM;
+            contextMenuStrip.Items.Add(zoomInItem);
+
+            var zoomOutItem = new ToolStripMenuItem("Zoom Out");
+            zoomOutItem.Name = "zoomOut";
+            zoomOutItem.Enabled = _zoomFactor > MIN_ZOOM;
+            contextMenuStrip.Items.Add(zoomOutItem);
+
+            var resetZoomItem = new ToolStripMenuItem("Reset Zoom");
+            resetZoomItem.Name = "resetZoom";
+            resetZoomItem.Enabled = _zoomFactor != 1.0f;
+            contextMenuStrip.Items.Add(resetZoomItem);
+
+            contextMenuStrip.Items.Add(new ToolStripSeparator());
+
+            // Add editing options
+            var undoItem = new ToolStripMenuItem("Undo");
+            undoItem.Name = "undo";
+            undoItem.Enabled = _undoStack.Count > 1;
+            undoItem.ShortcutKeys = Keys.Control | Keys.Z;
+            contextMenuStrip.Items.Add(undoItem);
+
+            var redoItem = new ToolStripMenuItem("Redo");
+            redoItem.Name = "redo";
+            redoItem.Enabled = _redoStack.Count > 0;
+            redoItem.ShortcutKeys = Keys.Control | Keys.Y;
+            contextMenuStrip.Items.Add(redoItem);
+
+            contextMenuStrip.Items.Add(new ToolStripSeparator());
+
+            var clearPointsItem = new ToolStripMenuItem("Clear All Points");
+            clearPointsItem.Name = "clearPoints";
+            clearPointsItem.Enabled = _clickedPoints.Count > 0;
+            contextMenuStrip.Items.Add(clearPointsItem);
+        }
+
+        private void ContextMenuStrip_ItemClicked(object? sender, ToolStripItemClickedEventArgs e)
+        {
+            switch (e.ClickedItem.Name)
+            {
+                case "zoomIn":
+                    ZoomIn();
+                    break;
+                case "zoomOut":
+                    ZoomOut();
+                    break;
+                case "resetZoom":
+                    _zoomFactor = 1.0f;
+                    RedrawCanvas();
+                    break;
+                case "undo":
+                    Undo();
+                    break;
+                case "redo":
+                    Redo();
+                    break;
+                case "clearPoints":
+                    ClearPoints();
+                    break;
+            }
         }
     }
 }

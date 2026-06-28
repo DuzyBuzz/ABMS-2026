@@ -103,6 +103,38 @@ namespace ABMS_2026.UI.Shared.Components
             }
         }
 
+        public void SetImage(Image image)
+        {
+            if (image == null)
+            {
+                return;
+            }
+
+            // Dispose previous bitmaps
+            if (_originalBitmap != null)
+            {
+                _originalBitmap.Dispose();
+            }
+            if (_displayBitmap != null)
+            {
+                _displayBitmap.Dispose();
+            }
+
+            _originalBitmap = new Bitmap(image);
+            _displayBitmap = null;
+            _zoomFactor = 1.0f;
+            _strokeHistory.Clear();
+            _currentStroke.Clear();
+            _coordinates.Clear();
+            _undoStack.Clear();
+            _redoStack.Clear();
+            _highlightedBodyParts.Clear();
+
+            InitializeBodyPartRegions();
+            RedrawCanvas();
+            SaveStateForUndo();
+        }
+
         private void InitializeBodyPartRegions()
         {
             // These coordinates are based on the anatomy image - you may need to adjust them

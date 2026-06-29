@@ -4,21 +4,18 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace ABMS_2026.UI.UserControls
 {
     public partial class TreatmentScheduleUserControl : UserControl
     {
-        private readonly MySqlConnectionHelper _connectionHelper;
+        private readonly MySqlConnectionHelper _connectionHelper = new();
 
-        private DateTime _currentMonth;
-        private DateTime _selectedDate;
-        private int _biteCaseId;
+        private DateTime _currentMonth = new(DateTime.Today.Year, DateTime.Today.Month, 1);
+        private DateTime _selectedDate = DateTime.Today;
 
-        private readonly List<TreatmentScheduleData> _schedules = new();
-        private Dictionary<DateTime, List<TreatmentScheduleData>> _schedulesByDate = new();
+        private readonly List<TreatmentScheduleData> _monthSchedules = new();
         private readonly List<CalendarCell> _cells = new();
 
         private static readonly Color HeaderBlue = Color.FromArgb(22, 54, 105);
@@ -31,28 +28,13 @@ namespace ABMS_2026.UI.UserControls
         {
             InitializeComponent();
 
-            _connectionHelper = new MySqlConnectionHelper();
-            _currentMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-            _selectedDate = DateTime.Today;
-
             SetStyle(
                 ControlStyles.AllPaintingInWmPaint |
                 ControlStyles.UserPaint |
                 ControlStyles.OptimizedDoubleBuffer, true);
 
             InitializeCalendarGrid();
-        }
-
-        public TreatmentScheduleUserControl(int biteCaseId) : this()
-        {
-            _biteCaseId = biteCaseId;
-            LoadSchedulesForBiteCase(biteCaseId);
-        }
-
-        public void SetBiteCaseId(int biteCaseId)
-        {
-            _biteCaseId = biteCaseId;
-            LoadSchedulesForBiteCase(biteCaseId);
+            LoadSchedulesForMonth(_currentMonth);
         }
 
         private void InitializeCalendarGrid()
@@ -68,21 +50,17 @@ namespace ABMS_2026.UI.UserControls
             calendarLayoutPanel.RowCount = 7;
 
             for (int i = 0; i < 7; i++)
-            {
                 calendarLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100f / 7f));
-            }
 
             calendarLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 30f));
             for (int i = 0; i < 6; i++)
-            {
                 calendarLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 100f / 6f));
-            }
 
             string[] weekdays = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
 
             for (int i = 0; i < 7; i++)
             {
-                var label = new Label
+                calendarLayoutPanel.Controls.Add(new Label
                 {
                     Text = weekdays[i],
                     TextAlign = ContentAlignment.MiddleCenter,
@@ -91,9 +69,7 @@ namespace ABMS_2026.UI.UserControls
                     BackColor = HeaderLight,
                     Dock = DockStyle.Fill,
                     Margin = new Padding(0)
-                };
-
-                calendarLayoutPanel.Controls.Add(label, i, 0);
+                }, i, 0);
             }
 
             for (int week = 0; week < 6; week++)
@@ -107,7 +83,6 @@ namespace ABMS_2026.UI.UserControls
             }
 
             calendarLayoutPanel.ResumeLayout(true);
-            RenderCalendar();
         }
 
         private CalendarCell CreateCalendarCell()
@@ -129,46 +104,44 @@ namespace ABMS_2026.UI.UserControls
                 Font = new Font("Segoe UI", 8F, FontStyle.Bold),
                 ForeColor = Color.Black,
                 TextAlign = ContentAlignment.TopLeft,
-                Padding = new Padding(2, 1, 2, 0),
-                BackColor = Color.Transparent
+                Padding = new Padding(2, 1, 2, 0)
             };
 
-            var detailsLabel = new Label
+            var countLabel = new Label
             {
                 AutoSize = false,
                 Dock = DockStyle.Fill,
-                Font = new Font("Segoe UI", 7F, FontStyle.Regular),
+                Font = new Font("Segoe UI", 9F, FontStyle.Bold),
                 ForeColor = Color.Black,
-                TextAlign = ContentAlignment.TopLeft,
-                Padding = new Padding(2, 0, 2, 2),
-                BackColor = Color.Transparent
+                TextAlign = ContentAlignment.MiddleCenter,
+                Padding = new Padding(2, 0, 2, 2)
             };
 
-            panel.Controls.Add(detailsLabel);
+            panel.Controls.Add(countLabel);
             panel.Controls.Add(dayLabel);
 
             var cell = new CalendarCell
             {
                 Panel = panel,
                 DayLabel = dayLabel,
-                DetailsLabel = detailsLabel,
+                CountLabel = countLabel,
                 Date = DateTime.MinValue
             };
 
             panel.Tag = cell;
             dayLabel.Tag = cell;
-            detailsLabel.Tag = cell;
+            countLabel.Tag = cell;
 
             panel.Click += CalendarCell_Click;
             dayLabel.Click += CalendarCell_Click;
-            detailsLabel.Click += CalendarCell_Click;
+            countLabel.Click += CalendarCell_Click;
 
             panel.MouseEnter += CalendarCell_MouseEnter;
             panel.MouseLeave += CalendarCell_MouseLeave;
             dayLabel.MouseEnter += CalendarCell_MouseEnter;
             dayLabel.MouseLeave += CalendarCell_MouseLeave;
-            detailsLabel.MouseEnter += CalendarCell_MouseEnter;
-            detailsLabel.MouseLeave += CalendarCell_MouseLeave;
+            countLabel.MouseEnter += CalendarCell_MouseEnter;
+            countLabel.MouseLeave += CalendarCell_MouseLeave;
 
             return cell;
         }
@@ -194,26 +167,21 @@ namespace ABMS_2026.UI.UserControls
 
                 cell.Date = currentDay;
                 cell.DayLabel.Text = currentDay.Day.ToString();
-                cell.DetailsLabel.Text = string.Empty;
-                cell.DayLabel.ForeColor = Color.Black;
-                cell.DetailsLabel.ForeColor = Color.Black;
+                cell.CountLabel.Text = string.Empty;
 
                 ApplyCellStyle(cell, currentDay);
 
-                if (_schedulesByDate.TryGetValue(currentDay.Date, out var daySchedules) && daySchedules.Count > 0)
+                int count = _monthSchedules.Count(x => x.ScheduledDate.Date == currentDay.Date);
+                if (count > 0)
                 {
-                    cell.DetailsLabel.Text = BuildCellSummary(daySchedules);
-
-                    if (currentDay.Date == _selectedDate.Date)
-                    {
-                        cell.DetailsLabel.ForeColor = Color.White;
-                    }
+                    cell.CountLabel.Text = count == 1 ? "1 schedule" : $"{count} schedules";
+                    cell.CountLabel.ForeColor = currentDay.Date == _selectedDate.Date ? Color.White : Color.Black;
                 }
 
                 if (currentDay.Date == _selectedDate.Date)
                 {
                     cell.DayLabel.ForeColor = Color.White;
-                    cell.DetailsLabel.ForeColor = Color.White;
+                    cell.CountLabel.ForeColor = Color.White;
                 }
             }
         }
@@ -224,48 +192,26 @@ namespace ABMS_2026.UI.UserControls
             {
                 cell.Panel.BackColor = SelectedColor;
                 cell.DayLabel.ForeColor = Color.White;
-                cell.DetailsLabel.ForeColor = Color.White;
+                cell.CountLabel.ForeColor = Color.White;
             }
             else if (date.Date == DateTime.Today)
             {
                 cell.Panel.BackColor = TodayColor;
                 cell.DayLabel.ForeColor = Color.Black;
-                cell.DetailsLabel.ForeColor = Color.Black;
+                cell.CountLabel.ForeColor = Color.Black;
             }
             else if (date.Month != _currentMonth.Month)
             {
                 cell.Panel.BackColor = OtherMonthColor;
                 cell.DayLabel.ForeColor = Color.Gray;
-                cell.DetailsLabel.ForeColor = Color.DimGray;
+                cell.CountLabel.ForeColor = Color.DimGray;
             }
             else
             {
                 cell.Panel.BackColor = Color.White;
                 cell.DayLabel.ForeColor = Color.Black;
-                cell.DetailsLabel.ForeColor = Color.Black;
+                cell.CountLabel.ForeColor = Color.Black;
             }
-        }
-
-        private string BuildCellSummary(List<TreatmentScheduleData> schedules)
-        {
-            var lines = new List<string>();
-
-            foreach (var schedule in schedules.Take(2))
-            {
-                string text = schedule.DisplayItemName;
-
-                if (!string.IsNullOrWhiteSpace(schedule.Route))
-                    text += $" ({schedule.Route})";
-
-                lines.Add(text);
-            }
-
-            if (schedules.Count > 2)
-            {
-                lines.Add($"+{schedules.Count - 2} more");
-            }
-
-            return string.Join(Environment.NewLine, lines);
         }
 
         private void CalendarCell_Click(object? sender, EventArgs e)
@@ -286,9 +232,7 @@ namespace ABMS_2026.UI.UserControls
                 return;
 
             if (cell.Date.Date != _selectedDate.Date)
-            {
                 cell.Panel.BackColor = Color.FromArgb(240, 248, 255);
-            }
         }
 
         private void CalendarCell_MouseLeave(object? sender, EventArgs e)
@@ -310,147 +254,103 @@ namespace ABMS_2026.UI.UserControls
 
         private void ShowDayDetails(DateTime date)
         {
-            if (!_schedulesByDate.TryGetValue(date.Date, out var daySchedules) || daySchedules.Count == 0)
+            var daySchedules = _monthSchedules
+                .Where(x => x.ScheduledDate.Date == date.Date)
+                .OrderBy(x => x.ScheduledDate)
+                .ThenBy(x => x.TreatmentScheduleId)
+                .ToList();
+
+            if (daySchedules.Count == 0)
             {
                 MessageBox.Show(
                     $"No treatment schedules for {date:MMMM dd, yyyy}",
                     "Treatment Schedules",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-
                 return;
             }
 
-            var sb = new StringBuilder();
-            sb.AppendLine($"Schedules for {date:MMMM dd, yyyy}");
-            sb.AppendLine();
-
-            foreach (var s in daySchedules)
-            {
-                sb.AppendLine($"Day: {s.ScheduleDay}");
-                sb.AppendLine($"Biologic: {s.BiologicType}");
-                sb.AppendLine($"Item: {s.DisplayItemName}");
-                sb.AppendLine($"Route: {s.Route}");
-                sb.AppendLine($"Status: {s.Status}");
-
-                if (s.ScheduledDate != DateTime.MinValue)
-                    sb.AppendLine($"Scheduled: {s.ScheduledDate:yyyy-MM-dd}");
-
-                if (s.AdministeredDate.HasValue)
-                    sb.AppendLine($"Administered: {s.AdministeredDate:yyyy-MM-dd}");
-
-                if (!string.IsNullOrWhiteSpace(s.AdministeredBy))
-                    sb.AppendLine($"Administered By: {s.AdministeredBy}");
-
-                if (!string.IsNullOrWhiteSpace(s.Remarks))
-                    sb.AppendLine($"Remarks: {s.Remarks}");
-
-                sb.AppendLine(new string('-', 40));
-            }
-
-            MessageBox.Show(
-                sb.ToString(),
-                "Treatment Schedules",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            using var form = new TreatmentDayDetailsForm(date, daySchedules);
+            form.ShowDialog(this);
         }
 
         private void prevMonthButton_Click(object sender, EventArgs e)
         {
             _currentMonth = _currentMonth.AddMonths(-1);
-            RenderCalendar();
+            LoadSchedulesForMonth(_currentMonth);
         }
 
         private void nextMonthButton_Click(object sender, EventArgs e)
         {
             _currentMonth = _currentMonth.AddMonths(1);
-            RenderCalendar();
+            LoadSchedulesForMonth(_currentMonth);
         }
 
         private void todayButton_Click(object sender, EventArgs e)
         {
             _currentMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
             _selectedDate = DateTime.Today;
-            RenderCalendar();
+            LoadSchedulesForMonth(_currentMonth);
         }
 
-        public void LoadSchedulesForBiteCase(int biteCaseId)
+        private void LoadSchedulesForMonth(DateTime month)
         {
-            _biteCaseId = biteCaseId;
-            _schedules.Clear();
-            _schedulesByDate.Clear();
-
-            if (_biteCaseId <= 0)
-            {
-                RenderCalendar();
-                return;
-            }
+            _monthSchedules.Clear();
 
             try
             {
                 using var connection = _connectionHelper.GetConnection();
                 connection.Open();
+                DateTime startDate = new DateTime(month.Year, month.Month, 1).AddMonths(-1);
+                DateTime endDate = new DateTime(month.Year, month.Month, 1).AddMonths(2);
 
                 const string sql = @"
 SELECT
-    treatment_schedule_id,
-    bite_case_id,
-    schedule_day,
-    scheduled_date,
-    administered_date,
-    biologic_type,
-    item_id,
-    generic_name,
-    brand_name,
-    item_name,
-    category,
-    strength,
-    dosage_form,
-    unit,
-    quantity_used,
-    status,
-    administered_by,
-    remarks,
-    route,
-    created_at
-FROM v_treatment_schedule
-WHERE bite_case_id = @bite_case_id
-ORDER BY
-    FIELD(schedule_day, 'Day 0', 'Day 3', 'Day 7', 'Day 14', 'Day 28', 'Booster'),
-    scheduled_date;";
+    ts.treatment_schedule_id,
+    ts.bite_case_id,
+    ts.schedule_day,
+    ts.scheduled_date,
+    ts.administered_date,
+    ts.biologic_type,
+    ts.item_id,
+    ts.generic_name,
+    ts.brand_name,
+    ts.item_name,
+    ts.category,
+    ts.strength,
+    ts.dosage_form,
+    ts.unit,
+    ts.quantity_used,
+    ts.status,
+    ts.administered_by,
+    ts.remarks,
+    ts.route,
+    ts.created_at,
+    bc.registration_no,
+    bc.patient_name
+FROM v_treatment_schedule ts
+LEFT JOIN v_bite_cases bc
+    ON bc.bite_case_id = ts.bite_case_id
+WHERE ts.scheduled_date >= @startDate
+  AND ts.scheduled_date < @endDate
+ORDER BY ts.scheduled_date, ts.treatment_schedule_id;";
 
                 using var command = new MySqlCommand(sql, connection);
-                command.Parameters.AddWithValue("@bite_case_id", _biteCaseId);
+                command.Parameters.AddWithValue("@startDate", startDate);
+                command.Parameters.AddWithValue("@endDate", endDate);
 
                 using var reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    var schedule = new TreatmentScheduleData
+                    _monthSchedules.Add(new TreatmentScheduleData
                     {
-                        TreatmentScheduleId = reader["treatment_schedule_id"] != DBNull.Value
-                            ? Convert.ToInt32(reader["treatment_schedule_id"])
-                            : 0,
-
-                        BiteCaseId = reader["bite_case_id"] != DBNull.Value
-                            ? Convert.ToInt32(reader["bite_case_id"])
-                            : 0,
-
+                        TreatmentScheduleId = reader["treatment_schedule_id"] != DBNull.Value ? Convert.ToInt32(reader["treatment_schedule_id"]) : 0,
+                        BiteCaseId = reader["bite_case_id"] != DBNull.Value ? Convert.ToInt32(reader["bite_case_id"]) : 0,
                         ScheduleDay = reader["schedule_day"]?.ToString() ?? string.Empty,
-
-                        ScheduledDate = reader["scheduled_date"] != DBNull.Value
-                            ? Convert.ToDateTime(reader["scheduled_date"])
-                            : DateTime.MinValue,
-
-                        AdministeredDate = reader["administered_date"] != DBNull.Value
-                            ? Convert.ToDateTime(reader["administered_date"])
-                            : (DateTime?)null,
-
+                        ScheduledDate = reader["scheduled_date"] != DBNull.Value ? Convert.ToDateTime(reader["scheduled_date"]) : DateTime.MinValue,
+                        AdministeredDate = reader["administered_date"] != DBNull.Value ? Convert.ToDateTime(reader["administered_date"]) : (DateTime?)null,
                         BiologicType = reader["biologic_type"]?.ToString() ?? string.Empty,
-
-                        ItemId = reader["item_id"] != DBNull.Value
-                            ? Convert.ToInt64(reader["item_id"])
-                            : (long?)null,
-
+                        ItemId = reader["item_id"] != DBNull.Value ? Convert.ToInt64(reader["item_id"]) : (long?)null,
                         GenericName = reader["generic_name"]?.ToString() ?? string.Empty,
                         BrandName = reader["brand_name"]?.ToString() ?? string.Empty,
                         ItemName = reader["item_name"]?.ToString() ?? string.Empty,
@@ -458,86 +358,163 @@ ORDER BY
                         Strength = reader["strength"]?.ToString() ?? string.Empty,
                         DosageForm = reader["dosage_form"]?.ToString() ?? string.Empty,
                         Unit = reader["unit"]?.ToString() ?? string.Empty,
-
-                        QuantityUsed = reader["quantity_used"] != DBNull.Value
-                            ? Convert.ToDecimal(reader["quantity_used"])
-                            : (decimal?)null,
-
+                        QuantityUsed = reader["quantity_used"] != DBNull.Value ? Convert.ToDecimal(reader["quantity_used"]) : (decimal?)null,
                         Status = reader["status"]?.ToString() ?? string.Empty,
                         AdministeredBy = reader["administered_by"]?.ToString() ?? string.Empty,
                         Remarks = reader["remarks"]?.ToString() ?? string.Empty,
-                        Route = reader["route"]?.ToString() ?? string.Empty
-                    };
-
-                    _schedules.Add(schedule);
+                        Route = reader["route"]?.ToString() ?? string.Empty,
+                        RegistrationNo = reader["registration_no"]?.ToString() ?? string.Empty,
+                        PatientName = reader["patient_name"]?.ToString() ?? string.Empty
+                    });
                 }
-
-                _schedulesByDate = _schedules
-                    .Where(s => s.ScheduledDate != DateTime.MinValue)
-                    .GroupBy(s => s.ScheduledDate.Date)
-                    .ToDictionary(g => g.Key, g => g.ToList());
 
                 RenderCalendar();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"Error loading treatment schedules: {ex.Message}",
-                    "Load Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show($"Error loading schedules: {ex.Message}", "Load Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        internal void LoadSchedulesForBiteCase(int biteCaseId)
+        {
+
+        }
         private sealed class CalendarCell
         {
             public Panel Panel { get; set; } = null!;
             public Label DayLabel { get; set; } = null!;
-            public Label DetailsLabel { get; set; } = null!;
+            public Label CountLabel { get; set; } = null!;
             public DateTime Date { get; set; }
         }
+    }
 
-        private sealed class TreatmentScheduleData
+    public sealed class TreatmentScheduleData
+    {
+        public int TreatmentScheduleId { get; set; }
+        public int BiteCaseId { get; set; }
+        public string ScheduleDay { get; set; } = string.Empty;
+        public DateTime ScheduledDate { get; set; }
+        public DateTime? AdministeredDate { get; set; }
+        public string BiologicType { get; set; } = string.Empty;
+        public long? ItemId { get; set; }
+        public string GenericName { get; set; } = string.Empty;
+        public string BrandName { get; set; } = string.Empty;
+        public string ItemName { get; set; } = string.Empty;
+        public string Category { get; set; } = string.Empty;
+        public string Strength { get; set; } = string.Empty;
+        public string DosageForm { get; set; } = string.Empty;
+        public string Unit { get; set; } = string.Empty;
+        public decimal? QuantityUsed { get; set; }
+        public string Status { get; set; } = string.Empty;
+        public string AdministeredBy { get; set; } = string.Empty;
+        public string Remarks { get; set; } = string.Empty;
+        public string Route { get; set; } = string.Empty;
+        public string RegistrationNo { get; set; } = string.Empty;
+        public string PatientName { get; set; } = string.Empty;
+    }
+
+    public sealed class TreatmentDayDetailsForm : Form
+    {
+        public TreatmentDayDetailsForm(DateTime date, List<TreatmentScheduleData> schedules)
         {
-            public int TreatmentScheduleId { get; set; }
-            public int BiteCaseId { get; set; }
-            public string ScheduleDay { get; set; } = string.Empty;
-            public DateTime ScheduledDate { get; set; }
-            public DateTime? AdministeredDate { get; set; }
-            public string BiologicType { get; set; } = string.Empty;
-            public long? ItemId { get; set; }
-            public string GenericName { get; set; } = string.Empty;
-            public string BrandName { get; set; } = string.Empty;
-            public string ItemName { get; set; } = string.Empty;
-            public string Category { get; set; } = string.Empty;
-            public string Strength { get; set; } = string.Empty;
-            public string DosageForm { get; set; } = string.Empty;
-            public string Unit { get; set; } = string.Empty;
-            public decimal? QuantityUsed { get; set; }
-            public string Status { get; set; } = string.Empty;
-            public string AdministeredBy { get; set; } = string.Empty;
-            public string Remarks { get; set; } = string.Empty;
-            public string Route { get; set; } = string.Empty;
+            Text = $"Schedules for {date:MMMM dd, yyyy}";
+            Width = 1150;
+            Height = 500;
+            StartPosition = FormStartPosition.CenterParent;
+            BackColor = Color.White;
 
-            public string DisplayItemName
+            var topPanel = new Panel
             {
-                get
-                {
-                    if (!string.IsNullOrWhiteSpace(BrandName) && !string.IsNullOrWhiteSpace(GenericName))
-                        return $"{BrandName} ({GenericName})";
+                Dock = DockStyle.Top,
+                Height = 50,
+                BackColor = Color.FromArgb(22, 54, 105)
+            };
 
-                    if (!string.IsNullOrWhiteSpace(BrandName))
-                        return BrandName;
+            var titleLabel = new Label
+            {
+                Dock = DockStyle.Fill,
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 11F, FontStyle.Bold),
+                TextAlign = ContentAlignment.MiddleLeft,
+                Padding = new Padding(12, 0, 0, 0),
+                Text = $"{date:MMMM dd, yyyy}  ({schedules.Count} schedule(s))"
+            };
 
-                    if (!string.IsNullOrWhiteSpace(GenericName))
-                        return GenericName;
+            var closeButton = new Button
+            {
+                Text = "Close",
+                Width = 90,
+                Height = 28,
+                Anchor = AnchorStyles.Top | AnchorStyles.Right,
+                Location = new Point(Width - 130, 11),
+                BackColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+            closeButton.Click += (_, __) => Close();
 
-                    if (!string.IsNullOrWhiteSpace(ItemName))
-                        return ItemName;
+            topPanel.Controls.Add(closeButton);
+            topPanel.Controls.Add(titleLabel);
 
-                    return !string.IsNullOrWhiteSpace(BiologicType) ? BiologicType : "N/A";
-                }
-            }
+            var grid = new DataGridView
+            {
+                Dock = DockStyle.Fill,
+                ReadOnly = true,
+                AllowUserToAddRows = false,
+                AllowUserToDeleteRows = false,
+                AllowUserToResizeRows = false,
+                AutoGenerateColumns = false,
+                MultiSelect = false,
+                SelectionMode = DataGridViewSelectionMode.FullRowSelect,
+                RowHeadersVisible = false,
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                EnableHeadersVisualStyles = false
+            };
+
+            grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(22, 54, 105);
+            grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            grid.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Reg. No", DataPropertyName = nameof(TreatmentScheduleData.RegistrationNo), FillWeight = 12 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Patient", DataPropertyName = nameof(TreatmentScheduleData.PatientName), FillWeight = 16 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Day", DataPropertyName = nameof(TreatmentScheduleData.ScheduleDay), FillWeight = 10 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Scheduled Date", DataPropertyName = nameof(TreatmentScheduleData.ScheduledDate), FillWeight = 12, DefaultCellStyle = { Format = "yyyy-MM-dd" } });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Biologic", DataPropertyName = nameof(TreatmentScheduleData.BiologicType), FillWeight = 12 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Item", DataPropertyName = nameof(TreatmentScheduleData.ItemName), FillWeight = 16 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Brand", DataPropertyName = nameof(TreatmentScheduleData.BrandName), FillWeight = 12 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Route", DataPropertyName = nameof(TreatmentScheduleData.Route), FillWeight = 10 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Qty", DataPropertyName = nameof(TreatmentScheduleData.QuantityUsed), FillWeight = 8, DefaultCellStyle = { Format = "N2", Alignment = DataGridViewContentAlignment.MiddleRight } });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Status", DataPropertyName = nameof(TreatmentScheduleData.Status), FillWeight = 10 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Administered By", DataPropertyName = nameof(TreatmentScheduleData.AdministeredBy), FillWeight = 12 });
+            grid.Columns.Add(new DataGridViewTextBoxColumn { HeaderText = "Remarks", DataPropertyName = nameof(TreatmentScheduleData.Remarks), FillWeight = 16 });
+
+            grid.DataSource = schedules;
+
+            var bottomPanel = new Panel
+            {
+                Dock = DockStyle.Bottom,
+                Height = 50,
+                BackColor = Color.White
+            };
+
+            var closeBottom = new Button
+            {
+                Text = "Close",
+                Width = 100,
+                Height = 30,
+                Anchor = AnchorStyles.Right | AnchorStyles.Bottom,
+                Location = new Point(Width - 140, 10),
+                BackColor = Color.White,
+                FlatStyle = FlatStyle.Flat
+            };
+            closeBottom.Click += (_, __) => Close();
+
+            bottomPanel.Controls.Add(closeBottom);
+
+            Controls.Add(grid);
+            Controls.Add(bottomPanel);
+            Controls.Add(topPanel);
         }
     }
 }

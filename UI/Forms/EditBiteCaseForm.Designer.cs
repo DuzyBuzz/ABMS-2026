@@ -215,7 +215,7 @@
             treatmentSchedulePanel.Size = new Size(1186, 666);
             treatmentSchedulePanel.TabIndex = 0;
             // 
-            // BiteCaseForm
+            // EditBiteCaseForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;

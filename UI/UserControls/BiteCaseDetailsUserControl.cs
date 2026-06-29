@@ -70,6 +70,7 @@ namespace ABMS_2026.UI.UserControls
             }
         }
 
+
         private void LoadComboBoxOptions()
         {
             CollectionHelper.LoadComboBoxDistinct(comboBoxAnimalType, "bite_cases", "animal_type");
@@ -776,5 +777,7 @@ VALUES
                 return null;
             }
         }
+
+
     }
 }

@@ -519,7 +519,9 @@ namespace ABMS_2026.Common.Printing
                 Document = _printDocument,
                 AllowSomePages = false,
                 AllowSelection = false,
-                UseEXDialog = true
+                UseEXDialog = true,
+                
+               
             };
             
             if (printDialog.ShowDialog() == DialogResult.OK)

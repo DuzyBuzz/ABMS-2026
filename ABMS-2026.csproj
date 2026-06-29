@@ -38,7 +38,6 @@
 
   <ItemGroup>
     <Folder Include="Common\Validators\" />
-    <Folder Include="Data\dumps\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,12 +49,24 @@
     <Compile Update="UI\Forms\EditBiteCaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="UI\UserControls\BillingPaymentsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UI\UserControls\BillingPaymentsUserControl.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BillingPaymentsUserControl.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UI\UserControls\BillingPaymentsUserControl.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BillingPaymentsUserControl.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

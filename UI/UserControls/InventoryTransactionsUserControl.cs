@@ -51,7 +51,7 @@ namespace ABMS_2026.UI.UserControls
                 },
 
                 DateColumn = "transaction_date",
-
+                HideActionButtons = true,
                 IsPaginated = true,
 
                 PageSize = 1000,

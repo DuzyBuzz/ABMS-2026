@@ -45,7 +45,6 @@
             doctorsOrderPanel = new Panel();
             tabPage3 = new TabPage();
             treatmentSchedulePanel = new Panel();
-            tabPage4 = new TabPage();
             patientInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)patientPictureBox).BeginInit();
             tabControl1.SuspendLayout();
@@ -152,7 +151,6 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
-            tabControl1.Controls.Add(tabPage4);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 100);
             tabControl1.Name = "tabControl1";
@@ -217,15 +215,6 @@
             treatmentSchedulePanel.Size = new Size(1186, 666);
             treatmentSchedulePanel.TabIndex = 0;
             // 
-            // tabPage4
-            // 
-            tabPage4.Location = new Point(4, 24);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(1192, 672);
-            tabPage4.TabIndex = 3;
-            tabPage4.Text = "Billing Payments";
-            tabPage4.UseVisualStyleBackColor = true;
-            // 
             // BiteCaseForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -268,6 +257,5 @@
         private Panel biteCaseDetailPanel;
         private Panel doctorsOrderPanel;
         private Panel treatmentSchedulePanel;
-        private TabPage tabPage4;
     }
 }

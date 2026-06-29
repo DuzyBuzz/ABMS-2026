@@ -37,8 +37,6 @@ namespace ABMS_2026.UI.UserControls
                     "unit",
                     "quantity_on_hand",
                     "reorder_level",
-                    "expiration_date",
-                    "is_active"
                 },
 
                 SearchableColumns = new()

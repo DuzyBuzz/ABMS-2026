@@ -229,6 +229,8 @@ namespace ABMS_2026.UI.Forms
 
         private void MonitoringButton_Click(object sender, EventArgs e)
         {
+            pageTitleLabel.Text = "Post Exposure Monitoring";
+            HighlightButton(MonitoringButton);
             UserControlLoaderHelper.Load(mainContentPanel, new ExposureMonitoringUserControl());
         }
     }

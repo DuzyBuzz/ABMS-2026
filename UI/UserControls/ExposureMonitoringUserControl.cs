@@ -21,7 +21,7 @@ namespace ABMS_2026.UI.UserControls
             var options = new ABMS_2026.UI.Shared.Components.ModuleUserControlOptions
             {
                 SourceName = "v_post_exposure_monitoring",
-                ModuleName = "POST EXPOSURE MONITORING",
+                ModuleName = "Post Exposure Monitoring",
                 PrimaryKeyColumn = "bite_case_id",
                 DisplayColumns = new List<string>
                 {
@@ -47,7 +47,8 @@ namespace ABMS_2026.UI.UserControls
                     "brand_name",
                     "status_of_biting_animal_after_14_days_of_observation"
                 },
-                IsPaginated = false,
+                DateColumn = "d0",
+                IsPaginated = true,
                 PageSize = 1000,
                 AddButtonText = "Add New",
                 RefreshButtonText = "Refresh",

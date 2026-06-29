@@ -15,7 +15,11 @@ namespace ABMS_2026.UI.Forms
     public partial class BiteCaseForm : Form
     {
         private readonly int _patientId;
+        private int? _biteCaseId;
         private BiteCaseDetailsUserControl? _biteCaseDetailsUserControl;
+        private DoctorsOrdersUserControl? _doctorsOrdersUserControl;
+        private TreatmentUserControl? _treatmentUserControl;
+        private BillingPaymentsUserControl? _billingPaymentsUserControl;
 
         public BiteCaseForm(int patientId)
         {
@@ -37,23 +41,33 @@ namespace ABMS_2026.UI.Forms
             _biteCaseDetailsUserControl.BiteCaseSaved += OnBiteCaseSaved;
             UserControlLoaderHelper.Load(biteCaseDetailPanel, _biteCaseDetailsUserControl);
 
-            // Don't load doctor orders and treatment schedules yet - will be loaded after bite case is saved
+            // Don't load doctor orders, treatment schedules, and billing yet - will be loaded after bite case is saved
         }
 
         private void OnBiteCaseSaved(int biteCaseId)
         {
+            _biteCaseId = biteCaseId;
             LoadDoctorOrdersForBiteCase(biteCaseId);
             LoadTreatmentSchedulesForBiteCase(biteCaseId);
+            LoadBillingPaymentsForBiteCase(biteCaseId);
         }
 
         private void LoadDoctorOrdersForBiteCase(int biteCaseId)
         {
-            UserControlLoaderHelper.Load(doctorsOrderPanel, new DoctorsOrdersUserControl(biteCaseId));
+            _doctorsOrdersUserControl = new DoctorsOrdersUserControl(biteCaseId);
+            UserControlLoaderHelper.Load(doctorsOrderPanel, _doctorsOrdersUserControl);
         }
 
         private void LoadTreatmentSchedulesForBiteCase(int biteCaseId)
         {
-            UserControlLoaderHelper.Load(treatmentSchedulePanel, new TreatmentUserControl(biteCaseId));
+            _treatmentUserControl = new TreatmentUserControl(biteCaseId);
+            UserControlLoaderHelper.Load(treatmentSchedulePanel, _treatmentUserControl);
+        }
+
+        private void LoadBillingPaymentsForBiteCase(int biteCaseId)
+        {
+            _billingPaymentsUserControl = new BillingPaymentsUserControl(biteCaseId);
+            //UserControlLoaderHelper.Load(billingPaymentsPanel, _billingPaymentsUserControl);
         }
 
         private void LoadPatientData()
@@ -101,7 +115,10 @@ namespace ABMS_2026.UI.Forms
                     Path.GetTempPath(),
                     $"ABMS_Patient_{Guid.NewGuid()}.png");
 
-                patientPictureBox.Image.Save(tempFile, ImageFormat.Png);
+                using (Bitmap bmp = new Bitmap(patientPictureBox.Image))
+                {
+                    bmp.Save(tempFile, ImageFormat.Png);
+                }
 
                 Process.Start(new ProcessStartInfo
                 {

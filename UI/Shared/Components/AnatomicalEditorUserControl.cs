@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using System.ComponentModel;
@@ -12,15 +11,33 @@ namespace ABMS_2026.UI.Shared.Components
     public partial class AnatomicalEditorUserControl : UserControl
     {
         private readonly List<PointF> _markers = new();
+        private readonly List<List<PointF>> _undoStack = new();
+        private readonly List<List<PointF>> _redoStack = new();
+
+        private const int MaxHistorySize = 50;
+        private const int MarkerRadius = 6;
+        private const int RemoveDistanceThreshold = 15;
+
+        private bool _keyboardArmed;
 
         public AnatomicalEditorUserControl()
         {
             InitializeComponent();
 
+            // Make the user control focusable so it can receive Ctrl+Z / Ctrl+Y.
+            SetStyle(ControlStyles.Selectable, true);
+            TabStop = true;
+
+            Cursor = Cursors.Cross;
             pictureBoxAnatomical.Cursor = Cursors.Cross;
+
+            pictureBoxAnatomical.MouseDown += PictureBoxAnatomical_MouseDown;
             pictureBoxAnatomical.MouseClick += PictureBoxAnatomical_MouseClick;
             pictureBoxAnatomical.Paint += PictureBoxAnatomical_Paint;
             pictureBoxAnatomical.Resize += (_, __) => pictureBoxAnatomical.Invalidate();
+
+            Enter += (_, __) => ArmKeyboard();
+            Leave += (_, __) => DisarmKeyboard();
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -38,13 +55,19 @@ namespace ABMS_2026.UI.Shared.Components
 
         public void ClearMarkers()
         {
+            if (_markers.Count == 0)
+                return;
+
+            SaveState();
             _markers.Clear();
             pictureBoxAnatomical.Invalidate();
         }
 
         public void SetMarkers(IEnumerable<PointF> markers)
         {
+            SaveState();
             _markers.Clear();
+
             if (markers != null)
                 _markers.AddRange(markers);
 
@@ -53,7 +76,40 @@ namespace ABMS_2026.UI.Shared.Components
 
         public void AddMarker(PointF imagePoint)
         {
+            SaveState();
             _markers.Add(imagePoint);
+            pictureBoxAnatomical.Invalidate();
+        }
+
+        public void Undo()
+        {
+            if (_undoStack.Count == 0)
+                return;
+
+            _redoStack.Add(new List<PointF>(_markers));
+
+            var previous = _undoStack[^1];
+            _undoStack.RemoveAt(_undoStack.Count - 1);
+
+            _markers.Clear();
+            _markers.AddRange(previous);
+
+            pictureBoxAnatomical.Invalidate();
+        }
+
+        public void Redo()
+        {
+            if (_redoStack.Count == 0)
+                return;
+
+            _undoStack.Add(new List<PointF>(_markers));
+
+            var next = _redoStack[^1];
+            _redoStack.RemoveAt(_redoStack.Count - 1);
+
+            _markers.Clear();
+            _markers.AddRange(next);
+
             pictureBoxAnatomical.Invalidate();
         }
 
@@ -63,9 +119,55 @@ namespace ABMS_2026.UI.Shared.Components
                 return null;
 
             Bitmap bmp = new Bitmap(pictureBoxAnatomical.Width, pictureBoxAnatomical.Height);
-
             pictureBoxAnatomical.DrawToBitmap(bmp, pictureBoxAnatomical.ClientRectangle);
             return bmp;
+        }
+
+        private void ArmKeyboard()
+        {
+            _keyboardArmed = true;
+        }
+
+        private void DisarmKeyboard()
+        {
+            _keyboardArmed = false;
+        }
+
+        private void PictureBoxAnatomical_MouseDown(object sender, MouseEventArgs e)
+        {
+            // This is the important part: make the control active when the image is clicked.
+            ArmKeyboard();
+            Focus();
+        }
+
+        private void SaveState()
+        {
+            _undoStack.Add(new List<PointF>(_markers));
+            _redoStack.Clear();
+
+            if (_undoStack.Count > MaxHistorySize)
+                _undoStack.RemoveAt(0);
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Only handle shortcuts when this control is the active editor.
+            if (_keyboardArmed)
+            {
+                if (keyData == (Keys.Control | Keys.Z))
+                {
+                    Undo();
+                    return true;
+                }
+
+                if (keyData == (Keys.Control | Keys.Y))
+                {
+                    Redo();
+                    return true;
+                }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void PictureBoxAnatomical_MouseClick(object sender, MouseEventArgs e)
@@ -78,12 +180,13 @@ namespace ABMS_2026.UI.Shared.Components
                 PointF? imagePoint = ControlPointToImagePoint(e.Location);
                 if (imagePoint.HasValue)
                 {
-                    _markers.Add(imagePoint.Value);
-                    pictureBoxAnatomical.Invalidate();
+                    ArmKeyboard();
+                    AddMarker(imagePoint.Value);
                 }
             }
             else if (e.Button == MouseButtons.Right)
             {
+                ArmKeyboard();
                 RemoveNearestMarker(e.Location);
             }
         }
@@ -108,8 +211,9 @@ namespace ABMS_2026.UI.Shared.Components
                 }
             }
 
-            if (nearest.HasValue && nearestDistance <= 15)
+            if (nearest.HasValue && nearestDistance <= RemoveDistanceThreshold)
             {
+                SaveState();
                 _markers.Remove(nearest.Value);
                 pictureBoxAnatomical.Invalidate();
             }
@@ -129,8 +233,11 @@ namespace ABMS_2026.UI.Shared.Components
             {
                 Point p = ImagePointToControlPoint(marker);
 
-                const int radius = 6;
-                Rectangle rect = new Rectangle(p.X - radius, p.Y - radius, radius * 2, radius * 2);
+                Rectangle rect = new Rectangle(
+                    p.X - MarkerRadius,
+                    p.Y - MarkerRadius,
+                    MarkerRadius * 2,
+                    MarkerRadius * 2);
 
                 e.Graphics.FillEllipse(fillBrush, rect);
                 e.Graphics.DrawEllipse(borderPen, rect);
@@ -147,6 +254,7 @@ namespace ABMS_2026.UI.Shared.Components
                 return null;
 
             Image img = pictureBoxAnatomical.Image;
+
             float x = (controlPoint.X - imageRect.X) * img.Width / (float)imageRect.Width;
             float y = (controlPoint.Y - imageRect.Y) * img.Height / (float)imageRect.Height;
 

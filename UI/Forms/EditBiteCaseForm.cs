@@ -19,9 +19,11 @@ namespace ABMS_2026.UI.Forms
         private readonly int _biteCaseId;
         private int _patientId;
         private int? _doctorOrderId;
+        private int? _billingId;
         private BiteCaseDetailsUserControl? _biteCaseDetailsUserControl;
         private DoctorsOrdersUserControl? _doctorsOrdersUserControl;
         private TreatmentUserControl? _treatmentUserControl;
+        private BillingPaymentsUserControl? _billingPaymentsUserControl;
         private readonly MySqlConnectionHelper _connectionHelper;
 
         public EditBiteCaseForm(int biteCaseId)
@@ -36,6 +38,7 @@ namespace ABMS_2026.UI.Forms
             this.Text = "Edit Bite Case";
             LoadPatientIdFromBiteCase();
             LoadDoctorOrderIdFromBiteCase();
+            LoadBillingIdFromBiteCase();
             LoadPatientData();
             LoadUserControls();
         }
@@ -112,6 +115,40 @@ LIMIT 1;";
             }
         }
 
+        private void LoadBillingIdFromBiteCase()
+        {
+            try
+            {
+                using var connection = _connectionHelper.GetConnection();
+                connection.Open();
+
+                string query = @"
+SELECT billing_id
+FROM billing
+WHERE bite_case_id = @bite_case_id
+LIMIT 1;";
+
+                using var command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@bite_case_id", _biteCaseId);
+
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    _billingId = Convert.ToInt32(result);
+                }
+                else
+                {
+                    _billingId = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading billing ID: {ex.Message}", "Load Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _billingId = null;
+            }
+        }
+
         private void LoadUserControls()
         {
             // Load bite case details for editing
@@ -125,6 +162,10 @@ LIMIT 1;";
             // Load treatment schedules
             _treatmentUserControl = new TreatmentUserControl(_biteCaseId);
             UserControlLoaderHelper.Load(treatmentSchedulePanel, _treatmentUserControl);
+
+            // Load billing payments with existing billing ID if available
+            _billingPaymentsUserControl = new BillingPaymentsUserControl(_biteCaseId, _billingId);
+            //UserControlLoaderHelper.Load(billingPaymentsPanel, _billingPaymentsUserControl);
         }
 
         private void LoadPatientData()

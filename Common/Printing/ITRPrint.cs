@@ -1171,40 +1171,126 @@ ORDER BY cbm.exposure_category, cbm.basis_id;";
 
         private float PrintProphylaxisSection(Graphics g, float x, float y, float width)
         {
-            int h = 180;
+            int h = 175;
+
             DrawSectionHeader(g, x, y, width, "PRE / POST EXPOSURE PROPHYLAXIS");
 
-            float leftX = x + 8;
-            float rightX = x + width / 2 + 8;
-            float topY = y + 28;
+            float padding = 8f;
+            float topY = y + 30;
 
-            // Left column - Weight and treatment options
-            DrawUnderlinedField(g, leftX, topY, 55, 90, "Weight:", _patientData.Weight?.ToString("0.##") ?? "");
-            DrawCheckboxLine(g, leftX + 120, topY, "PEP", _doctorOrderData.IsPep);
-            DrawCheckboxLine(g, leftX + 165, topY, "PREP", _doctorOrderData.IsPrep);
-            DrawCheckboxLine(g, leftX + 210, topY, "Booster", _prophylaxisHistoryData.IsBooster);
+            float gap = 20f;
 
-            DrawCheckboxLine(g, leftX, topY + 18, "ERIG", _doctorOrderData.IsErig);
-            DrawUnderlinedField(g, leftX + 45, topY + 18, 60, 80, "", _doctorOrderData.ErigDetails);
-            DrawCheckboxLine(g, leftX + 140, topY + 18, "HRIG", _doctorOrderData.IsHrig);
-            DrawUnderlinedField(g, leftX + 180, topY + 18, 60, 80, "", _doctorOrderData.HrigDetails);
+            float columnWidth = (width - (padding * 2) - gap) / 2;
 
-            DrawCheckboxLine(g, leftX, topY + 36, "Tetanus Toxoid", _doctorOrderData.IsTetanusToxoid);
-            DrawUnderlinedField(g, leftX + 50, topY + 36, 40, 80, "", _doctorOrderData.TetanusToxoidDetails);
-            DrawCheckboxLine(g, leftX + 140, topY + 36, "ATS", _doctorOrderData.IsAntiTetanusSerum);
-            DrawUnderlinedField(g, leftX + 180, topY + 36, 40, 80, "", _doctorOrderData.AntiTetanusSerumDetails);
+            float leftX = x + padding;
+            float rightX = leftX + columnWidth + gap;
 
-            DrawCheckboxLine(g, leftX, topY + 54, "Anti-Rabies Vaccine", true);
+            float row = topY;
+            const float rowHeight = 22f;
 
-            // Right column - Vaccine administration details
-            DrawUnderlinedField(g, rightX, topY, 50, 100, "Date Given:", _prophylaxisHistoryData.DateGiven?.ToString("MM/dd/yyyy") ?? "");
-            DrawUnderlinedField(g, rightX, topY + 18, 50, 100, "Brand:", _prophylaxisHistoryData.VaccineBrand);
-            DrawUnderlinedField(g, rightX, topY + 36, 50, 100, "Route:", _prophylaxisHistoryData.Route);
-            DrawCheckboxLine(g, rightX + 110, topY + 36, "Intradermal", _prophylaxisHistoryData.Route?.ToLower() == "intradermal");
-            DrawCheckboxLine(g, rightX + 200, topY + 36, "Intramuscular", _prophylaxisHistoryData.Route?.ToLower() == "intramuscular");
+            //=========================================
+            // LEFT COLUMN
+            //=========================================
 
-            DrawUnderlinedField(g, rightX, topY + 54, 80, 150, "PEP Completed Date:", _prophylaxisHistoryData.PepCompletedDate?.ToString("MM/dd/yyyy") ?? "");
-            DrawUnderlinedField(g, rightX, topY + 72, 80, 150, "Remarks:", _prophylaxisHistoryData.ConsentNotes);
+            DrawUnderlinedField(g, leftX, row, 60, 70,
+                "Weight",
+                _patientData.Weight?.ToString("0.##") ?? "");
+
+            DrawCheckboxLine(g, leftX + 145, row, "PEP", _doctorOrderData.IsPep);
+            DrawCheckboxLine(g, leftX + 195, row, "PREP", _doctorOrderData.IsPrep);
+            DrawCheckboxLine(g, leftX + 255, row, "Booster", _prophylaxisHistoryData.IsBooster);
+
+            row += rowHeight;
+
+            DrawCheckboxLine(g, leftX, row, "ERIG", _doctorOrderData.IsErig);
+            DrawUnderlinedField(g,
+                leftX + 50,
+                row,
+                0,
+                120,
+                "",
+                _doctorOrderData.ErigDetails);
+
+            row += rowHeight;
+
+            DrawCheckboxLine(g, leftX, row, "HRIG", _doctorOrderData.IsHrig);
+            DrawUnderlinedField(g,
+                leftX + 50,
+                row,
+                0,
+                120,
+                "",
+                _doctorOrderData.HrigDetails);
+
+            row += rowHeight;
+
+            DrawCheckboxLine(g, leftX, row,
+                "Tetanus Toxoid",
+                _doctorOrderData.IsTetanusToxoid);
+
+            DrawUnderlinedField(g,
+                leftX + 120,
+                row,
+                0,
+                120,
+                "",
+                _doctorOrderData.TetanusToxoidDetails);
+
+            row += rowHeight;
+
+            DrawCheckboxLine(g, leftX, row,
+                "ATS",
+                _doctorOrderData.IsAntiTetanusSerum);
+
+            DrawUnderlinedField(g,
+                leftX + 50,
+                row,
+                0,
+                120,
+                "",
+                _doctorOrderData.AntiTetanusSerumDetails);
+
+            row += rowHeight;
+
+            DrawCheckboxLine(g,
+                leftX,
+                row,
+                "Anti-Rabies Vaccine",
+                true);
+
+            //=========================================
+            // RIGHT COLUMN
+            //=========================================
+
+            float rightRow = topY;
+
+            DrawUnderlinedField(g,
+                rightX,
+                rightRow,
+                70,
+                220,
+                "Brand",
+                _prophylaxisHistoryData.VaccineBrand);
+
+            rightRow += rowHeight;
+
+            DrawUnderlinedField(g,
+                rightX,
+                rightRow,
+                70,
+                220,
+                "Route",
+                _prophylaxisHistoryData.Route);
+
+            rightRow += rowHeight;
+
+            DrawUnderlinedField(g,
+                rightX,
+                rightRow,
+                125,
+                165,
+                "PEP Completed",
+                _prophylaxisHistoryData.PepCompletedDate?.ToString("MM/dd/yyyy") ?? "");
 
             return y + h + 6;
         }
@@ -1213,9 +1299,9 @@ ORDER BY cbm.exposure_category, cbm.basis_id;";
         {
             int h = 240;
             float rowHeight = 42;
-            float scheduleCol = 60;
-            float routeCol = 50;
-            float dateCol = 60;
+            float scheduleCol = 65;
+            float routeCol = 70;
+            float dateCol = 80;
             float signatureCol = 100;
             float vaccineCol = width - scheduleCol - routeCol - dateCol - signatureCol - 30;
 

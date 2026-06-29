@@ -70,13 +70,6 @@ namespace ABMS_2026.UI.UserControls
                         Name = "new_bite_case",
                         Action = NewBiteCaseAction,
                         ReloadGridAfterAction = false
-                    },
-                    new ModuleContextMenuItem
-                    {
-                        Text = "Bite Case History",
-                        Name = "bite_case_history",
-                        Action = BiteCaseHistoryAction,
-                        ReloadGridAfterAction = false
                     }
                 }
             });

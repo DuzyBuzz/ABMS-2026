@@ -87,6 +87,7 @@ namespace ABMS_2026.UI.Forms
             userButton.Text = "🔐";
             toolTip1.SetToolTip(userButton, "Users");
             userButton.UseVisualStyleBackColor = true;
+            userButton.Visible = false;
             userButton.Click += userButton_Click;
             // 
             // MonitoringButton
@@ -238,6 +239,7 @@ namespace ABMS_2026.UI.Forms
             dashboardsButton.Text = "📊";
             toolTip1.SetToolTip(dashboardsButton, "Dashboard");
             dashboardsButton.UseVisualStyleBackColor = true;
+            dashboardsButton.Visible = false;
             dashboardsButton.Click += dashboardsButton_Click;
             // 
             // pictureBox1
